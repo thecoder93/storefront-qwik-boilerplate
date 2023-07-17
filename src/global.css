@@ -1,4 +1,14 @@
+/**
+ * Tailwind CSS imports
+ * View the full documentation at https://tailwindcss.com
+ */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+.bg-primary-700 {
+  background-color: rgb(1 137 55);
+}
 
 /**
  * WHAT IS THIS FILE?

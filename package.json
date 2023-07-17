@@ -1,6 +1,6 @@
 {
-  "name": "my-qwik-empty-starter",
-  "description": "App with Routing built-in ready to create your app",
+  "name": "storefront-qwik-boilerplate",
+  "description": "Vue Storefront Qwik Boilerplate",
   "engines": {
     "node": ">=15.0.0"
   },
@@ -23,16 +23,25 @@
   "devDependencies": {
     "@builder.io/qwik": "^1.2.6",
     "@builder.io/qwik-city": "^1.2.6",
+    "@storefront-ui/typography": "^2.3.1",
     "@types/eslint": "8.40.2",
     "@types/node": "^20.4.0",
     "@typescript-eslint/eslint-plugin": "5.61.0",
     "@typescript-eslint/parser": "5.61.0",
+    "@vue-storefront/sdk": "^1.1.1",
+    "@vue-storefront/storefront-boilerplate-sdk": "^0.1.0",
+    "autoprefixer": "^10.4.14",
     "eslint": "8.44.0",
     "eslint-plugin-qwik": "^1.2.6",
+    "postcss": "^8.4.23",
     "prettier": "2.8.8",
+    "tailwindcss": "^3.3.1",
     "typescript": "5.1.6",
     "undici": "5.22.1",
     "vite": "4.4.0",
     "vite-tsconfig-paths": "4.2.0"
+  },
+  "dependencies": {
+    "qwik-storefront-ui": "^0.0.3"
   }
 }
