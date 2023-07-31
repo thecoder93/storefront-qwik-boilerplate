@@ -1,7 +1,8 @@
 import { component$, Slot } from '@builder.io/qwik';
-import type { RequestHandler } from '@builder.io/qwik-city';
+import { routeAction$, type RequestHandler } from '@builder.io/qwik-city';
 import { SfButton, SfIconExpandMore } from 'qwik-storefront-ui';
 import { NavbarTop } from '~/components/navbar-top/navbar-top';
+import { sleep } from '~/shared/utils';
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
 	// Control caching for this request for best performance and to reduce hosting costs:
@@ -13,6 +14,11 @@ export const onGet: RequestHandler = async ({ cacheControl }) => {
 		maxAge: 5,
 	});
 };
+
+export const useAddressForm = routeAction$(async () => {
+	await sleep(5_000);
+	return { success: true };
+});
 
 export default component$(() => {
 	return (
