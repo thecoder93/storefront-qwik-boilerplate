@@ -1,5 +1,5 @@
 import { component$ } from '@builder.io/qwik';
-import { ProductCard } from '../ProductCard';
+import { ProductCard } from '../ProductCard/ProductCard';
 
 type ProductSliderProps = {
 	products: {

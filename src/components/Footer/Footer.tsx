@@ -3,12 +3,12 @@ import { Link } from '@builder.io/qwik-city';
 import { useTranslate } from 'qwik-speak';
 import {
 	bottomLinks,
-	categories,
 	companyName,
 	contactOptions,
+	homePageCategories,
 	socialMedia,
 } from '~/mocks';
-import { Divider } from '../UI';
+import { Divider } from '../UI/Divider/Divider';
 
 type FooterProps = {
 	class?: string;
@@ -23,7 +23,7 @@ export const Footer = component$<FooterProps>(({ class: _class = '' }) => {
 				class='grid gap-5 justify-center grid-cols-[1fr_1fr] md:grid-cols-[repeat(4,1fr)] px-4 md:px-6 pb-10 mx-auto max-w-screen-3xl'
 				data-testid='section-top'
 			>
-				{categories.map(({ key, subcategories }) => (
+				{homePageCategories.map(({ key, subcategories }) => (
 					<div key={key} class='min-w-[25%] xs:min-w-[50%] flex flex-col'>
 						<p class='font-medium leading-7 text-neutral-900 text-lg pb-2'>
 							{t(`categories.${key}.label`)}

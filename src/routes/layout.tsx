@@ -5,7 +5,7 @@ import type { ImageTransformerProps } from 'qwik-image';
 import { useImageProvider } from 'qwik-image';
 import { useTranslate } from 'qwik-speak';
 import { SfButton, SfIconExpandMore } from 'qwik-storefront-ui';
-import { Footer } from '~/components/Footer';
+import { Footer } from '~/components/Footer/Footer';
 import { NavbarTop } from '~/components/NavbarTop/NavbarTop';
 import { Search } from '~/components/Search/Search';
 import { generateDocumentHead, sleep } from '~/shared/utils';

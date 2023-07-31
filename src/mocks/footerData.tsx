@@ -9,7 +9,7 @@ import {
 	SfIconYoutube,
 } from 'qwik-storefront-ui';
 
-export const categories = [
+export const homePageCategories = [
 	{
 		key: 'howToBuy',
 		subcategories: [
@@ -114,6 +114,14 @@ export const categories = [
 			},
 		],
 	},
+];
+
+export const categoryCategories = [
+	{ name: 'New', count: 29, href: '/category' },
+	{ name: 'Women', count: 1921, href: '/category' },
+	{ name: 'Men', count: 641, href: '/category' },
+	{ name: 'Accessories', count: 168, href: '/category' },
+	{ name: 'Sale', count: 1459, href: '/category' },
 ];
 
 export const socialMedia = [
