@@ -6,7 +6,7 @@ import { useImageProvider } from 'qwik-image';
 import { SfButton, SfIconExpandMore } from 'qwik-storefront-ui';
 import { Footer } from '~/components/Footer';
 import { NavbarTop } from '~/components/NavbarTop/NavbarTop';
-import { sleep } from '~/shared/utils';
+import { generateDocumentHead, sleep } from '~/shared/utils';
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
 	cacheControl({
@@ -47,7 +47,4 @@ export default component$(() => {
 	);
 });
 
-export const head: DocumentHead = {
-	title: 'Vue Storefront with Qwik',
-	meta: [{ name: 'description', content: 'Vue Storefront with Qwik' }],
-};
+export const head: DocumentHead = () => generateDocumentHead();

@@ -173,4 +173,4 @@ export const bottomLinks = [
 		link: '/',
 	},
 ];
-export const companyName = `© ${new Date().getFullYear()} Vue Storefront`;
+export const companyName = `© ${new Date().getFullYear()}`;
