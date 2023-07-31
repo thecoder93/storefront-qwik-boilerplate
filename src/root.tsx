@@ -4,9 +4,11 @@ import {
 	RouterOutlet,
 	ServiceWorkerRegister,
 } from '@builder.io/qwik-city';
+import { QwikSpeakProvider } from 'qwik-speak';
 import { RouterHead } from './components/RouterHead/RouterHead';
-
 import './global.css';
+import { config } from './speak-config';
+import { translationFn } from './speak-functions';
 
 export default component$(() => {
 	/**
@@ -17,16 +19,18 @@ export default component$(() => {
 	 */
 
 	return (
-		<QwikCityProvider>
-			<head>
-				<meta charSet='utf-8' />
-				<link rel='manifest' href='/manifest.json' />
-				<RouterHead />
-			</head>
-			<body lang='en'>
-				<RouterOutlet />
-				<ServiceWorkerRegister />
-			</body>
-		</QwikCityProvider>
+		<QwikSpeakProvider config={config} translationFn={translationFn}>
+			<QwikCityProvider>
+				<head>
+					<meta charSet='utf-8' />
+					<link rel='manifest' href='/manifest.json' />
+					<RouterHead />
+				</head>
+				<body lang='en'>
+					<RouterOutlet />
+					<ServiceWorkerRegister />
+				</body>
+			</QwikCityProvider>
+		</QwikSpeakProvider>
 	);
 });

@@ -1,5 +1,6 @@
 import { component$ } from '@builder.io/qwik';
 import { Link } from '@builder.io/qwik-city';
+import { useTranslate } from 'qwik-speak';
 import {
 	bottomLinks,
 	categories,
@@ -7,7 +8,6 @@ import {
 	contactOptions,
 	socialMedia,
 } from '~/mocks';
-import { useTranslation } from '~/shared/utils';
 import { Divider } from '../UI';
 
 type FooterProps = {
@@ -15,7 +15,8 @@ type FooterProps = {
 };
 
 export const Footer = component$<FooterProps>(({ class: _class = '' }) => {
-	const { t } = useTranslation('footer');
+	const t = useTranslate();
+
 	return (
 		<footer class={['pt-10 bg-neutral-100', _class]} data-testid='footer'>
 			<div
@@ -47,9 +48,9 @@ export const Footer = component$<FooterProps>(({ class: _class = '' }) => {
 				{contactOptions.map(({ icon, link, details, key }) => (
 					<div
 						key={key}
-						class='mx-auto my-4 text-center flex flex-col items-center w-8'
+						class='mx-auto my-4 text-center flex flex-col items-center'
 					>
-						{icon}
+						<div class='w-8'>{icon}</div>
 						<Link
 							href={link}
 							class='py-1 my-2 font-medium typography-text-lg font-body no-underline text-neutral-600 hover:underline hover:!text-neutral-900 active:underline active:!text-neutral-900'

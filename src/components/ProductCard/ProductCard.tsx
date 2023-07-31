@@ -1,6 +1,7 @@
 import { component$ } from '@builder.io/qwik';
 import { Link } from '@builder.io/qwik-city';
 import { Image } from 'qwik-image';
+import { useTranslate } from 'qwik-speak';
 import {
 	SfButton,
 	SfCounter,
@@ -8,7 +9,6 @@ import {
 	SfLink,
 	SfRating,
 } from 'qwik-storefront-ui';
-import { useTranslation } from '~/shared/utils';
 
 export type ProductCardProps = {
 	name: string;
@@ -35,7 +35,7 @@ export const ProductCard = component$<ProductCardProps>(
 		class: _class,
 		...attributes
 	}) => {
-		const { t } = useTranslation('');
+		const t = useTranslate();
 
 		return (
 			<div

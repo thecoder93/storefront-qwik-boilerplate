@@ -8,14 +8,14 @@ import {
 	SfSelect,
 } from 'qwik-storefront-ui';
 import { useAddressForm } from '~/routes/layout';
-import { useTranslation } from '~/shared/utils';
 import { FormHelperText, FormLabel } from '../Form';
 import type { AddressFormFields, AddressFormProps } from './types';
+import { useTranslate } from 'qwik-speak';
 
 export const AddressForm = component$<AddressFormProps>(
 	({ type, savedAddress }) => {
+		const t = useTranslate();
 		const addressFormAction = useAddressForm();
-		const { t } = useTranslation('address');
 		const formRefSig = useSignal<HTMLFormElement>();
 		useStore<{ value: AddressFormFields }>({
 			// const addressStore =
