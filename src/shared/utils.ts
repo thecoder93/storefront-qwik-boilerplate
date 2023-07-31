@@ -1,6 +1,6 @@
 export const useTranslation = (fileName: string) => {
 	console.log(fileName);
-	return { t: (label: string) => label };
+	return { t: (label: string, ...args) => label };
 };
 
 export const sleep = (timeout: number) => {

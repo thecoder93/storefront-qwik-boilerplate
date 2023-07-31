@@ -1,6 +1,6 @@
 import { Slot, component$ } from '@builder.io/qwik';
 import { Link } from '@builder.io/qwik-city';
-import { VsfLogo } from '../vsf-logo/vsf-logo';
+import { VsfLogo } from '../VsfLogo/VsfLogo';
 
 export interface NavbarTopProps {
 	filled?: boolean;

@@ -1,7 +1,8 @@
 import { component$, Slot } from '@builder.io/qwik';
 import { routeAction$, type RequestHandler } from '@builder.io/qwik-city';
 import { SfButton, SfIconExpandMore } from 'qwik-storefront-ui';
-import { NavbarTop } from '~/components/navbar-top/navbar-top';
+import { Footer } from '~/components/Footer';
+import { NavbarTop } from '~/components/NavbarTop/NavbarTop';
 import { sleep } from '~/shared/utils';
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
@@ -38,6 +39,7 @@ export default component$(() => {
 				{/* <Search class="hidden md:block flex-1" /> */}
 			</NavbarTop>
 			<Slot />
+			<Footer />
 		</>
 	);
 });
