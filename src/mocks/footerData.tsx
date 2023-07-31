@@ -120,7 +120,7 @@ export const socialMedia = [
 	{
 		label: 'Facebook',
 		link: '/',
-		icon: <SfIconFacebook />,
+		icon: <SfIconFacebook class='h-8 w-8' />,
 	},
 	{
 		label: 'Twitter',

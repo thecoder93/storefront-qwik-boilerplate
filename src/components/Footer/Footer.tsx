@@ -27,7 +27,7 @@ export const Footer = component$<FooterProps>(({ class: _class = '' }) => {
 						<p class='font-medium leading-7 text-neutral-900 text-lg pb-2'>
 							{t(`categories.${key}.label`)}
 						</p>
-						{subcategories?.map(({ link, key: subcategoryKey }) => (
+						{subcategories.map(({ link, key: subcategoryKey }) => (
 							<Link
 								href={link}
 								class='text-sm leading-5 py-2 text-neutral-600 hover:underline'
@@ -56,7 +56,7 @@ export const Footer = component$<FooterProps>(({ class: _class = '' }) => {
 						>
 							{t(`contactOptions.${key}.label`)}
 						</Link>
-						{details?.map((option) => (
+						{details.map((option) => (
 							<p class='text-sm leading-5' key={option}>
 								{t(`contactOptions.${key}.details.${option}`)}
 							</p>
