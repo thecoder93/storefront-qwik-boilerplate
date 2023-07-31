@@ -726,7 +726,7 @@ export default component$(() => {
 													href='/product/athletic-mens-walking-sneakers'
 												>
 													<Image
-														loading='lazy'
+														loading='eager'
 														layout='constrained'
 														objectFit='fill'
 														width={300}
