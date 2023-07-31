@@ -1,5 +1,7 @@
-import { component$, Slot } from '@builder.io/qwik';
+import { $, component$, Slot } from '@builder.io/qwik';
 import { routeAction$, type RequestHandler } from '@builder.io/qwik-city';
+import type { ImageTransformerProps } from 'qwik-image';
+import { useImageProvider } from 'qwik-image';
 import { SfButton, SfIconExpandMore } from 'qwik-storefront-ui';
 import { Footer } from '~/components/Footer';
 import { NavbarTop } from '~/components/NavbarTop/NavbarTop';
@@ -22,6 +24,10 @@ export const useAddressForm = routeAction$(async () => {
 });
 
 export default component$(() => {
+	useImageProvider({
+		imageTransformer$: $(({ src }: ImageTransformerProps) => src),
+	});
+
 	return (
 		<>
 			<NavbarTop filled={true}>

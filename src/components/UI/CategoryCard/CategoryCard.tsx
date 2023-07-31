@@ -1,5 +1,6 @@
 import { component$ } from '@builder.io/qwik';
 import { Link } from '@builder.io/qwik-city';
+import { Image } from 'qwik-image';
 
 type CategoryCardProps = {
 	items: {
@@ -28,11 +29,13 @@ export const CategoryCard = component$(
 							aria-label={name}
 						>
 							<div class='relative h-[240px] w-[240px] rounded-full bg-neutral-100 group-hover:shadow-xl group-active:shadow-none'>
-								<img
+								<Image
+									loading='lazy'
+									layout='constrained'
+									objectFit='fill'
+									width={240}
+									height={240}
 									alt={name}
-									loading='eager'
-									width='240'
-									height='240'
 									src={image}
 								/>
 							</div>

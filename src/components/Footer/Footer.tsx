@@ -47,7 +47,7 @@ export const Footer = component$<FooterProps>(({ class: _class = '' }) => {
 				{contactOptions.map(({ icon, link, details, key }) => (
 					<div
 						key={key}
-						class='mx-auto my-4 text-center flex flex-col items-center'
+						class='mx-auto my-4 text-center flex flex-col items-center w-8'
 					>
 						{icon}
 						<Link

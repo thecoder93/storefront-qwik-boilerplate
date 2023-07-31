@@ -1,5 +1,6 @@
 import { component$ } from '@builder.io/qwik';
 import { Link } from '@builder.io/qwik-city';
+import { Image } from 'qwik-image';
 import { SfButton } from 'qwik-storefront-ui';
 
 type DisplayProps = {
@@ -68,13 +69,15 @@ export const Display = component$<DisplayProps>(({ items, ...attributes }) => {
 									{buttonText}
 								</SfButton>
 							</div>
-							<img
-								alt={title}
-								loading='eager'
-								height={300}
-								width={300}
-								src={image}
+							<Image
 								class='w-full md:w-1/2 self-end object-contain flex-1'
+								loading='eager'
+								layout='constrained'
+								objectFit='fill'
+								width={300}
+								height={300}
+								alt={title}
+								src={image}
 							/>
 						</div>
 					</div>

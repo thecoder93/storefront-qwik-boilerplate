@@ -42,6 +42,7 @@
 		"vite-tsconfig-paths": "4.2.0"
 	},
 	"dependencies": {
+		"qwik-image": "^0.0.7",
 		"qwik-storefront-ui": "^0.0.3",
 		"storefront-qwik-boilerplate": "link:"
 	}

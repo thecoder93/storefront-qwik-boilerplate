@@ -1,5 +1,6 @@
 import { component$ } from '@builder.io/qwik';
 import { Link } from '@builder.io/qwik-city';
+import { Image } from 'qwik-image';
 import { SfButton } from 'qwik-storefront-ui';
 
 export type HeroProps = {
@@ -28,11 +29,13 @@ export const Hero = component$<HeroProps>(
 			<div class='relative min-h-[600px] mb-10'>
 				<div class='md:flex md:flex-row-reverse md:justify-center min-h-[600px] max-w-screen-3xl mx-auto'>
 					<div class='flex flex-col justify-center md:basis-2/4 md:items-stretch md:overflow-hidden'>
-						<img
-							alt='hero'
+						<Image
 							loading='eager'
-							width='500'
-							height='400'
+							layout='constrained'
+							objectFit='fill'
+							width={500}
+							height={400}
+							alt='hero'
 							src={image}
 						/>
 					</div>
