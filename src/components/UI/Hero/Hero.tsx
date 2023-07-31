@@ -63,7 +63,7 @@ export const Hero = component$<HeroProps>(
 								as={Link}
 								href={secondaryButtonLink}
 								variant='secondary'
-								class='inline-flex items-center justify-center font-medium text-base focus-visible:outline focus-visible:outline-offset rounded-md disabled:text-disabled-500 disabled:bg-disabled-300 disabled:shadow-none disabled:ring-0 disabled:cursor-not-allowed py-3 leading-6 px-6 gap-3 text-primary-700 hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900 ring-1 ring-primary-700 hover:shadow-md active:shadow shadow hover:ring-primary-800 active:ring-primary-900 disabled:ring-1 disabled:ring-disabled-300 disabled:bg-white/50 bg-white'
+								class='ring-1 ring-primary-700'
 							>
 								{secondaryButtonText}
 							</SfButton>

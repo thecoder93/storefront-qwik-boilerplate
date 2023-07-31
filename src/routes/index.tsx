@@ -8,7 +8,7 @@ import { Hero } from '~/components/UI/Hero';
 const heroMock = {
 	description:
 		'This fashionable sneaker collection features various colors, comfort and style.',
-	image: '/images/hero.png',
+	image: '/images/hero.webp',
 	primaryButtonLink: '/product/athletic-mens-walking-sneakers',
 	primaryButtonText: 'Order now',
 	secondaryButtonLink: '/category',
@@ -24,7 +24,7 @@ const items = [
 		slug: 'category',
 		subcategories: [],
 		productCount: 120,
-		image: '/images/new-card.png',
+		image: '/images/new-card.webp',
 	},
 	{
 		id: '03bf5dad-1b4b-44db-adf0-6ee858cdc358',
@@ -32,7 +32,7 @@ const items = [
 		slug: 'category',
 		subcategories: [],
 		productCount: 428,
-		image: '/images/men-card.png',
+		image: '/images/men-card.webp',
 	},
 	{
 		id: 'af4ce472-45e9-4dd4-9988-275d229ce287',
@@ -40,13 +40,13 @@ const items = [
 		slug: 'category',
 		subcategories: [],
 		productCount: 513,
-		image: '/images/women-card.png',
+		image: '/images/women-card.webp',
 	},
 ];
 
 const display = [
 	{
-		image: '/images/display-1.png',
+		image: '/images/display-1.webp',
 		title: 'Fresh and Bold',
 		subtitle: 'New collection',
 		description: 'Add a pop up color to your outfit',
@@ -58,7 +58,7 @@ const display = [
 		subtitleClass: 'md:typography-headline-6',
 	},
 	{
-		image: '/images/display-2.png',
+		image: '/images/display-2.webp',
 		title: 'Sunny Days Ahead',
 		subtitle: 'Be inspired',
 		description: 'Step out in style with our sunglasses collection',
@@ -68,7 +68,7 @@ const display = [
 		buttonLink: '/category',
 	},
 	{
-		image: '/images/display-3.png',
+		image: '/images/display-3.webp',
 		title: 'Gear up and get ready',
 		subtitle: 'Be active',
 		description: 'Explore the great outdoors with our backpacks',
