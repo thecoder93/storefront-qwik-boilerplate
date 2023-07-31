@@ -1,5 +1,4 @@
 import { component$ } from '@builder.io/qwik';
-import type { DocumentHead } from '@builder.io/qwik-city';
 import { Heading } from '~/components/Heading';
 import { ProductSlider } from '~/components/ProductSlider';
 import { CategoryCard } from '~/components/UI/CategoryCard';
