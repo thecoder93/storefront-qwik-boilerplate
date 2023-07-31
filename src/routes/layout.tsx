@@ -1,4 +1,5 @@
 import { $, component$, Slot } from '@builder.io/qwik';
+import type { DocumentHead } from '@builder.io/qwik-city';
 import { routeAction$, type RequestHandler } from '@builder.io/qwik-city';
 import type { ImageTransformerProps } from 'qwik-image';
 import { useImageProvider } from 'qwik-image';
@@ -8,12 +9,8 @@ import { NavbarTop } from '~/components/NavbarTop/NavbarTop';
 import { sleep } from '~/shared/utils';
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
-	// Control caching for this request for best performance and to reduce hosting costs:
-	// https://qwik.builder.io/docs/caching/
 	cacheControl({
-		// Always serve a cached response by default, up to a week stale
 		staleWhileRevalidate: 60 * 60 * 24 * 7,
-		// Max once every 5 seconds, revalidate on the server to get a fresh version of this page
 		maxAge: 5,
 	});
 };
@@ -49,3 +46,8 @@ export default component$(() => {
 		</>
 	);
 });
+
+export const head: DocumentHead = {
+	title: 'Vue Storefront with Qwik',
+	meta: [{ name: 'description', content: 'Vue Storefront with Qwik' }],
+};

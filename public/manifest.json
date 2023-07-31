@@ -1,9 +1,43 @@
 {
-  "$schema": "https://json.schemastore.org/web-manifest-combined.json",
-  "name": "qwik-project-name",
-  "short_name": "Welcome to Qwik",
-  "start_url": ".",
-  "display": "standalone",
-  "background_color": "#fff",
-  "description": "A Qwik project app."
+	"theme_color": "#02C652",
+	"background_color": "#fff",
+	"display": "standalone",
+	"start_url": "/",
+	"name": "Vue Storefront Boilerplate for Qwik",
+	"short_name": "VSFxQwik",
+	"description": "Vue Storefront Boilerplate for Qwik",
+	"icons": [
+		{
+			"src": "/icons/apple-touch-icon-180x180.png",
+			"sizes": "180x180",
+			"type": "image/png"
+		},
+		{
+			"src": "/icons/icon-96x96.png",
+			"sizes": "96x96",
+			"type": "image/png"
+		},
+		{
+			"src": "/icons/icon-192x192.maskable.png",
+			"sizes": "192x192",
+			"type": "image/png",
+			"purpose": "maskable"
+		},
+		{
+			"src": "/icons/icon-192x192.png",
+			"sizes": "192x192",
+			"type": "image/png"
+		},
+		{
+			"src": "/icons/icon-512x512.png",
+			"sizes": "512x512",
+			"type": "image/png"
+		},
+		{
+			"src": "/icons/icon-512x512.maskable.png",
+			"sizes": "512x512",
+			"type": "image/png",
+			"purpose": "maskable"
+		}
+	]
 }
