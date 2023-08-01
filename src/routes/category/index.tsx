@@ -720,22 +720,22 @@ export default component$(() => {
 										.map((product, key) => (
 											<div
 												key={key}
-												class='border border-neutral-200 rounded-md hover:shadow-lg flex-auto flex-shrink-0'
+												class='border border-neutral-200 rounded-md hover:shadow-lg flex-auto flex-shrink-0 max-w-[260px]'
 												data-testid='product-card'
 											>
 												<div class='relative'>
 													<a
-														class='focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm text-primary-700 underline hover:text-primary-800 active:text-primary-900 relative block w-full'
+														class='focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm text-primary-700 underline hover:text-primary-800 active:text-primary-900 relative block w-[249px] mx-auto'
 														data-testid='link'
 														href={`/product/${product.slug}`}
 													>
 														<Image
 															loading='eager'
 															layout='fixed'
-															width={300}
-															height={300}
+															width={240}
+															height={240}
 															data-testid='image-slot'
-															class='object-cover rounded-md aspect-square w-full h-full my-6 mx-auto'
+															class='object-cover rounded-md aspect-square w-full h-full mx-auto my-1'
 															src={product.primaryImage.url}
 															alt={product.primaryImage.alt}
 														/>
