@@ -17,7 +17,7 @@ export const CategoryCard = component$(
 	({ items, ...attributes }: CategoryCardProps) => {
 		return (
 			<div
-				class='max-w-screen-3xl mx-auto md:px-10 px-4 mb-10 flex flex-nowrap md:flex-wrap md:justify-center overflow-x-scroll scrollbar-hidden'
+				class='max-w-screen-3xl mx-auto md:px-10 px-4 mb-10 flex flex-nowrap md:flex-wrap justify-center overflow-x-scroll scrollbar-hidden'
 				data-testid='category-card'
 				{...attributes}
 			>
@@ -28,7 +28,7 @@ export const CategoryCard = component$(
 							href={slug}
 							aria-label={name}
 						>
-							<div class='relative h-[240px] w-[240px] rounded-full bg-neutral-100 group-hover:shadow-xl group-active:shadow-none'>
+							<div class='relative h-[180px] w-[180px] md:h-[240px] md:w-[240px] rounded-full bg-neutral-100 group-hover:shadow-xl group-active:shadow-none'>
 								<Image
 									loading='lazy'
 									layout='constrained'
