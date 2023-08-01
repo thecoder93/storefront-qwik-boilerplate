@@ -68,7 +68,7 @@ export default component$(() => {
 											data-testid='image-slot'
 											class='object-cover rounded-md aspect-square w-full h-full'
 											src='/images/product.webp'
-											alt='Athletic mens walking sneakers'
+											alt='Athletic sneakers'
 										/>
 									</a>
 									<div class='absolute top-0 left-0 text-white bg-secondary-600 py-1 pl-1.5 pr-2 text-xs font-medium'>
@@ -89,7 +89,7 @@ export default component$(() => {
 										data-testid='link'
 										href='/product/athletic-mens-walking-sneakers'
 									>
-										Athletic mens walking sneakers
+										Athletic sneakers
 									</a>
 									<div class='my-2 sm:mb-0'>
 										<ul class='text-xs font-normal leading-5 sm:typography-text-sm text-neutral-700'>

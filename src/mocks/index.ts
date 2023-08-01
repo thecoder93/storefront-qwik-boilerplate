@@ -78,8 +78,8 @@ export const display = [
 export const productsSlider = [
 	{
 		id: '1',
-		slug: 'athletic-mens-walking-sneakers',
-		name: 'Athletic mens walking sneakers',
+		slug: 'athletic-sneakers',
+		name: 'Athletic sneakers',
 		description:
 			'Lightweight • Non slip • Flexible outsole • Easy to wear on and off',
 		sku: 'product-1',
@@ -90,7 +90,7 @@ export const productsSlider = [
 			value: { currency: 'USD', amount: 89.95, precisionAmount: '2' },
 		},
 		primaryImage: {
-			alt: 'Athletic mens walking sneakers',
+			alt: 'Athletic sneakers',
 			url: '/images/product.webp',
 		},
 	},
