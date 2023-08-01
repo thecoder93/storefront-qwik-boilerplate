@@ -1,5 +1,6 @@
 import { component$, useSignal, useStore, useTask$ } from '@builder.io/qwik';
 import { Form } from '@builder.io/qwik-city';
+import { useTranslate } from 'qwik-speak';
 import {
 	SfButton,
 	SfCheckbox,
@@ -8,9 +9,9 @@ import {
 	SfSelect,
 } from 'qwik-storefront-ui';
 import { useAddressForm } from '~/routes/layout';
-import { FormHelperText, FormLabel } from '../Form';
+import { FormHelperText } from '../Form/FormHelperText';
+import { FormLabel } from '../Form/FormLabel';
 import type { AddressFormFields, AddressFormProps } from './types';
-import { useTranslate } from 'qwik-speak';
 
 export const AddressForm = component$<AddressFormProps>(
 	({ type, savedAddress }) => {
