@@ -3,9 +3,9 @@
 	"background_color": "#fff",
 	"display": "standalone",
 	"start_url": "/",
-	"name": "Qwik and Vue Storefront UI",
-	"short_name": "VSFxQwik",
-	"description": "Qwik and Vue Storefront UI",
+	"name": "Qwik and Storefront UI",
+	"short_name": "Qwik SFUI",
+	"description": "Qwik and Storefront UI",
 	"icons": [
 		{
 			"src": "/icons/apple-touch-icon-180x180.png",

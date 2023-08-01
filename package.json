@@ -1,6 +1,6 @@
 {
 	"name": "storefront-qwik-boilerplate",
-	"description": "Qwik and Vue Storefront UI",
+	"description": "Qwik and Storefront UI",
 	"engines": {
 		"node": ">=15.0.0"
 	},
