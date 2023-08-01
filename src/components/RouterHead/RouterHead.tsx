@@ -1,5 +1,6 @@
 import { component$ } from '@builder.io/qwik';
 import { useDocumentHead, useLocation } from '@builder.io/qwik-city';
+import { DEFAULT_METADATA_DESCRIPTION } from '~/shared/constants';
 
 /**
  * The RouterHead component is placed inside of the document `<head>` element.
@@ -21,6 +22,7 @@ export const RouterHead = component$(() => {
 				name='viewport'
 				content='minimum-scale=1, initial-scale=1, width=device-width'
 			/>
+			<meta name='description' content={DEFAULT_METADATA_DESCRIPTION} />
 
 			{head.meta.map((m) => (
 				<meta key={m.key} {...m} />
