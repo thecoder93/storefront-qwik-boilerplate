@@ -7,6 +7,7 @@ import { useTranslate } from 'qwik-speak';
 import { SfButton, SfIconExpandMore } from 'qwik-storefront-ui';
 import { Footer } from '~/components/Footer/Footer';
 import { NavbarTop } from '~/components/NavbarTop/NavbarTop';
+import { ScrollToTopButton } from '~/components/ScrollToTopButton/ScrollToTopButton';
 import { Search } from '~/components/search/search';
 import { generateDocumentHead, sleep } from '~/shared/utils';
 
@@ -69,6 +70,7 @@ export default component$(() => {
 				</nav>
 			</NavbarTop>
 			<Slot />
+			<ScrollToTopButton />
 			<Footer />
 		</>
 	);
