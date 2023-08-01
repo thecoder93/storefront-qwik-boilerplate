@@ -12,7 +12,7 @@ import {
 
 export type ProductCardProps = {
 	name: string;
-	description?: string;
+	description: string;
 	imageUrl?: string;
 	imageAlt?: string;
 	rating?: number;

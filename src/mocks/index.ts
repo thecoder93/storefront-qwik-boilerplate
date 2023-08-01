@@ -80,6 +80,8 @@ export const productsSlider = [
 		id: '1',
 		slug: 'athletic-mens-walking-sneakers',
 		name: 'Athletic mens walking sneakers',
+		description:
+			'Lightweight • Non slip • Flexible outsole • Easy to wear on and off',
 		sku: 'product-1',
 		rating: { average: 4, count: 26 },
 		price: {
@@ -96,6 +98,8 @@ export const productsSlider = [
 		id: '2',
 		slug: 'athletic-mens-walking-sneakers',
 		name: 'Athletic mens walking sneakers',
+		description:
+			'Lightweight • Non slip • Flexible outsole • Easy to wear on and off',
 		sku: 'product-2',
 		rating: { average: 4, count: 26 },
 		price: {
@@ -112,6 +116,8 @@ export const productsSlider = [
 		id: '3',
 		slug: 'athletic-mens-walking-sneakers',
 		name: 'Athletic mens walking sneakers',
+		description:
+			'Lightweight • Non slip • Flexible outsole • Easy to wear on and off',
 		sku: 'product-3',
 		rating: { average: 4, count: 26 },
 		price: {
@@ -128,6 +134,8 @@ export const productsSlider = [
 		id: '4',
 		slug: 'athletic-mens-walking-sneakers',
 		name: 'Athletic mens walking sneakers',
+		description:
+			'Lightweight • Non slip • Flexible outsole • Easy to wear on and off',
 		sku: 'product-4',
 		rating: { average: 4, count: 26 },
 		price: {
@@ -144,6 +152,8 @@ export const productsSlider = [
 		id: '5',
 		slug: 'athletic-mens-walking-sneakers',
 		name: 'Athletic mens walking sneakers',
+		description:
+			'Lightweight • Non slip • Flexible outsole • Easy to wear on and off',
 		sku: 'product-5',
 		rating: { average: 4, count: 26 },
 		price: {
@@ -160,6 +170,8 @@ export const productsSlider = [
 		id: '6',
 		slug: 'athletic-mens-walking-sneakers',
 		name: 'Athletic mens walking sneakers',
+		description:
+			'Lightweight • Non slip • Flexible outsole • Easy to wear on and off',
 		sku: 'product-6',
 		rating: { average: 4, count: 26 },
 		price: {
@@ -176,6 +188,8 @@ export const productsSlider = [
 		id: '7',
 		slug: 'athletic-mens-walking-sneakers',
 		name: 'Athletic mens walking sneakers',
+		description:
+			'Lightweight • Non slip • Flexible outsole • Easy to wear on and off',
 		sku: 'product-7',
 		rating: { average: 4, count: 26 },
 		price: {
@@ -192,6 +206,8 @@ export const productsSlider = [
 		id: '8',
 		slug: 'athletic-mens-walking-sneakers',
 		name: 'Athletic mens walking sneakers',
+		description:
+			'Lightweight • Non slip • Flexible outsole • Easy to wear on and off',
 		sku: 'product-8',
 		rating: { average: 4, count: 26 },
 		price: {
