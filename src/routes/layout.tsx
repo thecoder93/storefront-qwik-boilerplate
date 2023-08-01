@@ -27,7 +27,7 @@ export default component$(() => {
 	useImageProvider({
 		imageTransformer$: $(
 			({ src, width, height }: ImageTransformerProps) =>
-				`${src}?w=${width}&h=${height}&format=webp`
+				`${src}?w=${width / 2}&h=${height}&format=webp`
 		),
 	});
 
