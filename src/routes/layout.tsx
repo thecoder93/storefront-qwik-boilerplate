@@ -30,7 +30,7 @@ export default component$(() => {
 
 	return (
 		<>
-			<NavbarTop filled={true}>
+			<NavbarTop>
 				<SfButton
 					class='!px-2 mr-auto text-white bg-transparent hover:bg-primary-800 hover:text-white active:bg-primary-900 active:text-white font-body hidden md:inline-flex'
 					as={'a'}

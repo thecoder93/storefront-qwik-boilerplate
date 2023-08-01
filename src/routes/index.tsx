@@ -22,7 +22,10 @@ export default component$(() => {
 				as='h2'
 				class='text-center mb-6 font-bold typography-headline-3 md:typography-headline-2'
 			/>
-			<ProductSlider products={productsSlider} />
+			<ProductSlider
+				products={productsSlider}
+				class='max-w-screen-3xl mx-auto px-4 md:px-10 mb-20'
+			/>
 		</div>
 	);
 });
