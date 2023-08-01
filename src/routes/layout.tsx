@@ -7,7 +7,7 @@ import { useTranslate } from 'qwik-speak';
 import { SfButton, SfIconExpandMore } from 'qwik-storefront-ui';
 import { Footer } from '~/components/Footer/Footer';
 import { NavbarTop } from '~/components/NavbarTop/NavbarTop';
-import { Search } from '~/components/Search/Search';
+import { Search } from '~/components/search/search';
 import { generateDocumentHead, sleep } from '~/shared/utils';
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
@@ -37,7 +37,7 @@ export default component$(() => {
 					href='/category'
 					variant='tertiary'
 				>
-					<div q:slot='suffix'>
+					<div q: slot='suffix'>
 						<SfIconExpandMore />
 					</div>
 					<span>{t('allProductsLinkText')}</span>
