@@ -75,7 +75,7 @@ export default component$(() => {
 								<a
 									class='focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm underline hover:text-primary-800 active:text-primary-900 leading-5 no-underline hover:underline active:underline whitespace-nowrap outline-secondary-600 text-inherit'
 									data-testid='link'
-									href='/product/athletic-mens-walking-sneakers#'
+									href='/product/athletic-sneakers#'
 								>
 									{product.value.name}
 								</a>

@@ -5,7 +5,7 @@ export const heroMock = {
 	description:
 		'This fashionable sneaker collection features various colors, comfort and style.',
 	image: '/images/hero.webp',
-	primaryButtonLink: '/product/athletic-mens-walking-sneakers',
+	primaryButtonLink: '/product/athletic-sneakers',
 	primaryButtonText: 'Order now',
 	secondaryButtonLink: '/category',
 	secondaryButtonText: 'Show more',

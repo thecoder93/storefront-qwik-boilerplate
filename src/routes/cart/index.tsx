@@ -57,7 +57,7 @@ export default component$(() => {
 									<a
 										class='focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm text-primary-700 underline hover:text-primary-800 active:text-primary-900'
 										data-testid='link'
-										href='/product/athletic-mens-walking-sneakers'
+										href='/product/athletic-sneakers'
 									>
 										<Image
 											loading='eager'
@@ -87,7 +87,7 @@ export default component$(() => {
 									<a
 										class='focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm underline hover:text-primary-800 active:text-primary-900 no-underline typography-text-sm sm:typography-text-lg'
 										data-testid='link'
-										href='/product/athletic-mens-walking-sneakers'
+										href='/product/athletic-sneakers'
 									>
 										Athletic sneakers
 									</a>
