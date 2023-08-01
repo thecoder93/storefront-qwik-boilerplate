@@ -1,4 +1,5 @@
 import { component$ } from '@builder.io/qwik';
+import type { DocumentHead } from '@builder.io/qwik-city';
 import { routeLoader$ } from '@builder.io/qwik-city';
 import { Image } from 'qwik-image';
 import { SfRating } from 'qwik-storefront-ui';
@@ -6,8 +7,9 @@ import { ProductNotFound } from '~/components/ProductNotFound/ProductNotFound';
 import { ProductSlider } from '~/components/ProductSlider/ProductSlider';
 import { productSliderShuffeled, productsSlider } from '~/mocks';
 import { IMAGE_PLACHEHOLDER } from '~/shared/constants';
+import { generateDocumentHead } from '~/shared/utils';
 
-export const useProduct = routeLoader$(({ params, status }) => {
+export const useProductLoader = routeLoader$(({ params, status }) => {
 	const product = productsSlider.find((p) => p.slug === params.slug);
 	if (!product) {
 		status(404);
@@ -16,7 +18,7 @@ export const useProduct = routeLoader$(({ params, status }) => {
 });
 
 export default component$(() => {
-	const product = useProduct();
+	const product = useProductLoader();
 	if (!product.value) {
 		return <ProductNotFound />;
 	}
@@ -1066,3 +1068,16 @@ export default component$(() => {
 		</>
 	);
 });
+
+export const head: DocumentHead = ({ resolveValue, url }) => {
+	const product = resolveValue(useProductLoader);
+	if (!product) {
+		return generateDocumentHead();
+	}
+	return generateDocumentHead(
+		url.href,
+		product.name,
+		product.description,
+		product.primaryImage.url
+	);
+};
