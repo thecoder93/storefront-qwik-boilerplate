@@ -1,12 +1,17 @@
 import { component$ } from '@builder.io/qwik';
 import { useDocumentHead, useLocation } from '@builder.io/qwik-city';
 import { DEFAULT_METADATA_DESCRIPTION } from '~/shared/constants';
+import { generateDocumentHead } from '~/shared/utils';
 
 /**
  * The RouterHead component is placed inside of the document `<head>` element.
  */
 export const RouterHead = component$(() => {
-	const head = useDocumentHead();
+	const documentHead = useDocumentHead();
+	const head =
+		documentHead.meta.length > 0
+			? documentHead
+			: { ...documentHead, ...generateDocumentHead() };
 	const loc = useLocation();
 
 	return (

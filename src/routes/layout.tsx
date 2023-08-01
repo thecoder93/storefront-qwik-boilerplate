@@ -1,5 +1,4 @@
 import { $, component$, Slot } from '@builder.io/qwik';
-import type { DocumentHead } from '@builder.io/qwik-city';
 import { routeAction$, type RequestHandler } from '@builder.io/qwik-city';
 import type { ImageTransformerProps } from 'qwik-image';
 import { useImageProvider } from 'qwik-image';
@@ -9,7 +8,7 @@ import { Footer } from '~/components/Footer/Footer';
 import { NavbarTop } from '~/components/NavbarTop/NavbarTop';
 import { ScrollToTopButton } from '~/components/ScrollToTopButton/ScrollToTopButton';
 import { Search } from '~/components/search/search';
-import { generateDocumentHead, sleep } from '~/shared/utils';
+import { sleep } from '~/shared/utils';
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
 	cacheControl({
@@ -78,5 +77,3 @@ export default component$(() => {
 		</>
 	);
 });
-
-export const head: DocumentHead = () => generateDocumentHead();
