@@ -40,7 +40,7 @@ export const ProductCard = component$<ProductCardProps>(
 		return (
 			<div
 				class={[
-					'border border-neutral-200 rounded-md hover:shadow-lg flex-auto flex-shrink-0',
+					'border border-neutral-200 rounded-md hover:shadow-lg flex-auto flex-shrink-0 p-2',
 					_class,
 				]}
 				data-testid='product-card'
@@ -88,22 +88,24 @@ export const ProductCard = component$<ProductCardProps>(
 					<p class='max-h-[59px] py-2 font-normal typography-text-xs text-neutral-700 line-clamp-3'>
 						{description}
 					</p>
-					<span
-						class='block pb-2 font-bold typography-text-sm'
-						data-testid='product-card-vertical-price'
-					>
-						${price}
-					</span>
-					<SfButton
-						type='button'
-						size='sm'
-						class='inline-flex items-center justify-center font-medium text-base focus-visible:outline focus-visible:outline-offset rounded-md disabled:text-disabled-500 disabled:bg-disabled-300 disabled:shadow-none disabled:ring-0 disabled:cursor-not-allowed leading-5 text-sm py-1.5 px-3 gap-1.5 text-white shadow hover:shadow-md active:shadow bg-primary-700 hover:bg-primary-800 active:bg-primary-900 disabled:bg-disabled-300'
-					>
-						{t('addToCartShort@@Add')}
-						<div q:slot='prefix'>
-							<SfIconShoppingCart size='sm' class='w-5 h-5' />
-						</div>
-					</SfButton>
+					<div class='flex items-center justify-between pt-2'>
+						<span
+							class='block pb-2 font-bold typography-text-sm pt-2'
+							data-testid='product-card-vertical-price'
+						>
+							${price}
+						</span>
+						<SfButton
+							type='button'
+							size='sm'
+							class='inline-flex items-center justify-center font-medium text-base focus-visible:outline focus-visible:outline-offset rounded-md disabled:text-disabled-500 disabled:bg-disabled-300 disabled:shadow-none disabled:ring-0 disabled:cursor-not-allowed leading-5 text-sm py-1.5 px-3 gap-1.5 text-white shadow hover:shadow-md active:shadow bg-primary-700 hover:bg-primary-800 active:bg-primary-900 disabled:bg-disabled-300'
+						>
+							{t('addToCartShort@@Add')}
+							<div q:slot='prefix'>
+								<SfIconShoppingCart size='sm' class='w-5 h-5' />
+							</div>
+						</SfButton>
+					</div>
 				</div>
 			</div>
 		);
