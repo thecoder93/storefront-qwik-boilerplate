@@ -69,7 +69,7 @@ export const ProductCard = component$<ProductCardProps>(
 						href={`/product/${slug}`}
 						as={Link}
 						variant='secondary'
-						class='no-underline'
+						class='no-underline line-clamp-1'
 					>
 						{name}
 					</SfLink>
@@ -85,7 +85,7 @@ export const ProductCard = component$<ProductCardProps>(
 							<SfCounter size='xs'>{ratingCount}</SfCounter>
 						</SfLink>
 					</div>
-					<p class='max-h-[59px] py-2 font-normal typography-text-xs text-neutral-700 text-justify line-clamp-3'>
+					<p class='max-h-[59px] py-2 font-normal typography-text-xs text-neutral-700 line-clamp-3'>
 						{description}
 					</p>
 					<span
