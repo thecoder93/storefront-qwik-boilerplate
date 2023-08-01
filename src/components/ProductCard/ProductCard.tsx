@@ -55,9 +55,8 @@ export const ProductCard = component$<ProductCardProps>(
 						<Image
 							loading='lazy'
 							layout='constrained'
-							objectFit='fill'
-							width={240}
-							height={240}
+							width={300}
+							height={300}
 							data-testid='image-slot'
 							class='object-cover rounded-md aspect-square w-full h-full'
 							src={imageUrl ?? ''}
@@ -86,7 +85,7 @@ export const ProductCard = component$<ProductCardProps>(
 							<SfCounter size='xs'>{ratingCount}</SfCounter>
 						</SfLink>
 					</div>
-					<p class='block py-2 font-normal typography-text-xs text-neutral-700 text-justify'>
+					<p class='max-h-[59px] py-2 font-normal typography-text-xs text-neutral-700 text-justify line-clamp-3'>
 						{description}
 					</p>
 					<span

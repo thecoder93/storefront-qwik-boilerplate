@@ -1,9 +1,25 @@
 import { component$ } from '@builder.io/qwik';
+import { routeLoader$ } from '@builder.io/qwik-city';
 import { Image } from 'qwik-image';
+import { SfRating } from 'qwik-storefront-ui';
+import { ProductNotFound } from '~/components/ProductNotFound/ProductNotFound';
 import { ProductSlider } from '~/components/ProductSlider/ProductSlider';
-import { productsSlider } from '~/mocks';
+import { productSliderShuffeled, productsSlider } from '~/mocks';
+import { IMAGE_PLACHEHOLDER } from '~/shared/constants';
+
+export const useProduct = routeLoader$(({ params, status }) => {
+	const product = productsSlider.find((p) => p.slug === params.slug);
+	if (!product) {
+		status(404);
+	}
+	return product;
+});
 
 export default component$(() => {
+	const product = useProduct();
+	if (!product.value) {
+		return <ProductNotFound />;
+	}
 	return (
 		<>
 			<div
@@ -59,7 +75,7 @@ export default component$(() => {
 									data-testid='link'
 									href='/product/athletic-mens-walking-sneakers#'
 								>
-									Athletic mens walking sneakers
+									{product.value.name}
 								</a>
 							</li>
 						</ol>
@@ -84,21 +100,21 @@ export default component$(() => {
 												<Image
 													loading='eager'
 													layout='constrained'
-													objectFit='fill'
-													width={750}
-													height={750}
+													width={600}
+													height={600}
 													data-testid='image-slot'
-													class='object-cover rounded-md aspect-square w-full h-full'
-													src='/images/product.webp'
-													alt='Athletic mens walking sneakers'
+													class='rounded-md aspect-square'
+													src={product.value.primaryImage.url}
+													alt={product.value.primaryImage.alt}
+													placeholder={IMAGE_PLACHEHOLDER}
 												/>
 											</div>
 										</div>
 									</div>
 								</div>
-								<div class='md:-order-1 overflow-hidden flex-shrink-0 basis-auto'>
+								{/* <div class='md:-order-1 overflow-hidden flex-shrink-0 basis-auto'>
 									<div class='items-center relative flex-col h-full inline-flex hidden md:inline-flex'>
-										{/* <button
+										<button
 										type='button'
 										class='inline-flex items-center justify-center font-medium text-base focus-visible:outline focus-visible:outline-offset rounded-md disabled:text-disabled-500 disabled:bg-disabled-300 disabled:shadow-none disabled:ring-0 disabled:cursor-not-allowed p-1.5 gap-1.5 text-primary-700 hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900 ring-1 ring-primary-700 hover:shadow-md active:shadow shadow hover:ring-primary-800 active:ring-primary-900 disabled:ring-1 disabled:ring-disabled-300 disabled:bg-white/50 absolute !rounded-full bg-white z-10 top-4 rotate-90 disabled:!hidden !ring-neutral-500 !text-neutral-500'
 										data-testid='button'
@@ -112,7 +128,7 @@ export default component$(() => {
 										>
 											<path d='M14.706 17.297a.998.998 0 0 0 0-1.41l-3.876-3.885 3.877-3.885a.998.998 0 0 0-1.412-1.41l-4.588 4.588a1 1 0 0 0 0 1.414l4.588 4.588a.997.997 0 0 0 1.41 0Z'></path>
 										</svg>
-									</button> */}
+									</button>
 										<div class="flex-row w-full items-center md:flex-col md:h-full md:px-0 md:scroll-pl-4 snap-y snap-mandatory flex gap-0.5 md:gap-2 overflow-auto [&amp;::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none'] motion-safe:scroll-smooth overflow-y-auto flex flex-col gap-4">
 											<button
 												type='button'
@@ -122,18 +138,17 @@ export default component$(() => {
 											>
 												<Image
 													loading='eager'
-													layout='constrained'
-													objectFit='fill'
+													layout='fixed'
 													width={80}
 													height={80}
 													data-testid='image-slot'
 													class='object-cover rounded-md aspect-square w-full h-full'
-													src='/images/product.webp'
-													alt='Athletic mens walking sneakers'
+													src={product.value.primaryImage.url}
+													alt={product.value.primaryImage.alt}
 												/>
 											</button>
 										</div>
-										{/* <button
+										<button
 										type='button'
 										class='inline-flex items-center justify-center font-medium text-base focus-visible:outline focus-visible:outline-offset rounded-md disabled:text-disabled-500 disabled:bg-disabled-300 disabled:shadow-none disabled:ring-0 disabled:cursor-not-allowed p-1.5 gap-1.5 text-primary-700 hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900 ring-1 ring-primary-700 hover:shadow-md active:shadow shadow hover:ring-primary-800 active:ring-primary-900 disabled:ring-1 disabled:ring-disabled-300 disabled:bg-white/50 absolute !rounded-full bg-white z-10 bottom-4 rotate-90 disabled:!hidden !ring-neutral-500 !text-neutral-500'
 										data-testid='button'
@@ -147,7 +162,7 @@ export default component$(() => {
 										>
 											<path d='M8.705 17.297a.998.998 0 0 1-.001-1.41l3.876-3.885-3.876-3.885a.998.998 0 0 1 1.412-1.41l4.587 4.588a1 1 0 0 1 0 1.414l-4.587 4.588a.997.997 0 0 1-1.411 0Z'></path>
 										</svg>
-									</button> */}
+									</button>
 									</div>
 									<div class='flex md:hidden gap-0.5' role='group'>
 										<button
@@ -157,7 +172,7 @@ export default component$(() => {
 											class='relative shrink-0 pb-1 border-b-4 cursor-pointer transition-colors flex-grow  border-primary-700'
 										></button>
 									</div>
-								</div>
+								</div> */}
 							</div>
 						</section>
 						<section class='mb-10 grid-in-right md:mb-0'>
@@ -180,85 +195,37 @@ export default component$(() => {
 									class='mb-1 font-bold typography-headline-4'
 									data-testid='product-name'
 								>
-									Athletic mens walking sneakers
+									{product.value.name}
 								</h1>
 								<div class='my-1'>
 									<span
 										class='mr-2 text-secondary-700 font-bold font-headings text-2xl'
 										data-testid='price'
 									>
-										$89.95
+										${product.value.price.value.amount}
 									</span>
 									<span class='text-base font-normal text-neutral-500 line-through'>
-										$100.99
+										${product.value.price.regularPrice.amount}
 									</span>
 								</div>
-								<div class='inline-flex items-center mt-4 mb-2'>
-									<div
-										role='img'
-										aria-label='4 out of 5'
-										title='4 out of 5'
-										class='inline-flex items-center text-warning-500 text-xs'
-										data-testid='rating'
-									>
-										<svg
-											aria-hidden='true'
-											viewBox='0 0 24 24'
-											data-testid='star-filled'
-											xmlns='http://www.w3.org/2000/svg'
-											class='inline-block fill-current w-6 h-6 w-[1.5em] h-[1.5em]'
-										>
-											<path d='m12 18.275-4.15 2.5a.908.908 0 0 1-.575.15.966.966 0 0 1-.525-.2 1.2 1.2 0 0 1-.35-.437.876.876 0 0 1-.05-.588l1.1-4.725L3.775 11.8a.955.955 0 0 1-.312-.513.99.99 0 0 1 .037-.562 1.07 1.07 0 0 1 .3-.45c.133-.117.317-.192.55-.225l4.85-.425 1.875-4.45c.083-.2.213-.35.388-.45.175-.1.354-.15.537-.15.183 0 .363.05.538.15.175.1.304.25.387.45l1.875 4.45 4.85.425c.233.033.417.108.55.225.133.117.233.267.3.45a.961.961 0 0 1-.275 1.075l-3.675 3.175 1.1 4.725a.875.875 0 0 1-.05.588 1.2 1.2 0 0 1-.35.437.966.966 0 0 1-.525.2.908.908 0 0 1-.575-.15l-4.15-2.5Z'></path>
-										</svg>
-										<svg
-											aria-hidden='true'
-											viewBox='0 0 24 24'
-											data-testid='star-filled'
-											xmlns='http://www.w3.org/2000/svg'
-											class='inline-block fill-current w-6 h-6 w-[1.5em] h-[1.5em]'
-										>
-											<path d='m12 18.275-4.15 2.5a.908.908 0 0 1-.575.15.966.966 0 0 1-.525-.2 1.2 1.2 0 0 1-.35-.437.876.876 0 0 1-.05-.588l1.1-4.725L3.775 11.8a.955.955 0 0 1-.312-.513.99.99 0 0 1 .037-.562 1.07 1.07 0 0 1 .3-.45c.133-.117.317-.192.55-.225l4.85-.425 1.875-4.45c.083-.2.213-.35.388-.45.175-.1.354-.15.537-.15.183 0 .363.05.538.15.175.1.304.25.387.45l1.875 4.45 4.85.425c.233.033.417.108.55.225.133.117.233.267.3.45a.961.961 0 0 1-.275 1.075l-3.675 3.175 1.1 4.725a.875.875 0 0 1-.05.588 1.2 1.2 0 0 1-.35.437.966.966 0 0 1-.525.2.908.908 0 0 1-.575-.15l-4.15-2.5Z'></path>
-										</svg>
-										<svg
-											aria-hidden='true'
-											viewBox='0 0 24 24'
-											data-testid='star-filled'
-											xmlns='http://www.w3.org/2000/svg'
-											class='inline-block fill-current w-6 h-6 w-[1.5em] h-[1.5em]'
-										>
-											<path d='m12 18.275-4.15 2.5a.908.908 0 0 1-.575.15.966.966 0 0 1-.525-.2 1.2 1.2 0 0 1-.35-.437.876.876 0 0 1-.05-.588l1.1-4.725L3.775 11.8a.955.955 0 0 1-.312-.513.99.99 0 0 1 .037-.562 1.07 1.07 0 0 1 .3-.45c.133-.117.317-.192.55-.225l4.85-.425 1.875-4.45c.083-.2.213-.35.388-.45.175-.1.354-.15.537-.15.183 0 .363.05.538.15.175.1.304.25.387.45l1.875 4.45 4.85.425c.233.033.417.108.55.225.133.117.233.267.3.45a.961.961 0 0 1-.275 1.075l-3.675 3.175 1.1 4.725a.875.875 0 0 1-.05.588 1.2 1.2 0 0 1-.35.437.966.966 0 0 1-.525.2.908.908 0 0 1-.575-.15l-4.15-2.5Z'></path>
-										</svg>
-										<svg
-											aria-hidden='true'
-											viewBox='0 0 24 24'
-											data-testid='star-filled'
-											xmlns='http://www.w3.org/2000/svg'
-											class='inline-block fill-current w-6 h-6 w-[1.5em] h-[1.5em]'
-										>
-											<path d='m12 18.275-4.15 2.5a.908.908 0 0 1-.575.15.966.966 0 0 1-.525-.2 1.2 1.2 0 0 1-.35-.437.876.876 0 0 1-.05-.588l1.1-4.725L3.775 11.8a.955.955 0 0 1-.312-.513.99.99 0 0 1 .037-.562 1.07 1.07 0 0 1 .3-.45c.133-.117.317-.192.55-.225l4.85-.425 1.875-4.45c.083-.2.213-.35.388-.45.175-.1.354-.15.537-.15.183 0 .363.05.538.15.175.1.304.25.387.45l1.875 4.45 4.85.425c.233.033.417.108.55.225.133.117.233.267.3.45a.961.961 0 0 1-.275 1.075l-3.675 3.175 1.1 4.725a.875.875 0 0 1-.05.588 1.2 1.2 0 0 1-.35.437.966.966 0 0 1-.525.2.908.908 0 0 1-.575-.15l-4.15-2.5Z'></path>
-										</svg>
-										<svg
-											aria-hidden='true'
-											viewBox='0 0 24 24'
-											data-testid='star'
-											xmlns='http://www.w3.org/2000/svg'
-											class='inline-block fill-current w-6 h-6 text-disabled-500 w-[1.5em] h-[1.5em]'
-										>
-											<path d='m8.85 17.825 3.15-1.9 3.15 1.925-.825-3.6 2.775-2.4-3.65-.325-1.45-3.4-1.45 3.375-3.65.325 2.775 2.425-.825 3.575Zm3.15.45-4.15 2.5a.908.908 0 0 1-.575.15.966.966 0 0 1-.525-.2 1.2 1.2 0 0 1-.35-.437.876.876 0 0 1-.05-.588l1.1-4.725L3.775 11.8a.955.955 0 0 1-.312-.513.99.99 0 0 1 .037-.562 1.07 1.07 0 0 1 .3-.45c.133-.117.317-.192.55-.225l4.85-.425 1.875-4.45c.083-.2.213-.35.388-.45.175-.1.354-.15.537-.15.183 0 .363.05.538.15.175.1.304.25.387.45l1.875 4.45 4.85.425c.233.033.417.108.55.225.133.117.233.267.3.45a.961.961 0 0 1-.275 1.075l-3.675 3.175 1.1 4.725a.875.875 0 0 1-.05.588 1.2 1.2 0 0 1-.35.437.966.966 0 0 1-.525.2.908.908 0 0 1-.575-.15l-4.15-2.5Z'></path>
-										</svg>
-									</div>
+								<div class='inline-flex items-center mb-2'>
+									<SfRating
+										size='xs'
+										value={product.value.rating.average}
+										ariaLabel={`${product.value.rating.average} out of 5`}
+									/>
 									<span
 										class="inline-flex items-center before:content-['('] after:content-[')'] text-neutral-500 text-xs ml-1"
 										data-testid='counter'
 									>
-										26
+										{product.value.rating.count}
 									</span>
 									<a
 										class='focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm underline hover:text-primary-800 active:text-primary-900 ml-2 text-xs text-neutral-500'
 										data-testid='link'
 										href='#'
 									>
-										26 reviews
+										{product.value.rating.count} reviews
 									</a>
 								</div>
 								<p
@@ -605,60 +572,12 @@ export default component$(() => {
 												<header class='flex flex-col pb-2 md:flex-row md:justify-between'>
 													<div class='flex flex-col items-start'>
 														<span class='flex items-center pr-2 text-xs text-neutral-500'>
-															<div
-																role='img'
-																aria-label='5 out of 5'
-																title='5 out of 5'
-																class='inline-flex items-center text-warning-500 text-xs mr-2'
-																data-testid='rating'
-															>
-																<svg
-																	aria-hidden='true'
-																	viewBox='0 0 24 24'
-																	data-testid='star-filled'
-																	xmlns='http://www.w3.org/2000/svg'
-																	class='inline-block fill-current w-6 h-6 w-[1.5em] h-[1.5em]'
-																>
-																	<path d='m12 18.275-4.15 2.5a.908.908 0 0 1-.575.15.966.966 0 0 1-.525-.2 1.2 1.2 0 0 1-.35-.437.876.876 0 0 1-.05-.588l1.1-4.725L3.775 11.8a.955.955 0 0 1-.312-.513.99.99 0 0 1 .037-.562 1.07 1.07 0 0 1 .3-.45c.133-.117.317-.192.55-.225l4.85-.425 1.875-4.45c.083-.2.213-.35.388-.45.175-.1.354-.15.537-.15.183 0 .363.05.538.15.175.1.304.25.387.45l1.875 4.45 4.85.425c.233.033.417.108.55.225.133.117.233.267.3.45a.961.961 0 0 1-.275 1.075l-3.675 3.175 1.1 4.725a.875.875 0 0 1-.05.588 1.2 1.2 0 0 1-.35.437.966.966 0 0 1-.525.2.908.908 0 0 1-.575-.15l-4.15-2.5Z'></path>
-																</svg>
-																<svg
-																	aria-hidden='true'
-																	viewBox='0 0 24 24'
-																	data-testid='star-filled'
-																	xmlns='http://www.w3.org/2000/svg'
-																	class='inline-block fill-current w-6 h-6 w-[1.5em] h-[1.5em]'
-																>
-																	<path d='m12 18.275-4.15 2.5a.908.908 0 0 1-.575.15.966.966 0 0 1-.525-.2 1.2 1.2 0 0 1-.35-.437.876.876 0 0 1-.05-.588l1.1-4.725L3.775 11.8a.955.955 0 0 1-.312-.513.99.99 0 0 1 .037-.562 1.07 1.07 0 0 1 .3-.45c.133-.117.317-.192.55-.225l4.85-.425 1.875-4.45c.083-.2.213-.35.388-.45.175-.1.354-.15.537-.15.183 0 .363.05.538.15.175.1.304.25.387.45l1.875 4.45 4.85.425c.233.033.417.108.55.225.133.117.233.267.3.45a.961.961 0 0 1-.275 1.075l-3.675 3.175 1.1 4.725a.875.875 0 0 1-.05.588 1.2 1.2 0 0 1-.35.437.966.966 0 0 1-.525.2.908.908 0 0 1-.575-.15l-4.15-2.5Z'></path>
-																</svg>
-																<svg
-																	aria-hidden='true'
-																	viewBox='0 0 24 24'
-																	data-testid='star-filled'
-																	xmlns='http://www.w3.org/2000/svg'
-																	class='inline-block fill-current w-6 h-6 w-[1.5em] h-[1.5em]'
-																>
-																	<path d='m12 18.275-4.15 2.5a.908.908 0 0 1-.575.15.966.966 0 0 1-.525-.2 1.2 1.2 0 0 1-.35-.437.876.876 0 0 1-.05-.588l1.1-4.725L3.775 11.8a.955.955 0 0 1-.312-.513.99.99 0 0 1 .037-.562 1.07 1.07 0 0 1 .3-.45c.133-.117.317-.192.55-.225l4.85-.425 1.875-4.45c.083-.2.213-.35.388-.45.175-.1.354-.15.537-.15.183 0 .363.05.538.15.175.1.304.25.387.45l1.875 4.45 4.85.425c.233.033.417.108.55.225.133.117.233.267.3.45a.961.961 0 0 1-.275 1.075l-3.675 3.175 1.1 4.725a.875.875 0 0 1-.05.588 1.2 1.2 0 0 1-.35.437.966.966 0 0 1-.525.2.908.908 0 0 1-.575-.15l-4.15-2.5Z'></path>
-																</svg>
-																<svg
-																	aria-hidden='true'
-																	viewBox='0 0 24 24'
-																	data-testid='star-filled'
-																	xmlns='http://www.w3.org/2000/svg'
-																	class='inline-block fill-current w-6 h-6 w-[1.5em] h-[1.5em]'
-																>
-																	<path d='m12 18.275-4.15 2.5a.908.908 0 0 1-.575.15.966.966 0 0 1-.525-.2 1.2 1.2 0 0 1-.35-.437.876.876 0 0 1-.05-.588l1.1-4.725L3.775 11.8a.955.955 0 0 1-.312-.513.99.99 0 0 1 .037-.562 1.07 1.07 0 0 1 .3-.45c.133-.117.317-.192.55-.225l4.85-.425 1.875-4.45c.083-.2.213-.35.388-.45.175-.1.354-.15.537-.15.183 0 .363.05.538.15.175.1.304.25.387.45l1.875 4.45 4.85.425c.233.033.417.108.55.225.133.117.233.267.3.45a.961.961 0 0 1-.275 1.075l-3.675 3.175 1.1 4.725a.875.875 0 0 1-.05.588 1.2 1.2 0 0 1-.35.437.966.966 0 0 1-.525.2.908.908 0 0 1-.575-.15l-4.15-2.5Z'></path>
-																</svg>
-																<svg
-																	aria-hidden='true'
-																	viewBox='0 0 24 24'
-																	data-testid='star-filled'
-																	xmlns='http://www.w3.org/2000/svg'
-																	class='inline-block fill-current w-6 h-6 w-[1.5em] h-[1.5em]'
-																>
-																	<path d='m12 18.275-4.15 2.5a.908.908 0 0 1-.575.15.966.966 0 0 1-.525-.2 1.2 1.2 0 0 1-.35-.437.876.876 0 0 1-.05-.588l1.1-4.725L3.775 11.8a.955.955 0 0 1-.312-.513.99.99 0 0 1 .037-.562 1.07 1.07 0 0 1 .3-.45c.133-.117.317-.192.55-.225l4.85-.425 1.875-4.45c.083-.2.213-.35.388-.45.175-.1.354-.15.537-.15.183 0 .363.05.538.15.175.1.304.25.387.45l1.875 4.45 4.85.425c.233.033.417.108.55.225.133.117.233.267.3.45a.961.961 0 0 1-.275 1.075l-3.675 3.175 1.1 4.725a.875.875 0 0 1-.05.588 1.2 1.2 0 0 1-.35.437.966.966 0 0 1-.525.2.908.908 0 0 1-.575-.15l-4.15-2.5Z'></path>
-																</svg>
-															</div>
-															28/04/2022
+															<SfRating
+																size='xs'
+																value={5}
+																ariaLabel={`5 out of 5`}
+															/>
+															28/04/2023
 														</span>
 													</div>
 													<div class='flex items-end'>
@@ -748,60 +667,12 @@ export default component$(() => {
 												<header class='flex flex-col pb-2 md:flex-row md:justify-between'>
 													<div class='flex flex-col items-start'>
 														<span class='flex items-center pr-2 text-xs text-neutral-500'>
-															<div
-																role='img'
-																aria-label='5 out of 5'
-																title='5 out of 5'
-																class='inline-flex items-center text-warning-500 text-xs mr-2'
-																data-testid='rating'
-															>
-																<svg
-																	aria-hidden='true'
-																	viewBox='0 0 24 24'
-																	data-testid='star-filled'
-																	xmlns='http://www.w3.org/2000/svg'
-																	class='inline-block fill-current w-6 h-6 w-[1.5em] h-[1.5em]'
-																>
-																	<path d='m12 18.275-4.15 2.5a.908.908 0 0 1-.575.15.966.966 0 0 1-.525-.2 1.2 1.2 0 0 1-.35-.437.876.876 0 0 1-.05-.588l1.1-4.725L3.775 11.8a.955.955 0 0 1-.312-.513.99.99 0 0 1 .037-.562 1.07 1.07 0 0 1 .3-.45c.133-.117.317-.192.55-.225l4.85-.425 1.875-4.45c.083-.2.213-.35.388-.45.175-.1.354-.15.537-.15.183 0 .363.05.538.15.175.1.304.25.387.45l1.875 4.45 4.85.425c.233.033.417.108.55.225.133.117.233.267.3.45a.961.961 0 0 1-.275 1.075l-3.675 3.175 1.1 4.725a.875.875 0 0 1-.05.588 1.2 1.2 0 0 1-.35.437.966.966 0 0 1-.525.2.908.908 0 0 1-.575-.15l-4.15-2.5Z'></path>
-																</svg>
-																<svg
-																	aria-hidden='true'
-																	viewBox='0 0 24 24'
-																	data-testid='star-filled'
-																	xmlns='http://www.w3.org/2000/svg'
-																	class='inline-block fill-current w-6 h-6 w-[1.5em] h-[1.5em]'
-																>
-																	<path d='m12 18.275-4.15 2.5a.908.908 0 0 1-.575.15.966.966 0 0 1-.525-.2 1.2 1.2 0 0 1-.35-.437.876.876 0 0 1-.05-.588l1.1-4.725L3.775 11.8a.955.955 0 0 1-.312-.513.99.99 0 0 1 .037-.562 1.07 1.07 0 0 1 .3-.45c.133-.117.317-.192.55-.225l4.85-.425 1.875-4.45c.083-.2.213-.35.388-.45.175-.1.354-.15.537-.15.183 0 .363.05.538.15.175.1.304.25.387.45l1.875 4.45 4.85.425c.233.033.417.108.55.225.133.117.233.267.3.45a.961.961 0 0 1-.275 1.075l-3.675 3.175 1.1 4.725a.875.875 0 0 1-.05.588 1.2 1.2 0 0 1-.35.437.966.966 0 0 1-.525.2.908.908 0 0 1-.575-.15l-4.15-2.5Z'></path>
-																</svg>
-																<svg
-																	aria-hidden='true'
-																	viewBox='0 0 24 24'
-																	data-testid='star-filled'
-																	xmlns='http://www.w3.org/2000/svg'
-																	class='inline-block fill-current w-6 h-6 w-[1.5em] h-[1.5em]'
-																>
-																	<path d='m12 18.275-4.15 2.5a.908.908 0 0 1-.575.15.966.966 0 0 1-.525-.2 1.2 1.2 0 0 1-.35-.437.876.876 0 0 1-.05-.588l1.1-4.725L3.775 11.8a.955.955 0 0 1-.312-.513.99.99 0 0 1 .037-.562 1.07 1.07 0 0 1 .3-.45c.133-.117.317-.192.55-.225l4.85-.425 1.875-4.45c.083-.2.213-.35.388-.45.175-.1.354-.15.537-.15.183 0 .363.05.538.15.175.1.304.25.387.45l1.875 4.45 4.85.425c.233.033.417.108.55.225.133.117.233.267.3.45a.961.961 0 0 1-.275 1.075l-3.675 3.175 1.1 4.725a.875.875 0 0 1-.05.588 1.2 1.2 0 0 1-.35.437.966.966 0 0 1-.525.2.908.908 0 0 1-.575-.15l-4.15-2.5Z'></path>
-																</svg>
-																<svg
-																	aria-hidden='true'
-																	viewBox='0 0 24 24'
-																	data-testid='star-filled'
-																	xmlns='http://www.w3.org/2000/svg'
-																	class='inline-block fill-current w-6 h-6 w-[1.5em] h-[1.5em]'
-																>
-																	<path d='m12 18.275-4.15 2.5a.908.908 0 0 1-.575.15.966.966 0 0 1-.525-.2 1.2 1.2 0 0 1-.35-.437.876.876 0 0 1-.05-.588l1.1-4.725L3.775 11.8a.955.955 0 0 1-.312-.513.99.99 0 0 1 .037-.562 1.07 1.07 0 0 1 .3-.45c.133-.117.317-.192.55-.225l4.85-.425 1.875-4.45c.083-.2.213-.35.388-.45.175-.1.354-.15.537-.15.183 0 .363.05.538.15.175.1.304.25.387.45l1.875 4.45 4.85.425c.233.033.417.108.55.225.133.117.233.267.3.45a.961.961 0 0 1-.275 1.075l-3.675 3.175 1.1 4.725a.875.875 0 0 1-.05.588 1.2 1.2 0 0 1-.35.437.966.966 0 0 1-.525.2.908.908 0 0 1-.575-.15l-4.15-2.5Z'></path>
-																</svg>
-																<svg
-																	aria-hidden='true'
-																	viewBox='0 0 24 24'
-																	data-testid='star-filled'
-																	xmlns='http://www.w3.org/2000/svg'
-																	class='inline-block fill-current w-6 h-6 w-[1.5em] h-[1.5em]'
-																>
-																	<path d='m12 18.275-4.15 2.5a.908.908 0 0 1-.575.15.966.966 0 0 1-.525-.2 1.2 1.2 0 0 1-.35-.437.876.876 0 0 1-.05-.588l1.1-4.725L3.775 11.8a.955.955 0 0 1-.312-.513.99.99 0 0 1 .037-.562 1.07 1.07 0 0 1 .3-.45c.133-.117.317-.192.55-.225l4.85-.425 1.875-4.45c.083-.2.213-.35.388-.45.175-.1.354-.15.537-.15.183 0 .363.05.538.15.175.1.304.25.387.45l1.875 4.45 4.85.425c.233.033.417.108.55.225.133.117.233.267.3.45a.961.961 0 0 1-.275 1.075l-3.675 3.175 1.1 4.725a.875.875 0 0 1-.05.588 1.2 1.2 0 0 1-.35.437.966.966 0 0 1-.525.2.908.908 0 0 1-.575-.15l-4.15-2.5Z'></path>
-																</svg>
-															</div>
-															28/04/2022
+															<SfRating
+																size='xs'
+																value={4}
+																ariaLabel={`4 out of 5`}
+															/>
+															04/05/2024
 														</span>
 													</div>
 													<div class='flex items-end'>
@@ -891,60 +762,12 @@ export default component$(() => {
 												<header class='flex flex-col pb-2 md:flex-row md:justify-between'>
 													<div class='flex flex-col items-start'>
 														<span class='flex items-center pr-2 text-xs text-neutral-500'>
-															<div
-																role='img'
-																aria-label='5 out of 5'
-																title='5 out of 5'
-																class='inline-flex items-center text-warning-500 text-xs mr-2'
-																data-testid='rating'
-															>
-																<svg
-																	aria-hidden='true'
-																	viewBox='0 0 24 24'
-																	data-testid='star-filled'
-																	xmlns='http://www.w3.org/2000/svg'
-																	class='inline-block fill-current w-6 h-6 w-[1.5em] h-[1.5em]'
-																>
-																	<path d='m12 18.275-4.15 2.5a.908.908 0 0 1-.575.15.966.966 0 0 1-.525-.2 1.2 1.2 0 0 1-.35-.437.876.876 0 0 1-.05-.588l1.1-4.725L3.775 11.8a.955.955 0 0 1-.312-.513.99.99 0 0 1 .037-.562 1.07 1.07 0 0 1 .3-.45c.133-.117.317-.192.55-.225l4.85-.425 1.875-4.45c.083-.2.213-.35.388-.45.175-.1.354-.15.537-.15.183 0 .363.05.538.15.175.1.304.25.387.45l1.875 4.45 4.85.425c.233.033.417.108.55.225.133.117.233.267.3.45a.961.961 0 0 1-.275 1.075l-3.675 3.175 1.1 4.725a.875.875 0 0 1-.05.588 1.2 1.2 0 0 1-.35.437.966.966 0 0 1-.525.2.908.908 0 0 1-.575-.15l-4.15-2.5Z'></path>
-																</svg>
-																<svg
-																	aria-hidden='true'
-																	viewBox='0 0 24 24'
-																	data-testid='star-filled'
-																	xmlns='http://www.w3.org/2000/svg'
-																	class='inline-block fill-current w-6 h-6 w-[1.5em] h-[1.5em]'
-																>
-																	<path d='m12 18.275-4.15 2.5a.908.908 0 0 1-.575.15.966.966 0 0 1-.525-.2 1.2 1.2 0 0 1-.35-.437.876.876 0 0 1-.05-.588l1.1-4.725L3.775 11.8a.955.955 0 0 1-.312-.513.99.99 0 0 1 .037-.562 1.07 1.07 0 0 1 .3-.45c.133-.117.317-.192.55-.225l4.85-.425 1.875-4.45c.083-.2.213-.35.388-.45.175-.1.354-.15.537-.15.183 0 .363.05.538.15.175.1.304.25.387.45l1.875 4.45 4.85.425c.233.033.417.108.55.225.133.117.233.267.3.45a.961.961 0 0 1-.275 1.075l-3.675 3.175 1.1 4.725a.875.875 0 0 1-.05.588 1.2 1.2 0 0 1-.35.437.966.966 0 0 1-.525.2.908.908 0 0 1-.575-.15l-4.15-2.5Z'></path>
-																</svg>
-																<svg
-																	aria-hidden='true'
-																	viewBox='0 0 24 24'
-																	data-testid='star-filled'
-																	xmlns='http://www.w3.org/2000/svg'
-																	class='inline-block fill-current w-6 h-6 w-[1.5em] h-[1.5em]'
-																>
-																	<path d='m12 18.275-4.15 2.5a.908.908 0 0 1-.575.15.966.966 0 0 1-.525-.2 1.2 1.2 0 0 1-.35-.437.876.876 0 0 1-.05-.588l1.1-4.725L3.775 11.8a.955.955 0 0 1-.312-.513.99.99 0 0 1 .037-.562 1.07 1.07 0 0 1 .3-.45c.133-.117.317-.192.55-.225l4.85-.425 1.875-4.45c.083-.2.213-.35.388-.45.175-.1.354-.15.537-.15.183 0 .363.05.538.15.175.1.304.25.387.45l1.875 4.45 4.85.425c.233.033.417.108.55.225.133.117.233.267.3.45a.961.961 0 0 1-.275 1.075l-3.675 3.175 1.1 4.725a.875.875 0 0 1-.05.588 1.2 1.2 0 0 1-.35.437.966.966 0 0 1-.525.2.908.908 0 0 1-.575-.15l-4.15-2.5Z'></path>
-																</svg>
-																<svg
-																	aria-hidden='true'
-																	viewBox='0 0 24 24'
-																	data-testid='star-filled'
-																	xmlns='http://www.w3.org/2000/svg'
-																	class='inline-block fill-current w-6 h-6 w-[1.5em] h-[1.5em]'
-																>
-																	<path d='m12 18.275-4.15 2.5a.908.908 0 0 1-.575.15.966.966 0 0 1-.525-.2 1.2 1.2 0 0 1-.35-.437.876.876 0 0 1-.05-.588l1.1-4.725L3.775 11.8a.955.955 0 0 1-.312-.513.99.99 0 0 1 .037-.562 1.07 1.07 0 0 1 .3-.45c.133-.117.317-.192.55-.225l4.85-.425 1.875-4.45c.083-.2.213-.35.388-.45.175-.1.354-.15.537-.15.183 0 .363.05.538.15.175.1.304.25.387.45l1.875 4.45 4.85.425c.233.033.417.108.55.225.133.117.233.267.3.45a.961.961 0 0 1-.275 1.075l-3.675 3.175 1.1 4.725a.875.875 0 0 1-.05.588 1.2 1.2 0 0 1-.35.437.966.966 0 0 1-.525.2.908.908 0 0 1-.575-.15l-4.15-2.5Z'></path>
-																</svg>
-																<svg
-																	aria-hidden='true'
-																	viewBox='0 0 24 24'
-																	data-testid='star-filled'
-																	xmlns='http://www.w3.org/2000/svg'
-																	class='inline-block fill-current w-6 h-6 w-[1.5em] h-[1.5em]'
-																>
-																	<path d='m12 18.275-4.15 2.5a.908.908 0 0 1-.575.15.966.966 0 0 1-.525-.2 1.2 1.2 0 0 1-.35-.437.876.876 0 0 1-.05-.588l1.1-4.725L3.775 11.8a.955.955 0 0 1-.312-.513.99.99 0 0 1 .037-.562 1.07 1.07 0 0 1 .3-.45c.133-.117.317-.192.55-.225l4.85-.425 1.875-4.45c.083-.2.213-.35.388-.45.175-.1.354-.15.537-.15.183 0 .363.05.538.15.175.1.304.25.387.45l1.875 4.45 4.85.425c.233.033.417.108.55.225.133.117.233.267.3.45a.961.961 0 0 1-.275 1.075l-3.675 3.175 1.1 4.725a.875.875 0 0 1-.05.588 1.2 1.2 0 0 1-.35.437.966.966 0 0 1-.525.2.908.908 0 0 1-.575-.15l-4.15-2.5Z'></path>
-																</svg>
-															</div>
-															28/04/2022
+															<SfRating
+																size='xs'
+																value={3}
+																ariaLabel={`3 out of 5`}
+															/>
+															12/05/2023
 														</span>
 													</div>
 													<div class='flex items-end'>
@@ -1034,60 +857,12 @@ export default component$(() => {
 												<header class='flex flex-col pb-2 md:flex-row md:justify-between'>
 													<div class='flex flex-col items-start'>
 														<span class='flex items-center pr-2 text-xs text-neutral-500'>
-															<div
-																role='img'
-																aria-label='5 out of 5'
-																title='5 out of 5'
-																class='inline-flex items-center text-warning-500 text-xs mr-2'
-																data-testid='rating'
-															>
-																<svg
-																	aria-hidden='true'
-																	viewBox='0 0 24 24'
-																	data-testid='star-filled'
-																	xmlns='http://www.w3.org/2000/svg'
-																	class='inline-block fill-current w-6 h-6 w-[1.5em] h-[1.5em]'
-																>
-																	<path d='m12 18.275-4.15 2.5a.908.908 0 0 1-.575.15.966.966 0 0 1-.525-.2 1.2 1.2 0 0 1-.35-.437.876.876 0 0 1-.05-.588l1.1-4.725L3.775 11.8a.955.955 0 0 1-.312-.513.99.99 0 0 1 .037-.562 1.07 1.07 0 0 1 .3-.45c.133-.117.317-.192.55-.225l4.85-.425 1.875-4.45c.083-.2.213-.35.388-.45.175-.1.354-.15.537-.15.183 0 .363.05.538.15.175.1.304.25.387.45l1.875 4.45 4.85.425c.233.033.417.108.55.225.133.117.233.267.3.45a.961.961 0 0 1-.275 1.075l-3.675 3.175 1.1 4.725a.875.875 0 0 1-.05.588 1.2 1.2 0 0 1-.35.437.966.966 0 0 1-.525.2.908.908 0 0 1-.575-.15l-4.15-2.5Z'></path>
-																</svg>
-																<svg
-																	aria-hidden='true'
-																	viewBox='0 0 24 24'
-																	data-testid='star-filled'
-																	xmlns='http://www.w3.org/2000/svg'
-																	class='inline-block fill-current w-6 h-6 w-[1.5em] h-[1.5em]'
-																>
-																	<path d='m12 18.275-4.15 2.5a.908.908 0 0 1-.575.15.966.966 0 0 1-.525-.2 1.2 1.2 0 0 1-.35-.437.876.876 0 0 1-.05-.588l1.1-4.725L3.775 11.8a.955.955 0 0 1-.312-.513.99.99 0 0 1 .037-.562 1.07 1.07 0 0 1 .3-.45c.133-.117.317-.192.55-.225l4.85-.425 1.875-4.45c.083-.2.213-.35.388-.45.175-.1.354-.15.537-.15.183 0 .363.05.538.15.175.1.304.25.387.45l1.875 4.45 4.85.425c.233.033.417.108.55.225.133.117.233.267.3.45a.961.961 0 0 1-.275 1.075l-3.675 3.175 1.1 4.725a.875.875 0 0 1-.05.588 1.2 1.2 0 0 1-.35.437.966.966 0 0 1-.525.2.908.908 0 0 1-.575-.15l-4.15-2.5Z'></path>
-																</svg>
-																<svg
-																	aria-hidden='true'
-																	viewBox='0 0 24 24'
-																	data-testid='star-filled'
-																	xmlns='http://www.w3.org/2000/svg'
-																	class='inline-block fill-current w-6 h-6 w-[1.5em] h-[1.5em]'
-																>
-																	<path d='m12 18.275-4.15 2.5a.908.908 0 0 1-.575.15.966.966 0 0 1-.525-.2 1.2 1.2 0 0 1-.35-.437.876.876 0 0 1-.05-.588l1.1-4.725L3.775 11.8a.955.955 0 0 1-.312-.513.99.99 0 0 1 .037-.562 1.07 1.07 0 0 1 .3-.45c.133-.117.317-.192.55-.225l4.85-.425 1.875-4.45c.083-.2.213-.35.388-.45.175-.1.354-.15.537-.15.183 0 .363.05.538.15.175.1.304.25.387.45l1.875 4.45 4.85.425c.233.033.417.108.55.225.133.117.233.267.3.45a.961.961 0 0 1-.275 1.075l-3.675 3.175 1.1 4.725a.875.875 0 0 1-.05.588 1.2 1.2 0 0 1-.35.437.966.966 0 0 1-.525.2.908.908 0 0 1-.575-.15l-4.15-2.5Z'></path>
-																</svg>
-																<svg
-																	aria-hidden='true'
-																	viewBox='0 0 24 24'
-																	data-testid='star-filled'
-																	xmlns='http://www.w3.org/2000/svg'
-																	class='inline-block fill-current w-6 h-6 w-[1.5em] h-[1.5em]'
-																>
-																	<path d='m12 18.275-4.15 2.5a.908.908 0 0 1-.575.15.966.966 0 0 1-.525-.2 1.2 1.2 0 0 1-.35-.437.876.876 0 0 1-.05-.588l1.1-4.725L3.775 11.8a.955.955 0 0 1-.312-.513.99.99 0 0 1 .037-.562 1.07 1.07 0 0 1 .3-.45c.133-.117.317-.192.55-.225l4.85-.425 1.875-4.45c.083-.2.213-.35.388-.45.175-.1.354-.15.537-.15.183 0 .363.05.538.15.175.1.304.25.387.45l1.875 4.45 4.85.425c.233.033.417.108.55.225.133.117.233.267.3.45a.961.961 0 0 1-.275 1.075l-3.675 3.175 1.1 4.725a.875.875 0 0 1-.05.588 1.2 1.2 0 0 1-.35.437.966.966 0 0 1-.525.2.908.908 0 0 1-.575-.15l-4.15-2.5Z'></path>
-																</svg>
-																<svg
-																	aria-hidden='true'
-																	viewBox='0 0 24 24'
-																	data-testid='star-filled'
-																	xmlns='http://www.w3.org/2000/svg'
-																	class='inline-block fill-current w-6 h-6 w-[1.5em] h-[1.5em]'
-																>
-																	<path d='m12 18.275-4.15 2.5a.908.908 0 0 1-.575.15.966.966 0 0 1-.525-.2 1.2 1.2 0 0 1-.35-.437.876.876 0 0 1-.05-.588l1.1-4.725L3.775 11.8a.955.955 0 0 1-.312-.513.99.99 0 0 1 .037-.562 1.07 1.07 0 0 1 .3-.45c.133-.117.317-.192.55-.225l4.85-.425 1.875-4.45c.083-.2.213-.35.388-.45.175-.1.354-.15.537-.15.183 0 .363.05.538.15.175.1.304.25.387.45l1.875 4.45 4.85.425c.233.033.417.108.55.225.133.117.233.267.3.45a.961.961 0 0 1-.275 1.075l-3.675 3.175 1.1 4.725a.875.875 0 0 1-.05.588 1.2 1.2 0 0 1-.35.437.966.966 0 0 1-.525.2.908.908 0 0 1-.575-.15l-4.15-2.5Z'></path>
-																</svg>
-															</div>
-															28/04/2022
+															<SfRating
+																size='xs'
+																value={4}
+																ariaLabel={`4 out of 5`}
+															/>
+															23/05/2023
 														</span>
 													</div>
 													<div class='flex items-end'>
@@ -1177,60 +952,12 @@ export default component$(() => {
 												<header class='flex flex-col pb-2 md:flex-row md:justify-between'>
 													<div class='flex flex-col items-start'>
 														<span class='flex items-center pr-2 text-xs text-neutral-500'>
-															<div
-																role='img'
-																aria-label='5 out of 5'
-																title='5 out of 5'
-																class='inline-flex items-center text-warning-500 text-xs mr-2'
-																data-testid='rating'
-															>
-																<svg
-																	aria-hidden='true'
-																	viewBox='0 0 24 24'
-																	data-testid='star-filled'
-																	xmlns='http://www.w3.org/2000/svg'
-																	class='inline-block fill-current w-6 h-6 w-[1.5em] h-[1.5em]'
-																>
-																	<path d='m12 18.275-4.15 2.5a.908.908 0 0 1-.575.15.966.966 0 0 1-.525-.2 1.2 1.2 0 0 1-.35-.437.876.876 0 0 1-.05-.588l1.1-4.725L3.775 11.8a.955.955 0 0 1-.312-.513.99.99 0 0 1 .037-.562 1.07 1.07 0 0 1 .3-.45c.133-.117.317-.192.55-.225l4.85-.425 1.875-4.45c.083-.2.213-.35.388-.45.175-.1.354-.15.537-.15.183 0 .363.05.538.15.175.1.304.25.387.45l1.875 4.45 4.85.425c.233.033.417.108.55.225.133.117.233.267.3.45a.961.961 0 0 1-.275 1.075l-3.675 3.175 1.1 4.725a.875.875 0 0 1-.05.588 1.2 1.2 0 0 1-.35.437.966.966 0 0 1-.525.2.908.908 0 0 1-.575-.15l-4.15-2.5Z'></path>
-																</svg>
-																<svg
-																	aria-hidden='true'
-																	viewBox='0 0 24 24'
-																	data-testid='star-filled'
-																	xmlns='http://www.w3.org/2000/svg'
-																	class='inline-block fill-current w-6 h-6 w-[1.5em] h-[1.5em]'
-																>
-																	<path d='m12 18.275-4.15 2.5a.908.908 0 0 1-.575.15.966.966 0 0 1-.525-.2 1.2 1.2 0 0 1-.35-.437.876.876 0 0 1-.05-.588l1.1-4.725L3.775 11.8a.955.955 0 0 1-.312-.513.99.99 0 0 1 .037-.562 1.07 1.07 0 0 1 .3-.45c.133-.117.317-.192.55-.225l4.85-.425 1.875-4.45c.083-.2.213-.35.388-.45.175-.1.354-.15.537-.15.183 0 .363.05.538.15.175.1.304.25.387.45l1.875 4.45 4.85.425c.233.033.417.108.55.225.133.117.233.267.3.45a.961.961 0 0 1-.275 1.075l-3.675 3.175 1.1 4.725a.875.875 0 0 1-.05.588 1.2 1.2 0 0 1-.35.437.966.966 0 0 1-.525.2.908.908 0 0 1-.575-.15l-4.15-2.5Z'></path>
-																</svg>
-																<svg
-																	aria-hidden='true'
-																	viewBox='0 0 24 24'
-																	data-testid='star-filled'
-																	xmlns='http://www.w3.org/2000/svg'
-																	class='inline-block fill-current w-6 h-6 w-[1.5em] h-[1.5em]'
-																>
-																	<path d='m12 18.275-4.15 2.5a.908.908 0 0 1-.575.15.966.966 0 0 1-.525-.2 1.2 1.2 0 0 1-.35-.437.876.876 0 0 1-.05-.588l1.1-4.725L3.775 11.8a.955.955 0 0 1-.312-.513.99.99 0 0 1 .037-.562 1.07 1.07 0 0 1 .3-.45c.133-.117.317-.192.55-.225l4.85-.425 1.875-4.45c.083-.2.213-.35.388-.45.175-.1.354-.15.537-.15.183 0 .363.05.538.15.175.1.304.25.387.45l1.875 4.45 4.85.425c.233.033.417.108.55.225.133.117.233.267.3.45a.961.961 0 0 1-.275 1.075l-3.675 3.175 1.1 4.725a.875.875 0 0 1-.05.588 1.2 1.2 0 0 1-.35.437.966.966 0 0 1-.525.2.908.908 0 0 1-.575-.15l-4.15-2.5Z'></path>
-																</svg>
-																<svg
-																	aria-hidden='true'
-																	viewBox='0 0 24 24'
-																	data-testid='star-filled'
-																	xmlns='http://www.w3.org/2000/svg'
-																	class='inline-block fill-current w-6 h-6 w-[1.5em] h-[1.5em]'
-																>
-																	<path d='m12 18.275-4.15 2.5a.908.908 0 0 1-.575.15.966.966 0 0 1-.525-.2 1.2 1.2 0 0 1-.35-.437.876.876 0 0 1-.05-.588l1.1-4.725L3.775 11.8a.955.955 0 0 1-.312-.513.99.99 0 0 1 .037-.562 1.07 1.07 0 0 1 .3-.45c.133-.117.317-.192.55-.225l4.85-.425 1.875-4.45c.083-.2.213-.35.388-.45.175-.1.354-.15.537-.15.183 0 .363.05.538.15.175.1.304.25.387.45l1.875 4.45 4.85.425c.233.033.417.108.55.225.133.117.233.267.3.45a.961.961 0 0 1-.275 1.075l-3.675 3.175 1.1 4.725a.875.875 0 0 1-.05.588 1.2 1.2 0 0 1-.35.437.966.966 0 0 1-.525.2.908.908 0 0 1-.575-.15l-4.15-2.5Z'></path>
-																</svg>
-																<svg
-																	aria-hidden='true'
-																	viewBox='0 0 24 24'
-																	data-testid='star-filled'
-																	xmlns='http://www.w3.org/2000/svg'
-																	class='inline-block fill-current w-6 h-6 w-[1.5em] h-[1.5em]'
-																>
-																	<path d='m12 18.275-4.15 2.5a.908.908 0 0 1-.575.15.966.966 0 0 1-.525-.2 1.2 1.2 0 0 1-.35-.437.876.876 0 0 1-.05-.588l1.1-4.725L3.775 11.8a.955.955 0 0 1-.312-.513.99.99 0 0 1 .037-.562 1.07 1.07 0 0 1 .3-.45c.133-.117.317-.192.55-.225l4.85-.425 1.875-4.45c.083-.2.213-.35.388-.45.175-.1.354-.15.537-.15.183 0 .363.05.538.15.175.1.304.25.387.45l1.875 4.45 4.85.425c.233.033.417.108.55.225.133.117.233.267.3.45a.961.961 0 0 1-.275 1.075l-3.675 3.175 1.1 4.725a.875.875 0 0 1-.05.588 1.2 1.2 0 0 1-.35.437.966.966 0 0 1-.525.2.908.908 0 0 1-.575-.15l-4.15-2.5Z'></path>
-																</svg>
-															</div>
-															28/04/2022
+															<SfRating
+																size='xs'
+																value={3}
+																ariaLabel={`3 out of 5`}
+															/>
+															01/06/2023
 														</span>
 													</div>
 													<div class='flex items-end'>
@@ -1332,7 +1059,7 @@ export default component$(() => {
 						>
 							Recommended with this product
 						</p>
-						<ProductSlider products={productsSlider} />
+						<ProductSlider products={productSliderShuffeled()} />
 					</section>
 				</div>
 			</main>

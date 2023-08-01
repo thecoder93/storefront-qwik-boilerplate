@@ -26,7 +26,10 @@ export const useAddressForm = routeAction$(async () => {
 export default component$(() => {
 	const t = useTranslate();
 	useImageProvider({
-		imageTransformer$: $(({ src }: ImageTransformerProps) => src),
+		imageTransformer$: $(
+			({ src, width, height }: ImageTransformerProps) =>
+				`${src}?w=${width}&h=${height}&format=webp`
+		),
 	});
 
 	return (
@@ -38,7 +41,7 @@ export default component$(() => {
 					href='/category'
 					variant='tertiary'
 				>
-					<div q: slot='suffix'>
+					<div q:slot='suffix'>
 						<SfIconExpandMore />
 					</div>
 					<span>{t('allProductsLinkText')}</span>

@@ -4,7 +4,7 @@ import { ProductSlider } from '~/components/ProductSlider/ProductSlider';
 import { CategoryCard } from '~/components/UI/CategoryCard/CategoryCard';
 import { Display } from '~/components/UI/Display/Display';
 import { Hero } from '~/components/UI/Hero/Hero';
-import { display, heroMock, items, productsSlider } from '~/mocks';
+import { display, heroMock, items, productSliderShuffeled } from '~/mocks';
 
 export default component$(() => {
 	return (
@@ -23,7 +23,7 @@ export default component$(() => {
 				class='text-center mb-6 font-bold typography-headline-3 md:typography-headline-2'
 			/>
 			<ProductSlider
-				products={productsSlider}
+				products={productSliderShuffeled()}
 				class='max-w-screen-3xl mx-auto px-4 md:px-10 mb-20'
 			/>
 		</div>
