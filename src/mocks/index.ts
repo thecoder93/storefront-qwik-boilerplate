@@ -1069,7 +1069,7 @@ export const productsSlider = [
 ];
 
 export const productSliderShuffeled = () =>
-	productsSlider.sort(() => (Math.random() > 0.5 ? 1 : -1));
+	productsSlider.sort(() => (Math.random() > 0.5 ? 1 : -1)).slice(0, 14);
 
 export const facets = [
 	{
