@@ -29,16 +29,16 @@ export const RouterHead = component$(() => {
 			/>
 			<meta name='description' content={DEFAULT_METADATA_DESCRIPTION} />
 
-			{head.meta.map((m) => (
-				<meta key={m.key} {...m} />
+			{head.meta.map((m, key) => (
+				<meta key={key} {...m} />
 			))}
 
-			{head.links.map((l) => (
-				<link key={l.key} {...l} />
+			{head.links.map((l, key) => (
+				<link key={key} {...l} />
 			))}
 
-			{head.styles.map((s) => (
-				<style key={s.key} {...s.props} dangerouslySetInnerHTML={s.style} />
+			{head.styles.map((s, key) => (
+				<style key={key} {...s.props} dangerouslySetInnerHTML={s.style} />
 			))}
 		</>
 	);
