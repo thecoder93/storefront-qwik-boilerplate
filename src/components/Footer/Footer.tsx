@@ -1,13 +1,7 @@
 import { component$ } from '@builder.io/qwik';
 import { Link } from '@builder.io/qwik-city';
 import { useTranslate } from 'qwik-speak';
-import {
-	bottomLinks,
-	companyName,
-	contactOptions,
-	homePageCategories,
-	socialMedia,
-} from '~/mocks';
+import { contactOptions, homePageCategories, socialMedia } from '~/mocks';
 import { Divider } from '../UI/Divider/Divider';
 
 type FooterProps = {
@@ -80,19 +74,23 @@ export const Footer = component$<FooterProps>(({ class: _class = '' }) => {
 							</Link>
 						))}
 					</div>
-					<div class='flex justify-center gap-6 my-6 lg:ml-auto lg:my-0'>
-						{bottomLinks.map(({ link, key }) => (
-							<Link
-								key={key}
-								href={link}
-								class='text-white no-underline typography-text-sm active:text-white active:underline hover:text-white hover:underline'
-							>
-								{t(`bottomLinks.${key}`)}
-							</Link>
-						))}
-					</div>
-					<p class='flex items-center justify-center leading-5 text-center typography-text-sm text-white/50 font-body md:ml-6'>
-						{companyName}
+					<p class='flex justify-center gap-6 leading-5 text-center typography-text-sm font-body pt-6 lg:pt-0 lg:ml-auto '>
+						<a
+							href='https://github.com/gioboa'
+							target='_blank'
+							class='underline pr-0.5'
+							aria-label='author'
+						>
+							gioboa
+						</a>
+						<a
+							href='https://github.com/thecoder93'
+							target='_blank'
+							class='underline'
+							aria-label='author'
+						>
+							thecoder93
+						</a>
 					</p>
 				</div>
 			</div>

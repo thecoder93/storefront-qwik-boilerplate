@@ -171,14 +171,3 @@ export const contactOptions = [
 		icon: <SfIconCall size='lg' />,
 	},
 ];
-export const bottomLinks = [
-	{
-		key: 'terms',
-		link: '/',
-	},
-	{
-		key: 'privacyPolicy',
-		link: '/',
-	},
-];
-export const companyName = `© ${new Date().getFullYear()}`;
