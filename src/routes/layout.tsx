@@ -48,7 +48,7 @@ export default component$(() => {
 		track(() => {
 			return cart.lineItems
 		})
-		if (cart.lineItems.length === 0) {
+		if (cart.lineItems.length === 0 && localStorage.getItem('cart.lineItems') !== null) {
 			cart.lineItems = JSON.parse(localStorage.getItem('cart.lineItems') || '[]')
 		} else {
 			localStorage.setItem('cart.lineItems', JSON.stringify(cart.lineItems))
