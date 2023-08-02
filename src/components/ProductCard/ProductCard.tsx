@@ -73,17 +73,11 @@ export const ProductCard = component$<ProductCardProps>(
 					>
 						{name}
 					</SfLink>
-					<div class='flex items-center mt-2'>
+					<div class='flex items-center pt-2'>
 						<SfRating size='xs' value={rating} max={5} />
-
-						<SfLink
-							href='#'
-							variant='secondary'
-							as={Link}
-							class='ml-1 no-underline'
-						>
+						<span class='ml-1 no-underline'>
 							<SfCounter size='xs'>{ratingCount}</SfCounter>
-						</SfLink>
+						</span>
 					</div>
 					<p class='max-h-[59px] py-2 font-normal typography-text-xs text-neutral-700 line-clamp-3'>
 						{description}
