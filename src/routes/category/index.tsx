@@ -749,7 +749,7 @@ export default component$(() => {
 													>
 														{product.name}
 													</a>
-													<div class='flex items-center pt-1'>
+													<div class='flex items-center mt-2'>
 														<SfRating
 															size='xs'
 															value={product.rating.average}

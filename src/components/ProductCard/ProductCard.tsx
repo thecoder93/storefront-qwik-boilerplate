@@ -73,7 +73,7 @@ export const ProductCard = component$<ProductCardProps>(
 					>
 						{name}
 					</SfLink>
-					<div class='flex items-center pt-1'>
+					<div class='flex items-center mt-2'>
 						<SfRating size='xs' value={rating} max={5} />
 
 						<SfLink
