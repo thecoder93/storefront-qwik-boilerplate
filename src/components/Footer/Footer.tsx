@@ -74,24 +74,27 @@ export const Footer = component$<FooterProps>(({ class: _class = '' }) => {
 							</Link>
 						))}
 					</div>
-					<p class='flex justify-center gap-6 leading-5 text-center typography-text-sm font-body pt-6 lg:pt-0 lg:ml-auto '>
-						<a
-							href='https://github.com/gioboa'
-							target='_blank'
-							class='underline pr-0.5'
-							aria-label='author'
-						>
-							gioboa
-						</a>
-						<a
-							href='https://github.com/thecoder93'
-							target='_blank'
-							class='underline'
-							aria-label='author'
-						>
-							thecoder93
-						</a>
-					</p>
+					<div class='flex items-center justify-center gap-6 leading-5 text-center typography-text-sm font-body pt-6 lg:pt-0 lg:ml-auto '>
+						<span class='mt-[2px]'>Powered by</span>
+						<div>
+							<a
+								href='https://github.com/gioboa'
+								target='_blank'
+								class='underline pr-[5px]'
+								aria-label='author'
+							>
+								gioboa
+							</a>
+							<a
+								href='https://github.com/thecoder93'
+								target='_blank'
+								class='underline'
+								aria-label='author'
+							>
+								thecoder93
+							</a>
+						</div>
+					</div>
 				</div>
 			</div>
 		</footer>
