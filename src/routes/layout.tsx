@@ -61,7 +61,7 @@ export default component$(() => {
 					<span>{t('allProductsLinkText')}</span>
 				</SfButton>
 				<Search />
-				<nav class='hidden md:flex md:flex-row md:flex-nowrap'>
+				<nav class='flex flex-row flex-nowrap ml-auto'>
 					<a
 						class='inline-flex items-center justify-center font-medium text-base focus-visible:outline focus-visible:outline-offset rounded-md disabled:text-disabled-500 disabled:bg-disabled-300 disabled:shadow-none disabled:ring-0 disabled:cursor-not-allowed p-2 gap-2 text-primary-700 hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900 disabled:bg-transparent mr-2 -ml-0.5 text-white bg-primary-700 hover:bg-primary-800 hover:text-white active:bg-primary-900 active:text-white'
 						data-testid='button'
