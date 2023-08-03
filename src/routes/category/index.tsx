@@ -1,9 +1,10 @@
 import { component$ } from '@builder.io/qwik';
 import { Image } from 'qwik-image';
 import { SfRating } from 'qwik-storefront-ui';
-import { productSliderShuffeled } from '~/mocks';
+import { useRandomProductsLoader } from '../layout';
 
 export default component$(() => {
+	const randomProducts = useRandomProductsLoader();
 	return (
 		<>
 			<div
@@ -715,86 +716,84 @@ export default component$(() => {
 									class='grid grid-cols-1 2xs:grid-cols-2 gap-4 md:gap-6 md:grid-cols-2 lg:grid-cols-3 3xl:grid-cols-4 mb-10 md:mb-5'
 									data-testid='category-grid'
 								>
-									{productSliderShuffeled()
-										.slice(0, 5)
-										.map((product, key) => (
-											<div
-												key={key}
-												class='border border-neutral-200 rounded-md hover:shadow-lg flex-auto flex-shrink-0 max-w-[260px]'
-												data-testid='product-card'
-											>
-												<div class='relative'>
+									{randomProducts.value.map((product, key) => (
+										<div
+											key={key}
+											class='border border-neutral-200 rounded-md hover:shadow-lg flex-auto flex-shrink-0 max-w-[260px]'
+											data-testid='product-card'
+										>
+											<div class='relative'>
+												<a
+													class='focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm text-primary-700 underline hover:text-primary-800 active:text-primary-900 relative block w-[249px] mx-auto'
+													data-testid='link'
+													href={`/product/${product.slug}`}
+												>
+													<Image
+														loading='eager'
+														layout='fixed'
+														width={240}
+														height={240}
+														data-testid='image-slot'
+														class='object-cover rounded-md aspect-square w-full h-full mx-auto my-1'
+														src={product.primaryImage.url}
+														alt={product.primaryImage.alt}
+													/>
+												</a>
+											</div>
+											<div class='p-2 border-t border-neutral-200 typography-text-sm px-6 py-4'>
+												<a
+													class='focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm underline hover:text-primary-800 active:text-primary-900 no-underline'
+													data-testid='link'
+													href={`/product/${product.slug}`}
+												>
+													{product.name}
+												</a>
+												<div class='flex items-center mt-2'>
+													<SfRating
+														size='xs'
+														value={product.rating.average}
+														ariaLabel={`${product.rating.average} out of 5`}
+													/>
 													<a
-														class='focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm text-primary-700 underline hover:text-primary-800 active:text-primary-900 relative block w-[249px] mx-auto'
+														class='focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm underline hover:text-primary-800 active:text-primary-900 ml-1 no-underline'
 														data-testid='link'
-														href={`/product/${product.slug}`}
+														href='/category#'
 													>
-														<Image
-															loading='eager'
-															layout='fixed'
-															width={240}
-															height={240}
-															data-testid='image-slot'
-															class='object-cover rounded-md aspect-square w-full h-full mx-auto my-1'
-															src={product.primaryImage.url}
-															alt={product.primaryImage.alt}
-														/>
+														<span
+															class="inline-flex items-center before:content-['('] after:content-[')'] text-neutral-500 text-xs"
+															data-testid='counter'
+														>
+															{product.rating.count}
+														</span>
 													</a>
 												</div>
-												<div class='p-2 border-t border-neutral-200 typography-text-sm px-6 py-4'>
-													<a
-														class='focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm underline hover:text-primary-800 active:text-primary-900 no-underline'
-														data-testid='link'
-														href={`/product/${product.slug}`}
+												<p class='block py-2 font-normal typography-text-xs text-neutral-700 text-justify'></p>
+												<div class='flex items-center justify-between'>
+													<span
+														class='block font-bold typography-text-sm'
+														data-testid='product-card-vertical-price'
 													>
-														{product.name}
-													</a>
-													<div class='flex items-center mt-2'>
-														<SfRating
-															size='xs'
-															value={product.rating.average}
-															ariaLabel={`${product.rating.average} out of 5`}
-														/>
-														<a
-															class='focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm underline hover:text-primary-800 active:text-primary-900 ml-1 no-underline'
-															data-testid='link'
-															href='/category#'
+														${product.price.value.amount}
+													</span>
+													<button
+														type='button'
+														class='inline-flex items-center justify-center font-medium text-base focus-visible:outline focus-visible:outline-offset rounded-md disabled:text-disabled-500 disabled:bg-disabled-300 disabled:shadow-none disabled:ring-0 disabled:cursor-not-allowed leading-5 text-sm py-1.5 px-3 gap-1.5 text-white shadow hover:shadow-md active:shadow bg-primary-700 hover:bg-primary-800 active:bg-primary-900 disabled:bg-disabled-300 px-2 py-2'
+														data-testid='button'
+													>
+														<svg
+															viewBox='0 0 24 24'
+															data-testid='shopping-cart'
+															xmlns='http://www.w3.org/2000/svg'
+															class='inline-block fill-current w-5 h-5 undefined'
 														>
-															<span
-																class="inline-flex items-center before:content-['('] after:content-[')'] text-neutral-500 text-xs"
-																data-testid='counter'
-															>
-																{product.rating.count}
-															</span>
-														</a>
-													</div>
-													<p class='block py-2 font-normal typography-text-xs text-neutral-700 text-justify'></p>
-													<div class='flex items-center justify-between'>
-														<span
-															class='block font-bold typography-text-sm'
-															data-testid='product-card-vertical-price'
-														>
-															${product.price.value.amount}
-														</span>
-														<button
-															type='button'
-															class='inline-flex items-center justify-center font-medium text-base focus-visible:outline focus-visible:outline-offset rounded-md disabled:text-disabled-500 disabled:bg-disabled-300 disabled:shadow-none disabled:ring-0 disabled:cursor-not-allowed leading-5 text-sm py-1.5 px-3 gap-1.5 text-white shadow hover:shadow-md active:shadow bg-primary-700 hover:bg-primary-800 active:bg-primary-900 disabled:bg-disabled-300 px-2 py-2'
-															data-testid='button'
-														>
-															<svg
-																viewBox='0 0 24 24'
-																data-testid='shopping-cart'
-																xmlns='http://www.w3.org/2000/svg'
-																class='inline-block fill-current w-5 h-5 undefined'
-															>
-																<path d='M7 22c-.55 0-1.02-.196-1.412-.587A1.926 1.926 0 0 1 5 20c0-.55.196-1.02.588-1.413A1.926 1.926 0 0 1 7 18c.55 0 1.02.196 1.412.587C8.804 18.98 9 19.45 9 20s-.196 1.02-.588 1.413A1.926 1.926 0 0 1 7 22Zm10 0c-.55 0-1.02-.196-1.412-.587A1.926 1.926 0 0 1 15 20c0-.55.196-1.02.588-1.413A1.926 1.926 0 0 1 17 18c.55 0 1.02.196 1.413.587.391.392.587.863.587 1.413s-.196 1.02-.587 1.413A1.926 1.926 0 0 1 17 22ZM6.15 6l2.4 5h7l2.75-5H6.15ZM7 17c-.75 0-1.317-.33-1.7-.988-.383-.658-.4-1.312-.05-1.962L6.6 11.6 3 4H1.975a.927.927 0 0 1-.7-.288A.99.99 0 0 1 1 3c0-.283.096-.52.288-.712A.968.968 0 0 1 2 2h1.625c.183 0 .358.05.525.15a.93.93 0 0 1 .375.425L5.2 4h14.75c.45 0 .758.167.925.5.167.333.158.683-.025 1.05l-3.55 6.4a2.034 2.034 0 0 1-.725.775A1.93 1.93 0 0 1 15.55 13H8.1L7 15h11.025c.283 0 .517.096.7.287.183.192.275.43.275.713s-.096.52-.288.712A.968.968 0 0 1 18 17H7Z'></path>
-															</svg>
-															Add
-														</button>
-													</div>
+															<path d='M7 22c-.55 0-1.02-.196-1.412-.587A1.926 1.926 0 0 1 5 20c0-.55.196-1.02.588-1.413A1.926 1.926 0 0 1 7 18c.55 0 1.02.196 1.412.587C8.804 18.98 9 19.45 9 20s-.196 1.02-.588 1.413A1.926 1.926 0 0 1 7 22Zm10 0c-.55 0-1.02-.196-1.412-.587A1.926 1.926 0 0 1 15 20c0-.55.196-1.02.588-1.413A1.926 1.926 0 0 1 17 18c.55 0 1.02.196 1.413.587.391.392.587.863.587 1.413s-.196 1.02-.587 1.413A1.926 1.926 0 0 1 17 22ZM6.15 6l2.4 5h7l2.75-5H6.15ZM7 17c-.75 0-1.317-.33-1.7-.988-.383-.658-.4-1.312-.05-1.962L6.6 11.6 3 4H1.975a.927.927 0 0 1-.7-.288A.99.99 0 0 1 1 3c0-.283.096-.52.288-.712A.968.968 0 0 1 2 2h1.625c.183 0 .358.05.525.15a.93.93 0 0 1 .375.425L5.2 4h14.75c.45 0 .758.167.925.5.167.333.158.683-.025 1.05l-3.55 6.4a2.034 2.034 0 0 1-.725.775A1.93 1.93 0 0 1 15.55 13H8.1L7 15h11.025c.283 0 .517.096.7.287.183.192.275.43.275.713s-.096.52-.288.712A.968.968 0 0 1 18 17H7Z'></path>
+														</svg>
+														Add
+													</button>
 												</div>
 											</div>
-										))}
+										</div>
+									))}
 								</section>
 								<nav
 									class='flex justify-between items-center border-t border-neutral-200'

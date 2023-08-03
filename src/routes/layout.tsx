@@ -1,5 +1,9 @@
 import { $, component$, Slot } from '@builder.io/qwik';
-import { routeAction$, type RequestHandler } from '@builder.io/qwik-city';
+import {
+	routeAction$,
+	routeLoader$,
+	type RequestHandler,
+} from '@builder.io/qwik-city';
 import type { ImageTransformerProps } from 'qwik-image';
 import { useImageProvider } from 'qwik-image';
 import { useTranslate } from 'qwik-speak';
@@ -10,6 +14,7 @@ import { ScrollToTopButton } from '~/components/ScrollToTopButton/ScrollToTopBut
 import { Search } from '~/components/search/search';
 import { sleep } from '~/shared/utils';
 import { useAppStore } from '~/store';
+import type { Product } from '~/types/product';
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
 	cacheControl({
@@ -22,6 +27,13 @@ export const useAddressForm = routeAction$(async () => {
 	await sleep(5_000);
 	return { success: true };
 });
+
+export const useRandomProductsLoader = routeLoader$(
+	async (): Promise<Product[]> => {
+		const response = await fetch('http://localhost:5173/api/random-products');
+		return await response.json();
+	}
+);
 
 export default component$(() => {
 	const t = useTranslate();

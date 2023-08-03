@@ -3,11 +3,7 @@ import {
 	useStore,
 	useVisibleTask$,
 } from '@builder.io/qwik';
-import {
-	ACTIONS_CONTEXT,
-	LOCAL_STORAGE_CART_KEY,
-	STORE_CONTEXT,
-} from '~/shared/constants';
+import { ACTIONS_CONTEXT, STORE_CONTEXT } from '~/shared/constants';
 import type { Actions, Store } from '~/types/store';
 import { actions as appActions } from './actions';
 
@@ -23,12 +19,12 @@ export const useAppStore = () => {
 	useVisibleTask$(async ({ track }) => {
 		track(() => store.cart.products);
 
-		const localStorageStore = localStorage.getItem(LOCAL_STORAGE_CART_KEY);
-		if (store.cart.products.length === 0 && localStorageStore) {
-			store.cart = JSON.parse(localStorageStore);
-		} else {
-			localStorage.setItem(LOCAL_STORAGE_CART_KEY, JSON.stringify(store.cart));
-		}
+		// const localStorageStore = localStorage.getItem(LOCAL_STORAGE_CART_KEY);
+		// if (store.cart.products.length === 0 && localStorageStore) {
+		// 	store.cart = JSON.parse(localStorageStore);
+		// } else {
+		// 	localStorage.setItem(LOCAL_STORAGE_CART_KEY, JSON.stringify(store.cart));
+		// }
 	});
 
 	return store;

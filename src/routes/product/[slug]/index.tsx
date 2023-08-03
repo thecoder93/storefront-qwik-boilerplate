@@ -1,27 +1,32 @@
 import { component$ } from '@builder.io/qwik';
-import type { DocumentHead } from '@builder.io/qwik-city';
-import { routeLoader$ } from '@builder.io/qwik-city';
+import { routeLoader$, type DocumentHead } from '@builder.io/qwik-city';
 import { Image } from 'qwik-image';
 import { SfRating } from 'qwik-storefront-ui';
 import { ProductNotFound } from '~/components/ProductNotFound/ProductNotFound';
 import { ProductSlider } from '~/components/ProductSlider/ProductSlider';
-import { productSliderShuffeled, productsSlider } from '~/mocks';
+import { useRandomProductsLoader } from '~/routes/layout';
 import { IMAGE_PLACHEHOLDER } from '~/shared/constants';
 import { generateDocumentHead } from '~/shared/utils';
+import type { Product } from '~/types/product';
 
-export const useProductLoader = routeLoader$(({ params, status }) => {
-	const product = productsSlider.find((p) => p.slug === params.slug);
-	if (!product) {
-		status(404);
+export const useProductLoader = routeLoader$(
+	async ({ params, fail }): Promise<Product | undefined> => {
+		if (!params.slug) {
+			fail(500, {});
+		}
+		const response = await fetch(
+			`http://localhost:5173/api/products/${params.slug}`
+		);
+		return response.ok ? await response.json() : undefined;
 	}
-	return product;
-});
+);
 
 export default component$(() => {
 	const product = useProductLoader();
 	if (!product.value) {
 		return <ProductNotFound />;
 	}
+	const randomProducts = useRandomProductsLoader();
 	return (
 		<>
 			<div
@@ -1061,7 +1066,7 @@ export default component$(() => {
 						>
 							Recommended with this product
 						</p>
-						<ProductSlider products={productSliderShuffeled()} />
+						<ProductSlider products={randomProducts.value} />
 					</section>
 				</div>
 			</main>
