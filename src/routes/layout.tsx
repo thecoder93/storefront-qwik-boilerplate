@@ -55,6 +55,10 @@ export default component$(() => {
 		),
 	});
 
+	const getQuantityCart = () => {
+		return store.cart.products.map(item => { return item.quantity; }).reduce((acc, currentValue) => acc + currentValue, 0);
+	}
+
 	return (
 		<>
 			<NavbarTop isCheckoutPath={isCheckoutPathSig.value}>
@@ -64,7 +68,7 @@ export default component$(() => {
 					href='/category'
 					variant='tertiary'
 				>
-					<div q:slot='suffix'>
+					<div q: slot='suffix'>
 						<SfIconExpandMore />
 					</div>
 					<span>{t('allProductsLinkText')}</span>
@@ -90,7 +94,7 @@ export default component$(() => {
 									</svg>
 									<div class='rounded-[inherit] absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 bg-inherit pointer-events-none p-0.5'>
 										<div class='rounded-[inherit] text-center py-0.5 px-1 text-3xs font-medium min-w-[0.75rem] text-neutral-900 bg-white'>
-											{store.cart.products.length}
+											{getQuantityCart()}
 										</div>
 									</div>
 								</div>
