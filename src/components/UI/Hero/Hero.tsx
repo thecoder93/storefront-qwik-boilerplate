@@ -33,8 +33,8 @@ export const Hero = component$<HeroProps>(
 							loading='eager'
 							layout='constrained'
 							objectFit='fill'
-							width={500}
-							height={400}
+							width={764}
+							height={600}
 							alt='hero'
 							src={image}
 						/>
