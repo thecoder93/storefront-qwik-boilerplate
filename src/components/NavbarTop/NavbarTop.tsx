@@ -1,21 +1,17 @@
-import { Slot, component$, useComputed$ } from '@builder.io/qwik';
-import { Link, useLocation } from '@builder.io/qwik-city';
+import { Slot, component$ } from '@builder.io/qwik';
+import { Link } from '@builder.io/qwik-city';
 import { Image } from 'qwik-image';
 
-export const NavbarTop = component$(() => {
-	const location = useLocation();
-	const isCheckoutPathSig = useComputed$(
-		() =>
-			location.url.pathname.includes('cart') ||
-			location.url.pathname.includes('checkout') ||
-			location.url.pathname.includes('order')
-	);
+type NavBarTopProps = {
+	isCheckoutPath: boolean;
+};
 
+export const NavbarTop = component$<NavBarTopProps>(({ isCheckoutPath }) => {
 	return (
 		<header
 			class={[
 				'h-14 md:h-20 flex z-50 md:sticky md:-top-5 md:pt-2.5 md:shadow-md',
-				isCheckoutPathSig.value
+				isCheckoutPath
 					? 'bg-white text-[#02C652] border-b border-neutral-200'
 					: 'bg-primary-700 text-white',
 			]}
@@ -29,15 +25,11 @@ export const NavbarTop = component$(() => {
 						width={240}
 						height={30}
 						class='w-full h-full mt-1'
-						src={
-							isCheckoutPathSig.value
-								? '/images/SFUI.png'
-								: '/images/SFUI_white.png'
-						}
+						src={isCheckoutPath ? '/images/SFUI.png' : '/images/SFUI_white.png'}
 						alt='SFUI Logo'
 					/>
 				</Link>
-				{!isCheckoutPathSig.value && <Slot />}
+				<Slot />
 			</div>
 		</header>
 	);
