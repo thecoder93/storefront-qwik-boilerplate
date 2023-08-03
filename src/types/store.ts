@@ -9,10 +9,10 @@ export type ReadonlyStore = Readonly<Store>;
 type Cart = { products: Product[] };
 
 type Product = {
-	name: string;
-	imageUrl: string;
+	id: string;
+	quantity: number;
 };
 
 export type Actions = {
-	updateCartWithProduct: PropFunction<(name: string, imageUrl: string) => void>;
+	updateCartWithProduct: PropFunction<(id: string, quantity: number) => void>;
 };

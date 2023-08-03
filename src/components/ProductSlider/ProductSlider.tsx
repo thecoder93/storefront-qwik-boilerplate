@@ -34,22 +34,9 @@ export const ProductSlider = component$<ProductSliderProps>(
 					</svg>
 				</button> */}
 				<div class='items-center pb-4 motion-safe:scroll-smooth overflow-x-auto flex gap-4'>
-					{products.map(
-						({ id, name, description, rating, price, primaryImage, slug }) => (
-							<ProductCard
-								key={id}
-								class='max-w-[192px]'
-								name={name}
-								description={description}
-								ratingCount={rating.count}
-								rating={rating.average}
-								price={price.value.amount}
-								imageUrl={primaryImage.url}
-								imageAlt={primaryImage.alt}
-								slug={slug}
-							/>
-						)
-					)}
+					{products.map((p) => (
+						<ProductCard key={p.id} class='max-w-[192px]' product={p} />
+					))}
 				</div>
 				{/* <button
 					type='button'
