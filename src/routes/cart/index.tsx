@@ -16,7 +16,7 @@ export default component$(() => {
 				<div class='px-4 md:px-0 mb-20'>
 					<div class='flex justify-between mt-8 mb-10'>
 						<h1 class='font-bold typography-headline-3 md:typography-headline-2'>
-							{t('myCart')}
+							{t('myCart@@My Cart')}
 						</h1>
 						<a
 							class='inline-flex items-center justify-center font-medium text-base focus-visible:outline focus-visible:outline-offset rounded-md disabled:text-disabled-500 disabled:bg-disabled-300 disabled:shadow-none disabled:ring-0 disabled:cursor-not-allowed leading-5 text-sm py-1.5 px-3 gap-1.5 text-primary-700 hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900 disabled:bg-transparent flex md:hidden whitespace-nowrap'
