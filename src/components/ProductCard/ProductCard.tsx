@@ -45,7 +45,7 @@ export const ProductCard = component$<ProductCardProps>(
 							data-testid='image-slot'
 							class='object-cover rounded-md aspect-square w-full h-full'
 							src={product.primaryImage.url}
-							alt={product.primaryImage.alt || 'primary image'}
+							alt={product.primaryImage.alt}
 						/>
 					</SfLink>
 				</div>

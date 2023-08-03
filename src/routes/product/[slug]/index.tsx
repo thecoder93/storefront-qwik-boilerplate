@@ -10,12 +10,12 @@ import { generateDocumentHead } from '~/shared/utils';
 import type { Product } from '~/types/product';
 
 export const useProductLoader = routeLoader$(
-	async ({ params, fail }): Promise<Product | undefined> => {
+	async ({ params, fail, env }): Promise<Product | undefined> => {
 		if (!params.slug) {
 			fail(500, {});
 		}
 		const response = await fetch(
-			`http://localhost:5173/api/products/${params.slug}`
+			`${env.get('HOST')}/api/products/${params.slug}`
 		);
 		return response.ok ? await response.json() : undefined;
 	}
