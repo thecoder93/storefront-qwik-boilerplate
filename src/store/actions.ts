@@ -6,6 +6,7 @@ export const actions = (store: Store) => ({
 		const product = [...store.cart.products].find((p) => p.id === id);
 		if (product) {
 			product.quantity += quantity;
+			store.cart.products = [...store.cart.products];
 		} else {
 			store.cart.products = [...store.cart.products, { id, quantity }];
 		}
