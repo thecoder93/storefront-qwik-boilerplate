@@ -9,7 +9,7 @@ import {
 	SfLink,
 	SfRating,
 } from 'qwik-storefront-ui';
-import { CartContext } from '~/routes/layout';
+import { ACTIONS_CONTEXT } from '~/shared/constants';
 
 export type ProductCardProps = {
 	name: string;
@@ -37,9 +37,7 @@ export const ProductCard = component$<ProductCardProps>(
 		...attributes
 	}) => {
 		const t = useTranslate();
-		const cartContext = useContext(CartContext);
-
-
+		const actions = useContext(ACTIONS_CONTEXT);
 
 		return (
 			<div
@@ -97,12 +95,10 @@ export const ProductCard = component$<ProductCardProps>(
 							type='button'
 							size='sm'
 							class='inline-flex items-center justify-center font-medium text-base focus-visible:outline focus-visible:outline-offset rounded-md disabled:text-disabled-500 disabled:bg-disabled-300 disabled:shadow-none disabled:ring-0 disabled:cursor-not-allowed leading-5 text-sm py-1.5 px-3 gap-1.5 text-white shadow hover:shadow-md active:shadow bg-primary-700 hover:bg-primary-800 active:bg-primary-900 disabled:bg-disabled-300'
-							onClick$={() => {
-								cartContext.lineItems = [...cartContext.lineItems, { name, imageUrl }]
-							}}
+							onClick$={() => actions.updateCartWithProduct(name, imageUrl)}
 						>
 							{t('addToCartShort@@Add')}
-							<div q: slot='prefix'>
+							<div q:slot='prefix'>
 								<SfIconShoppingCart size='sm' class='w-5 h-5' />
 							</div>
 						</SfButton>
@@ -110,6 +106,5 @@ export const ProductCard = component$<ProductCardProps>(
 				</div>
 			</div>
 		);
-
 	}
 );

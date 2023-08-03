@@ -1,28 +1,9 @@
 import { component$ } from '@builder.io/qwik';
+import type { Product } from '~/types/product';
 import { ProductCard } from '../ProductCard/ProductCard';
 
 type ProductSliderProps = {
-	products: {
-		id: string;
-		slug: string;
-		name: string;
-		sku: string;
-		rating: { average: number; count: number };
-		price: {
-			isDiscounted: boolean;
-			regularPrice: {
-				currency: string;
-				amount: number;
-				precisionAmount: string;
-			};
-			value: { currency: string; amount: number; precisionAmount: string };
-		};
-		primaryImage: {
-			alt: string;
-			url: string;
-		};
-		description: string;
-	}[];
+	products: Product[];
 	class?: string;
 };
 

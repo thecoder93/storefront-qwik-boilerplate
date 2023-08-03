@@ -1,4 +1,4 @@
-import { $, component$, createContextId, Slot, useContextProvider, useStore, useVisibleTask$ } from '@builder.io/qwik';
+import { $, component$, Slot } from '@builder.io/qwik';
 import { routeAction$, type RequestHandler } from '@builder.io/qwik-city';
 import type { ImageTransformerProps } from 'qwik-image';
 import { useImageProvider } from 'qwik-image';
@@ -9,6 +9,7 @@ import { NavbarTop } from '~/components/NavbarTop/NavbarTop';
 import { ScrollToTopButton } from '~/components/ScrollToTopButton/ScrollToTopButton';
 import { Search } from '~/components/search/search';
 import { sleep } from '~/shared/utils';
+import { useAppStore } from '~/store';
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
 	cacheControl({
@@ -22,38 +23,9 @@ export const useAddressForm = routeAction$(async () => {
 	return { success: true };
 });
 
-type Cart = {
-	lineItems: LineItems[]
-}
-
-type LineItems = {
-	name: string,
-	imageUrl: string
-}
-
-
-export const CartContext = createContextId<Cart>('cart-context');
-
 export default component$(() => {
 	const t = useTranslate();
-	const cart = useStore<Cart>({
-		lineItems: []
-	});
-
-	useContextProvider(CartContext, cart);
-
-	useVisibleTask$(async ({
-		track
-	}) => {
-		track(() => {
-			return cart.lineItems
-		})
-		if (cart.lineItems.length === 0 && localStorage.getItem('cart.lineItems') !== null) {
-			cart.lineItems = JSON.parse(localStorage.getItem('cart.lineItems') || '[]')
-		} else {
-			localStorage.setItem('cart.lineItems', JSON.stringify(cart.lineItems))
-		}
-	});
+	const store = useAppStore();
 
 	useImageProvider({
 		imageTransformer$: $(
@@ -71,7 +43,7 @@ export default component$(() => {
 					href='/category'
 					variant='tertiary'
 				>
-					<div q: slot='suffix'>
+					<div q:slot='suffix'>
 						<SfIconExpandMore />
 					</div>
 					<span>{t('allProductsLinkText')}</span>
@@ -95,7 +67,7 @@ export default component$(() => {
 							</svg>
 							<div class='rounded-[inherit] absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 bg-inherit pointer-events-none p-0.5'>
 								<div class='rounded-[inherit] text-center py-0.5 px-1 text-3xs font-medium min-w-[0.75rem] text-neutral-900 bg-white'>
-									{cart.lineItems.length}
+									{store.cart.products.length}
 								</div>
 							</div>
 						</div>
