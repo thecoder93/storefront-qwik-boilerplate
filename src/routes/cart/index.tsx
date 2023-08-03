@@ -1,6 +1,6 @@
 import { component$, useContext } from '@builder.io/qwik';
 import { useTranslate } from 'qwik-speak';
-import { CartProductCard } from '~/components/CartProductCard/cartproductcard';
+import { CartProductCard } from '~/components/CartProductCard/CartProductCard';
 import { products } from '~/mocks';
 import { STORE_CONTEXT } from '~/shared/constants';
 
