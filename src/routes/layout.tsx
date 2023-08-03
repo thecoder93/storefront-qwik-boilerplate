@@ -56,8 +56,12 @@ export default component$(() => {
 	});
 
 	const getQuantityCart = () => {
-		return store.cart.products.map(item => { return item.quantity; }).reduce((acc, currentValue) => acc + currentValue, 0);
-	}
+		return store.cart.products
+			.map((item) => {
+				return item.quantity;
+			})
+			.reduce((acc, currentValue) => acc + currentValue, 0);
+	};
 
 	return (
 		<>
@@ -68,7 +72,7 @@ export default component$(() => {
 					href='/category'
 					variant='tertiary'
 				>
-					<div q: slot='suffix'>
+					<div q:slot='suffix'>
 						<SfIconExpandMore />
 					</div>
 					<span>{t('allProductsLinkText')}</span>

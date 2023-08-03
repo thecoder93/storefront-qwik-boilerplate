@@ -313,10 +313,12 @@ export default component$(() => {
 											type='button'
 											size='sm'
 											class='inline-flex items-center justify-center font-medium text-base focus-visible:outline focus-visible:outline-offset rounded-md disabled:text-disabled-500 disabled:bg-disabled-300 disabled:shadow-none disabled:ring-0 disabled:cursor-not-allowed py-3 leading-6 px-6 gap-3 text-white shadow hover:shadow-md active:shadow bg-primary-700 hover:bg-primary-800 active:bg-primary-900 disabled:bg-disabled-300 flex-grow-[2] flex-shrink basis-auto whitespace-nowrap'
-											onClick$={() => actions.updateCartWithProduct(product.value.id, 1)}
+											onClick$={() =>
+												actions.updateCartWithProduct(product.value.id, 1)
+											}
 										>
 											{t('addToCart@@Add to cart')}
-											<div q: slot='prefix'>
+											<div q:slot='prefix'>
 												<SfIconShoppingCart size='sm' class='w-5 h-5' />
 											</div>
 										</SfButton>
