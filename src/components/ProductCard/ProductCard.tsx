@@ -10,6 +10,7 @@ import {
 	SfRating,
 } from 'qwik-storefront-ui';
 import { ACTIONS_CONTEXT } from '~/shared/constants';
+import { formatPrice } from '~/shared/utils';
 import type { Product } from '~/types/product';
 
 export type ProductCardProps = {
@@ -72,7 +73,10 @@ export const ProductCard = component$<ProductCardProps>(
 							class='block pb-2 font-bold typography-text-sm pt-2'
 							data-testid='product-card-vertical-price'
 						>
-							${product.price.value.amount}
+							{formatPrice(
+								product.price.value.amount,
+								product.price.value.precisionAmount
+							)}
 						</span>
 						<SfButton
 							type='button'

@@ -5,6 +5,7 @@ import { useTranslate } from 'qwik-speak';
 import { SfButton, SfIconShoppingCart, SfRating } from 'qwik-storefront-ui';
 import { Pagination } from '~/components/Pagination/Pagination';
 import { ACTIONS_CONTEXT } from '~/shared/constants';
+import { formatPrice } from '~/shared/utils';
 import type { Product } from '~/types/product';
 
 export const useProductsLoader = routeLoader$(async ({ env, query }) => {
@@ -800,7 +801,10 @@ export default component$(() => {
 														class='block font-bold typography-text-sm'
 														data-testid='product-card-vertical-price'
 													>
-														${product.price.value.amount}
+														{formatPrice(
+															product.price.value.amount,
+															product.price.value.precisionAmount
+														)}
 													</span>
 													<SfButton
 														type='button'
