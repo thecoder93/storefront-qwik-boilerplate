@@ -741,28 +741,28 @@ export default component$(() => {
 									</button>
 								</div>
 								<section
-									class='grid grid-cols-1 2xs:grid-cols-2 gap-4 md:gap-6 md:grid-cols-2 lg:grid-cols-3 3xl:grid-cols-4 mb-10 md:mb-5'
+									class='flex flex-row flex-wrap justify-between gap-4'
 									data-testid='category-grid'
 								>
 									{products.value.products.map((product) => (
 										<div
 											key={product.slug}
-											class='border border-neutral-200 rounded-md hover:shadow-lg flex-auto flex-shrink-0 max-w-[260px]'
+											class='border border-neutral-200 rounded-md hover:shadow-lg flex-auto flex-shrink-0 w-[230px] min-w-[230px] max-w-[230px]'
 											data-testid='product-card'
 										>
 											<div class='relative'>
 												<a
-													class='focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm text-primary-700 underline hover:text-primary-800 active:text-primary-900 relative block w-[249px] mx-auto'
+													class='focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm text-primary-700 underline hover:text-primary-800 active:text-primary-900 relative block w-[230px] p-1'
 													data-testid='link'
 													href={`/product/${product.slug}`}
 												>
 													<Image
 														loading='eager'
 														layout='fixed'
-														width={240}
-														height={240}
+														width={230}
+														height={230}
 														data-testid='image-slot'
-														class='object-cover rounded-md aspect-square w-full h-full mx-auto my-1'
+														class='object-cover rounded-md aspect-square w-full h-full'
 														src={product.image.url}
 														alt={product.image.alt}
 													/>
@@ -825,6 +825,7 @@ export default component$(() => {
 									))}
 								</section>
 								<Pagination
+									class='mt-6'
 									initialPage={initialPageSig.value}
 									totalPages={products.value.totalPages}
 									onPrevPage={onPageChange}

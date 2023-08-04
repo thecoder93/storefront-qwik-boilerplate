@@ -8,6 +8,7 @@ import {
 } from 'qwik-storefront-ui';
 
 export interface PaginationProps {
+	class: string;
 	initialPage: number;
 	totalPages: number;
 	onPrevPage: PropFunction<(page: number) => void>;
@@ -15,7 +16,7 @@ export interface PaginationProps {
 }
 
 export const Pagination = component$<PaginationProps>(
-	({ initialPage, totalPages, onPrevPage, onNextPage }) => {
+	({ class: _class, initialPage, totalPages, onPrevPage, onNextPage }) => {
 		const t = useTranslate();
 		const selectedPageSig = useSignal(
 			Math.max(1, Math.min(initialPage, totalPages))
@@ -23,7 +24,10 @@ export const Pagination = component$<PaginationProps>(
 
 		return (
 			<nav
-				class='flex justify-between items-center border-t border-neutral-200'
+				class={[
+					'flex justify-between items-center border-t border-neutral-200',
+					_class,
+				]}
 				role='navigation'
 				aria-label='pagination'
 				data-testid='pagination'
