@@ -1,4 +1,5 @@
 import { component$, useContext } from '@builder.io/qwik';
+import { Link } from '@builder.io/qwik-city';
 import { useTranslate } from 'qwik-speak';
 import { CartProductCard } from '~/components/CartProductCard/CartProductCard';
 import { OrderSummary } from '~/components/OrderSummary/OrderSummary';
@@ -69,13 +70,13 @@ export default component$(() => {
 							})}
 						</div>
 						<OrderSummary>
-							<a
+							<Link
 								class='inline-flex items-center justify-center font-medium text-base focus-visible:outline focus-visible:outline-offset rounded-md disabled:text-disabled-500 disabled:bg-disabled-300 disabled:shadow-none disabled:ring-0 disabled:cursor-not-allowed py-3 leading-6 px-6 gap-3 text-white shadow hover:shadow-md active:shadow bg-primary-700 hover:bg-primary-800 active:bg-primary-900 disabled:bg-disabled-300 w-full mb-4 md:mb-0'
 								data-testid='button'
 								href='/checkout'
 							>
-								Go to checkout
-							</a>
+								{t('goToCheckout')}
+							</Link>
 						</OrderSummary>
 					</div>
 				</div>

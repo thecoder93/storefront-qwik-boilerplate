@@ -26,11 +26,7 @@ export const useAppStore = () => {
 		track(() => store.cart.products);
 
 		const localStorageData = localStorage.getItem(LOCAL_STORAGE_CART_KEY);
-		if (
-			isStoreInitializedSig.value === false &&
-			store.cart.products.length === 0 &&
-			localStorageData
-		) {
+		if (!isStoreInitializedSig.value && localStorageData) {
 			isStoreInitializedSig.value = true;
 			store.cart = JSON.parse(localStorageData);
 		} else {

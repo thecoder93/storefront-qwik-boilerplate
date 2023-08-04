@@ -1,9 +1,13 @@
-import { component$ } from '@builder.io/qwik';
+import { component$, useContext } from '@builder.io/qwik';
 import { Image } from 'qwik-image';
+import { useTranslate } from 'qwik-speak';
 import { OrderSummary } from '~/components/OrderSummary/OrderSummary';
 import { Divider } from '~/components/UI/Divider/Divider';
+import { ACTIONS_CONTEXT } from '~/shared/constants';
 
 export default component$(() => {
+	const t = useTranslate();
+	const actions = useContext(ACTIONS_CONTEXT);
 	return (
 		<main data-testid='checkout-layout'>
 			<div
@@ -247,25 +251,28 @@ export default component$(() => {
 								class='inline-flex items-center justify-center font-medium text-base focus-visible:outline focus-visible:outline-offset rounded-md disabled:text-disabled-500 disabled:bg-disabled-300 disabled:shadow-none disabled:ring-0 disabled:cursor-not-allowed py-3 leading-6 px-6 gap-3 text-white shadow hover:shadow-md active:shadow bg-primary-700 hover:bg-primary-800 active:bg-primary-900 disabled:bg-disabled-300 w-full mb-4 md:mb-0'
 								data-testid='button'
 								href='/order/success'
+								onClick$={() => {
+									actions.getCartQuantity();
+								}}
 							>
-								Place order and pay
+								{t('placeOrder')}
 							</a>
 							<p class='text-sm text-center mt-4 pb-4 md:pb-0'>
-								By placing my order, you agree to our{' '}
+								{t('termsInfo1')}{' '}
 								<a
 									class='focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm text-primary-700 underline hover:text-primary-800 active:text-primary-900 focus:outline focus:outline-offset-2 focus:outline-2 outline-secondary-600 rounded'
 									data-testid='link'
 									href='/checkout#'
 								>
-									Terms and Conditions
+									{t('termsInfo2')}
 								</a>{' '}
-								and our{' '}
+								{t('termsInfo3')}{' '}
 								<a
 									class='focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm text-primary-700 underline hover:text-primary-800 active:text-primary-900 focus:outline focus:outline-offset-2 focus:outline-2 outline-secondary-600 rounded'
 									data-testid='link'
 									href='/checkout#'
 								>
-									Privacy Policy
+									{t('termsInfo4')}
 								</a>
 							</p>
 						</OrderSummary>

@@ -1,7 +1,7 @@
 {
 	"myCart": "My Cart",
 	"orderSummary": "Order Summary",
-	"itemsInCart": "(Items: {{count}})",
+	"itemsInCart": "Items:",
 	"itemsSubtotal": "Items subtotal",
 	"originalPrice": "Original price",
 	"savings": "Savings",
