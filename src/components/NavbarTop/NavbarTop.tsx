@@ -25,7 +25,9 @@ export const NavbarTop = component$<NavBarTopProps>(({ isCheckoutPath }) => {
 						width={240}
 						height={30}
 						class='w-full h-full mt-1'
-						src={isCheckoutPath ? '/images/SFUI.png' : '/images/SFUI_white.png'}
+						src={
+							isCheckoutPath ? '/images/SFUI.webp' : '/images/SFUI_white.webp'
+						}
 						alt='SFUI Logo'
 					/>
 				</Link>
