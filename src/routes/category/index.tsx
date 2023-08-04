@@ -763,8 +763,8 @@ export default component$(() => {
 														height={240}
 														data-testid='image-slot'
 														class='object-cover rounded-md aspect-square w-full h-full mx-auto my-1'
-														src={product.primaryImage.url}
-														alt={product.primaryImage.alt}
+														src={product.image.url}
+														alt={product.image.alt}
 													/>
 												</a>
 											</div>
@@ -802,8 +802,8 @@ export default component$(() => {
 														data-testid='product-card-vertical-price'
 													>
 														{formatPrice(
-															product.price.value.amount,
-															product.price.value.precisionAmount
+															product.price.discounted.amount,
+															product.price.discounted.precisionAmount
 														)}
 													</span>
 													<SfButton

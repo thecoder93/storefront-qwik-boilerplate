@@ -33,21 +33,23 @@ export const CartProductCard = component$<CartProductCardProps>(
 							height={300}
 							data-testid='image-slot'
 							class='object-cover rounded-md aspect-square w-full h-full'
-							src={product.primaryImage.url}
-							alt={product.primaryImage.alt}
+							src={product.image.url}
+							alt={product.image.alt}
 						/>
 					</a>
-					<div class='absolute top-0 left-0 text-white bg-secondary-600 py-1 pl-1.5 pr-2 text-xs font-medium'>
-						<svg
-							viewBox='0 0 24 24'
-							data-testid='sell'
-							xmlns='http://www.w3.org/2000/svg'
-							class='inline-block fill-current w-4 h-4 mr-1'
-						>
-							<path d='M14.25 21.4c-.383.383-.858.575-1.425.575-.567 0-1.042-.192-1.425-.575l-8.8-8.8a2.069 2.069 0 0 1-.6-1.45V4c0-.55.196-1.021.588-1.413A1.925 1.925 0 0 1 4 2h7.15c.283 0 .55.054.8.162.25.109.467.255.65.438l8.8 8.825c.383.383.575.854.575 1.412a1.92 1.92 0 0 1-.575 1.413l-7.15 7.15ZM6.5 8c.417 0 .77-.146 1.062-.438C7.854 7.271 8 6.917 8 6.5c0-.417-.146-.77-.438-1.062A1.444 1.444 0 0 0 6.5 5c-.417 0-.77.146-1.062.438A1.444 1.444 0 0 0 5 6.5c0 .417.146.77.438 1.062.291.292.645.438 1.062.438Z'></path>
-						</svg>
-						{t('sale')}
-					</div>
+					{product.price.isDiscounted && (
+						<div class='absolute top-0 left-0 text-white bg-secondary-600 py-1 pl-1.5 pr-2 text-xs font-medium'>
+							<svg
+								viewBox='0 0 24 24'
+								data-testid='sell'
+								xmlns='http://www.w3.org/2000/svg'
+								class='inline-block fill-current w-4 h-4 mr-1'
+							>
+								<path d='M14.25 21.4c-.383.383-.858.575-1.425.575-.567 0-1.042-.192-1.425-.575l-8.8-8.8a2.069 2.069 0 0 1-.6-1.45V4c0-.55.196-1.021.588-1.413A1.925 1.925 0 0 1 4 2h7.15c.283 0 .55.054.8.162.25.109.467.255.65.438l8.8 8.825c.383.383.575.854.575 1.412a1.92 1.92 0 0 1-.575 1.413l-7.15 7.15ZM6.5 8c.417 0 .77-.146 1.062-.438C7.854 7.271 8 6.917 8 6.5c0-.417-.146-.77-.438-1.062A1.444 1.444 0 0 0 6.5 5c-.417 0-.77.146-1.062.438A1.444 1.444 0 0 0 5 6.5c0 .417.146.77.438 1.062.291.292.645.438 1.062.438Z'></path>
+							</svg>
+							{t('sale')}
+						</div>
+					)}
 				</div>
 				<div class='flex flex-col pl-4 min-w-[180px] flex-1'>
 					<a
@@ -85,15 +87,17 @@ export const CartProductCard = component$<CartProductCardProps>(
 					</div>
 					<div class='items-start sm:items-center mt-auto flex flex-col sm:flex-row'>
 						<span class='flex flex-col items-end text-secondary-700 sm:order-1 font-bold typography-text-sm sm:typography-text-lg sm:ml-auto'>
-							<span class='text-neutral-500 ml-2 line-through typography-text-xs sm:typography-text-sm font-normal'>
-								{formatPrice(
-									product.price.regularPrice.amount * quantity,
-									product.price.regularPrice.precisionAmount
-								)}
-							</span>
+							{product.price.isDiscounted && (
+								<span class='text-neutral-500 ml-2 line-through typography-text-xs sm:typography-text-sm font-normal'>
+									{formatPrice(
+										product.price.regular.amount * quantity,
+										product.price.regular.precisionAmount
+									)}
+								</span>
+							)}
 							{formatPrice(
-								product.price.value.amount * quantity,
-								product.price.value.precisionAmount
+								product.price.discounted.amount * quantity,
+								product.price.discounted.precisionAmount
 							)}
 						</span>
 						<div

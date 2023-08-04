@@ -45,8 +45,8 @@ export const ProductCard = component$<ProductCardProps>(
 							height={300}
 							data-testid='image-slot'
 							class='object-cover rounded-md aspect-square w-full h-full'
-							src={product.primaryImage.url}
-							alt={product.primaryImage.alt}
+							src={product.image.url}
+							alt={product.image.alt}
 						/>
 					</SfLink>
 				</div>
@@ -74,8 +74,8 @@ export const ProductCard = component$<ProductCardProps>(
 							data-testid='product-card-vertical-price'
 						>
 							{formatPrice(
-								product.price.value.amount,
-								product.price.value.precisionAmount
+								product.price.discounted.amount,
+								product.price.discounted.precisionAmount
 							)}
 						</span>
 						<SfButton

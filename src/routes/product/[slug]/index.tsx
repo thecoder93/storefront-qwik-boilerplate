@@ -115,8 +115,8 @@ export default component$(() => {
 													height={600}
 													data-testid='image-slot'
 													class='rounded-md aspect-square'
-													src={product.value.primaryImage.url}
-													alt={product.value.primaryImage.alt}
+													src={product.value.image.url}
+													alt={product.value.image.alt}
 													placeholder={IMAGE_PLACHEHOLDER}
 												/>
 											</div>
@@ -191,17 +191,19 @@ export default component$(() => {
 								class='p-4 xl:p-6 md:border md:border-neutral-100 md:shadow-lg md:rounded-md md:sticky md:top-20'
 								data-testid='purchase-card'
 							>
-								<div class='inline-flex items-center justify-center text-white font-medium rounded-none text-secondary-800 bg-secondary-800 text-sm p-1.5 gap-1.5 mb-4'>
-									<svg
-										viewBox='0 0 24 24'
-										data-testid='sell'
-										xmlns='http://www.w3.org/2000/svg'
-										class='inline-block fill-current w-5 h-5 ml-1'
-									>
-										<path d='M14.25 21.4c-.383.383-.858.575-1.425.575-.567 0-1.042-.192-1.425-.575l-8.8-8.8a2.069 2.069 0 0 1-.6-1.45V4c0-.55.196-1.021.588-1.413A1.925 1.925 0 0 1 4 2h7.15c.283 0 .55.054.8.162.25.109.467.255.65.438l8.8 8.825c.383.383.575.854.575 1.412a1.92 1.92 0 0 1-.575 1.413l-7.15 7.15ZM6.5 8c.417 0 .77-.146 1.062-.438C7.854 7.271 8 6.917 8 6.5c0-.417-.146-.77-.438-1.062A1.444 1.444 0 0 0 6.5 5c-.417 0-.77.146-1.062.438A1.444 1.444 0 0 0 5 6.5c0 .417.146.77.438 1.062.291.292.645.438 1.062.438Z'></path>
-									</svg>
-									<span class='mr-1'>Sale</span>
-								</div>
+								{product.value.price.isDiscounted && (
+									<div class='inline-flex items-center justify-center text-white font-medium rounded-none text-secondary-800 bg-secondary-800 text-sm p-1.5 gap-1.5 mb-4'>
+										<svg
+											viewBox='0 0 24 24'
+											data-testid='sell'
+											xmlns='http://www.w3.org/2000/svg'
+											class='inline-block fill-current w-5 h-5 ml-1'
+										>
+											<path d='M14.25 21.4c-.383.383-.858.575-1.425.575-.567 0-1.042-.192-1.425-.575l-8.8-8.8a2.069 2.069 0 0 1-.6-1.45V4c0-.55.196-1.021.588-1.413A1.925 1.925 0 0 1 4 2h7.15c.283 0 .55.054.8.162.25.109.467.255.65.438l8.8 8.825c.383.383.575.854.575 1.412a1.92 1.92 0 0 1-.575 1.413l-7.15 7.15ZM6.5 8c.417 0 .77-.146 1.062-.438C7.854 7.271 8 6.917 8 6.5c0-.417-.146-.77-.438-1.062A1.444 1.444 0 0 0 6.5 5c-.417 0-.77.146-1.062.438A1.444 1.444 0 0 0 5 6.5c0 .417.146.77.438 1.062.291.292.645.438 1.062.438Z'></path>
+										</svg>
+										<span class='mr-1'>Sale</span>
+									</div>
+								)}
 								<h1
 									class='mb-1 font-bold typography-headline-4'
 									data-testid='product-name'
@@ -213,11 +215,13 @@ export default component$(() => {
 										class='mr-2 text-secondary-700 font-bold font-headings text-2xl'
 										data-testid='price'
 									>
-										${product.value.price.value.amount}
+										${product.value.price.discounted.amount}
 									</span>
-									<span class='text-base font-normal text-neutral-500 line-through'>
-										${product.value.price.regularPrice.amount}
-									</span>
+									{product.value.price.isDiscounted && (
+										<span class='text-base font-normal text-neutral-500 line-through'>
+											${product.value.price.regular.amount}
+										</span>
+									)}
 								</div>
 								<div class='inline-flex items-center mb-2'>
 									<SfRating
@@ -1085,6 +1089,6 @@ export const head: DocumentHead = ({ resolveValue, url }) => {
 		url.href,
 		product.name,
 		product.description,
-		product.primaryImage.url
+		product.image.url
 	);
 };

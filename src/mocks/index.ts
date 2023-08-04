@@ -1,3 +1,5 @@
+import type { Product } from '~/types/product';
+
 export * from './footerData';
 export * from './sortingOptions';
 
@@ -75,7 +77,7 @@ export const display = [
 	},
 ];
 
-export const products = [
+export const products: Product[] = [
 	{
 		id: '1',
 		slug: 'athletic-sneakers',
@@ -85,14 +87,11 @@ export const products = [
 		sku: 'product-1',
 		rating: { average: 4, count: 26 },
 		price: {
-			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 89.95, precisionAmount: 2 },
-			value: { currency: 'USD', amount: 100.99, precisionAmount: 2 },
+			isDiscounted: false,
+			regular: { currency: 'USD', amount: 100.95, precisionAmount: 2 },
+			discounted: { currency: 'USD', amount: 100.95, precisionAmount: 2 },
 		},
-		primaryImage: {
-			alt: 'Athletic sneakers',
-			url: '/images/product.webp',
-		},
+		image: { alt: 'Athletic sneakers', url: '/images/product.webp' },
 	},
 	{
 		id: '1',
@@ -104,10 +103,10 @@ export const products = [
 		rating: { average: 5, count: 610 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 1558.8, precisionAmount: 2 },
-			value: { currency: 'USD', amount: 1358.8, precisionAmount: 2 },
+			regular: { currency: 'USD', amount: 1558.8, precisionAmount: 2 },
+			discounted: { currency: 'USD', amount: 1358.8, precisionAmount: 2 },
 		},
-		primaryImage: {
+		image: {
 			alt: 'Laptop',
 			url: 'https://demo.vendure.io/assets/preview/71/derick-david-409858-unsplash__preview.jpg',
 		},
@@ -121,11 +120,11 @@ export const products = [
 		sku: 'product-2',
 		rating: { average: 4.1, count: 111 },
 		price: {
-			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 485.99, precisionAmount: 2 },
-			value: { currency: 'USD', amount: 385.99, precisionAmount: 2 },
+			isDiscounted: false,
+			regular: { currency: 'USD', amount: 485.99, precisionAmount: 2 },
+			discounted: { currency: 'USD', amount: 485.99, precisionAmount: 2 },
 		},
-		primaryImage: {
+		image: {
 			alt: 'Tablet',
 			url: 'https://demo.vendure.io/assets/preview/b8/kelly-sikkema-685291-unsplash__preview.jpg',
 		},
@@ -139,11 +138,11 @@ export const products = [
 		sku: 'product-3',
 		rating: { average: 4, count: 245 },
 		price: {
-			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 25.19, precisionAmount: 2 },
-			value: { currency: 'USD', amount: 22.79, precisionAmount: 2 },
+			isDiscounted: false,
+			regular: { currency: 'USD', amount: 25.19, precisionAmount: 2 },
+			discounted: { currency: 'USD', amount: 25.19, precisionAmount: 2 },
 		},
-		primaryImage: {
+		image: {
 			alt: 'Wireless Optical Mouse',
 			url: 'https://demo.vendure.io/assets/preview/a1/oscar-ivan-esquivel-arteaga-687447-unsplash__preview.jpg',
 		},
@@ -158,10 +157,10 @@ export const products = [
 		rating: { average: 3, count: 591 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 372.19, precisionAmount: 2 },
-			value: { currency: 'USD', amount: 250.19, precisionAmount: 2 },
+			regular: { currency: 'USD', amount: 372.19, precisionAmount: 2 },
+			discounted: { currency: 'USD', amount: 250.19, precisionAmount: 2 },
 		},
-		primaryImage: {
+		image: {
 			alt: '32-Inch Monitor',
 			url: 'https://demo.vendure.io/assets/preview/d2/daniel-korpai-1302051-unsplash__preview.jpg',
 		},
@@ -176,10 +175,10 @@ export const products = [
 		rating: { average: 5, count: 456 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 203.95, precisionAmount: 2 },
-			value: { currency: 'USD', amount: 172.99, precisionAmount: 2 },
+			regular: { currency: 'USD', amount: 203.95, precisionAmount: 2 },
+			discounted: { currency: 'USD', amount: 172.99, precisionAmount: 2 },
 		},
-		primaryImage: {
+		image: {
 			alt: 'Curvy Monitor',
 			url: 'https://demo.vendure.io/assets/preview/9c/alexandru-acea-686569-unsplash__preview.jpg',
 		},
@@ -194,10 +193,10 @@ export const products = [
 		rating: { average: 5, count: 89 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 178.79, precisionAmount: 2 },
-			value: { currency: 'USD', amount: 150.19, precisionAmount: 2 },
+			regular: { currency: 'USD', amount: 178.79, precisionAmount: 2 },
+			discounted: { currency: 'USD', amount: 150.19, precisionAmount: 2 },
 		},
-		primaryImage: {
+		image: {
 			alt: 'High Performance RAM',
 			url: 'https://demo.vendure.io/assets/preview/58/liam-briese-1128307-unsplash__preview.jpg',
 		},
@@ -211,11 +210,11 @@ export const products = [
 		sku: 'product-7',
 		rating: { average: 4, count: 365 },
 		price: {
-			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 1590.95, precisionAmount: 2 },
-			value: { currency: 'USD', amount: 1150.99, precisionAmount: 2 },
+			isDiscounted: false,
+			regular: { currency: 'USD', amount: 1590.95, precisionAmount: 2 },
+			discounted: { currency: 'USD', amount: 1590.95, precisionAmount: 2 },
 		},
-		primaryImage: {
+		image: {
 			alt: 'Gaming PC',
 			url: 'https://demo.vendure.io/assets/preview/5a/florian-olivo-1166419-unsplash__preview.jpg',
 		},
@@ -229,11 +228,11 @@ export const products = [
 		sku: 'product-8',
 		rating: { average: 4, count: 765 },
 		price: {
-			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 100.95, precisionAmount: 2 },
-			value: { currency: 'USD', amount: 45.99, precisionAmount: 2 },
+			isDiscounted: false,
+			regular: { currency: 'USD', amount: 100.95, precisionAmount: 2 },
+			discounted: { currency: 'USD', amount: 100.95, precisionAmount: 2 },
 		},
-		primaryImage: {
+		image: {
 			alt: 'Hard Drive',
 			url: 'https://demo.vendure.io/assets/preview/96/vincent-botta-736919-unsplash__preview.jpg',
 		},
@@ -247,11 +246,11 @@ export const products = [
 		sku: 'product-9',
 		rating: { average: 4, count: 62 },
 		price: {
-			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 120.95, precisionAmount: 2 },
-			value: { currency: 'USD', amount: 89.99, precisionAmount: 2 },
+			isDiscounted: false,
+			regular: { currency: 'USD', amount: 120.95, precisionAmount: 2 },
+			discounted: { currency: 'USD', amount: 120.95, precisionAmount: 2 },
 		},
-		primaryImage: {
+		image: {
 			alt: 'Clacky Keyboard',
 			url: 'https://demo.vendure.io/assets/preview/09/juan-gomez-674574-unsplash__preview.jpg',
 		},
@@ -266,10 +265,10 @@ export const products = [
 		rating: { average: 5, count: 1670 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 10.95, precisionAmount: 2 },
-			value: { currency: 'USD', amount: 7.99, precisionAmount: 2 },
+			regular: { currency: 'USD', amount: 10.95, precisionAmount: 2 },
+			discounted: { currency: 'USD', amount: 7.99, precisionAmount: 2 },
 		},
-		primaryImage: {
+		image: {
 			alt: 'Ethernet Cable',
 			url: 'https://demo.vendure.io/assets/preview/7b/thomas-q-1229169-unsplash__preview.jpg',
 		},
@@ -283,11 +282,11 @@ export const products = [
 		sku: 'product-11',
 		rating: { average: 4, count: 3489 },
 		price: {
-			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 15.95, precisionAmount: 2 },
-			value: { currency: 'USD', amount: 12.99, precisionAmount: 2 },
+			isDiscounted: false,
+			regular: { currency: 'USD', amount: 15.95, precisionAmount: 2 },
+			discounted: { currency: 'USD', amount: 15.95, precisionAmount: 2 },
 		},
-		primaryImage: {
+		image: {
 			alt: 'USB Cable',
 			url: 'https://demo.vendure.io/assets/preview/64/adam-birkett-239153-unsplash__preview.jpg',
 		},
@@ -301,11 +300,11 @@ export const products = [
 		sku: 'product-12',
 		rating: { average: 4, count: 54 },
 		price: {
-			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 250.99, precisionAmount: 2 },
-			value: { currency: 'USD', amount: 209.79, precisionAmount: 2 },
+			isDiscounted: false,
+			regular: { currency: 'USD', amount: 250.99, precisionAmount: 2 },
+			discounted: { currency: 'USD', amount: 250.99, precisionAmount: 2 },
 		},
-		primaryImage: {
+		image: {
 			alt: 'Instant Camera',
 			url: 'https://demo.vendure.io/assets/preview/b5/eniko-kis-663725-unsplash__preview.jpg',
 		},
@@ -320,10 +319,10 @@ export const products = [
 		rating: { average: 3, count: 126 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 200.19, precisionAmount: 2 },
-			value: { currency: 'USD', amount: 125.99, precisionAmount: 2 },
+			regular: { currency: 'USD', amount: 200.19, precisionAmount: 2 },
+			discounted: { currency: 'USD', amount: 125.99, precisionAmount: 2 },
 		},
-		primaryImage: {
+		image: {
 			alt: 'Camera Lens',
 			url: 'https://demo.vendure.io/assets/preview/9b/brandi-redd-104140-unsplash__preview.jpg',
 		},
@@ -338,10 +337,10 @@ export const products = [
 		rating: { average: 5, count: 12 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 6450.19, precisionAmount: 2 },
-			value: { currency: 'USD', amount: 6400.99, precisionAmount: 2 },
+			regular: { currency: 'USD', amount: 6450.19, precisionAmount: 2 },
+			discounted: { currency: 'USD', amount: 6400.99, precisionAmount: 2 },
 		},
-		primaryImage: {
+		image: {
 			alt: 'Vintage Folding Camera',
 			url: 'https://demo.vendure.io/assets/preview/3c/jonathan-talbert-697262-unsplash__preview.jpg',
 		},
@@ -355,11 +354,11 @@ export const products = [
 		sku: 'product-15',
 		rating: { average: 4, count: 1252 },
 		price: {
-			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 20.55, precisionAmount: 2 },
-			value: { currency: 'USD', amount: 17.99, precisionAmount: 2 },
+			isDiscounted: false,
+			regular: { currency: 'USD', amount: 20.55, precisionAmount: 2 },
+			discounted: { currency: 'USD', amount: 20.55, precisionAmount: 2 },
 		},
-		primaryImage: {
+		image: {
 			alt: 'Tripod',
 			url: 'https://demo.vendure.io/assets/preview/21/zoltan-tasi-423051-unsplash__preview.jpg',
 		},
@@ -373,11 +372,11 @@ export const products = [
 		sku: 'product-16',
 		rating: { average: 4, count: 345 },
 		price: {
-			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 50.95, precisionAmount: 2 },
-			value: { currency: 'USD', amount: 24.99, precisionAmount: 2 },
+			isDiscounted: false,
+			regular: { currency: 'USD', amount: 50.95, precisionAmount: 2 },
+			discounted: { currency: 'USD', amount: 50.95, precisionAmount: 2 },
 		},
-		primaryImage: {
+		image: {
 			alt: 'Instamatic Camera',
 			url: 'https://demo.vendure.io/assets/preview/5b/jakob-owens-274337-unsplash__preview.jpg',
 		},
@@ -391,11 +390,11 @@ export const products = [
 		sku: 'product-17',
 		rating: { average: 4, count: 341 },
 		price: {
-			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 1200.19, precisionAmount: 2 },
-			value: { currency: 'USD', amount: 1080.99, precisionAmount: 2 },
+			isDiscounted: false,
+			regular: { currency: 'USD', amount: 1200.19, precisionAmount: 2 },
+			discounted: { currency: 'USD', amount: 1200.19, precisionAmount: 2 },
 		},
-		primaryImage: {
+		image: {
 			alt: 'Compact Digital Camera',
 			url: 'https://demo.vendure.io/assets/preview/bc/patrick-brinksma-663044-unsplash__preview.jpg',
 		},
@@ -410,10 +409,10 @@ export const products = [
 		rating: { average: 3, count: 456 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 890.95, precisionAmount: 2 },
-			value: { currency: 'USD', amount: 756.99, precisionAmount: 2 },
+			regular: { currency: 'USD', amount: 890.95, precisionAmount: 2 },
+			discounted: { currency: 'USD', amount: 756.99, precisionAmount: 2 },
 		},
-		primaryImage: {
+		image: {
 			alt: 'Nikkormat SLR Camera',
 			url: 'https://demo.vendure.io/assets/preview/95/chuttersnap-324234-unsplash__preview.jpg',
 		},
@@ -428,10 +427,10 @@ export const products = [
 		rating: { average: 5, count: 564 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 625.95, precisionAmount: 2 },
-			value: { currency: 'USD', amount: 600.99, precisionAmount: 2 },
+			regular: { currency: 'USD', amount: 625.95, precisionAmount: 2 },
+			discounted: { currency: 'USD', amount: 600.99, precisionAmount: 2 },
 		},
-		primaryImage: {
+		image: {
 			alt: 'Compact SLR Camera',
 			url: 'https://demo.vendure.io/assets/preview/9d/robert-shunev-528016-unsplash__preview.jpg',
 		},
@@ -445,11 +444,11 @@ export const products = [
 		sku: 'product-20',
 		rating: { average: 4, count: 476 },
 		price: {
-			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 960.55, precisionAmount: 2 },
-			value: { currency: 'USD', amount: 900.99, precisionAmount: 2 },
+			isDiscounted: false,
+			regular: { currency: 'USD', amount: 960.55, precisionAmount: 2 },
+			discounted: { currency: 'USD', amount: 960.55, precisionAmount: 2 },
 		},
-		primaryImage: {
+		image: {
 			alt: 'Twin Lens Camera',
 			url: 'https://demo.vendure.io/assets/preview/ef/alexander-andrews-260988-unsplash__preview.jpg',
 		},
@@ -464,10 +463,10 @@ export const products = [
 		rating: { average: 5, count: 34 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 3199.79, precisionAmount: 2 },
-			value: { currency: 'USD', amount: 2998.99, precisionAmount: 2 },
+			regular: { currency: 'USD', amount: 3199.79, precisionAmount: 2 },
+			discounted: { currency: 'USD', amount: 2998.99, precisionAmount: 2 },
 		},
-		primaryImage: {
+		image: {
 			alt: 'Road Bike',
 			url: 'https://demo.vendure.io/assets/preview/2f/mikkel-bech-748940-unsplash__preview.jpg',
 		},
@@ -482,10 +481,10 @@ export const products = [
 		rating: { average: 5, count: 2600 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 9.95, precisionAmount: 2 },
-			value: { currency: 'USD', amount: 9.59, precisionAmount: 2 },
+			regular: { currency: 'USD', amount: 9.95, precisionAmount: 2 },
+			discounted: { currency: 'USD', amount: 9.59, precisionAmount: 2 },
 		},
-		primaryImage: {
+		image: {
 			alt: 'Skipping Rope',
 			url: 'https://demo.vendure.io/assets/preview/34/stoica-ionela-530966-unsplash__preview.jpg',
 		},
@@ -500,10 +499,10 @@ export const products = [
 		rating: { average: 3, count: 432 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 45.95, precisionAmount: 2 },
-			value: { currency: 'USD', amount: 39.65, precisionAmount: 2 },
+			regular: { currency: 'USD', amount: 45.95, precisionAmount: 2 },
+			discounted: { currency: 'USD', amount: 39.65, precisionAmount: 2 },
 		},
-		primaryImage: {
+		image: {
 			alt: 'Boxing Gloves',
 			url: 'https://demo.vendure.io/assets/preview/4f/neonbrand-428982-unsplash__preview.jpg',
 		},
@@ -518,10 +517,10 @@ export const products = [
 		rating: { average: 5, count: 59 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 280.95, precisionAmount: 2 },
-			value: { currency: 'USD', amount: 260.99, precisionAmount: 2 },
+			regular: { currency: 'USD', amount: 280.95, precisionAmount: 2 },
+			discounted: { currency: 'USD', amount: 260.99, precisionAmount: 2 },
 		},
-		primaryImage: {
+		image: {
 			alt: 'Tent',
 			url: 'https://demo.vendure.io/assets/preview/96/michael-guite-571169-unsplash__preview.jpg',
 		},
@@ -535,11 +534,11 @@ export const products = [
 		sku: 'product-25',
 		rating: { average: 4, count: 87 },
 		price: {
-			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 29.95, precisionAmount: 2 },
-			value: { currency: 'USD', amount: 20.99, precisionAmount: 2 },
+			isDiscounted: false,
+			regular: { currency: 'USD', amount: 29.95, precisionAmount: 2 },
+			discounted: { currency: 'USD', amount: 29.95, precisionAmount: 2 },
 		},
-		primaryImage: {
+		image: {
 			alt: 'Cruiser Skateboard',
 			url: 'https://demo.vendure.io/assets/preview/35/max-tarkhov-737999-unsplash__preview.jpg',
 		},
@@ -554,10 +553,10 @@ export const products = [
 		rating: { average: 5, count: 125 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 85.95, precisionAmount: 2 },
-			value: { currency: 'USD', amount: 68.99, precisionAmount: 2 },
+			regular: { currency: 'USD', amount: 85.95, precisionAmount: 2 },
+			discounted: { currency: 'USD', amount: 68.99, precisionAmount: 2 },
 		},
-		primaryImage: {
+		image: {
 			alt: 'Football',
 			url: 'https://demo.vendure.io/assets/preview/d6/nik-shuliahin-619349-unsplash__preview.jpg',
 		},
@@ -572,10 +571,10 @@ export const products = [
 		rating: { average: 5, count: 3491 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 18.95, precisionAmount: 2 },
-			value: { currency: 'USD', amount: 15.99, precisionAmount: 2 },
+			regular: { currency: 'USD', amount: 18.95, precisionAmount: 2 },
+			discounted: { currency: 'USD', amount: 15.99, precisionAmount: 2 },
 		},
-		primaryImage: {
+		image: {
 			alt: 'Tennis Ball',
 			url: 'https://demo.vendure.io/assets/preview/30/ben-hershey-574483-unsplash__preview.jpg',
 		},
@@ -589,11 +588,11 @@ export const products = [
 		sku: 'product-28',
 		rating: { average: 4, count: 135 },
 		price: {
-			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 48.95, precisionAmount: 2 },
-			value: { currency: 'USD', amount: 42.99, precisionAmount: 2 },
+			isDiscounted: false,
+			regular: { currency: 'USD', amount: 48.95, precisionAmount: 2 },
+			discounted: { currency: 'USD', amount: 48.95, precisionAmount: 2 },
 		},
-		primaryImage: {
+		image: {
 			alt: 'Basketball',
 			url: 'https://demo.vendure.io/assets/preview/0f/tommy-bebo-600358-unsplash__preview.jpg',
 		},
@@ -608,10 +607,10 @@ export const products = [
 		rating: { average: 5, count: 342 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 119.95, precisionAmount: 2 },
-			value: { currency: 'USD', amount: 100.99, precisionAmount: 2 },
+			regular: { currency: 'USD', amount: 119.95, precisionAmount: 2 },
+			discounted: { currency: 'USD', amount: 100.99, precisionAmount: 2 },
 		},
-		primaryImage: {
+		image: {
 			alt: 'Ultraboost Running Shoe',
 			url: 'https://demo.vendure.io/assets/preview/ed/chuttersnap-584518-unsplash__preview.jpg',
 		},
@@ -625,11 +624,11 @@ export const products = [
 		sku: 'product-30',
 		rating: { average: 4, count: 541 },
 		price: {
-			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 200.95, precisionAmount: 2 },
-			value: { currency: 'USD', amount: 192.99, precisionAmount: 2 },
+			isDiscounted: false,
+			regular: { currency: 'USD', amount: 200.95, precisionAmount: 2 },
+			discounted: { currency: 'USD', amount: 200.95, precisionAmount: 2 },
 		},
-		primaryImage: {
+		image: {
 			alt: 'Freerun Running Shoe',
 			url: 'https://demo.vendure.io/assets/preview/0f/imani-clovis-234736-unsplash__preview.jpg',
 		},
@@ -644,10 +643,10 @@ export const products = [
 		rating: { average: 5, count: 238 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 175.95, precisionAmount: 2 },
-			value: { currency: 'USD', amount: 168.99, precisionAmount: 2 },
+			regular: { currency: 'USD', amount: 175.95, precisionAmount: 2 },
+			discounted: { currency: 'USD', amount: 168.99, precisionAmount: 2 },
 		},
-		primaryImage: {
+		image: {
 			alt: 'Hi-Top Basketball Shoe',
 			url: 'https://demo.vendure.io/assets/preview/3c/xavier-teo-469050-unsplash__preview.jpg',
 		},
@@ -662,10 +661,10 @@ export const products = [
 		rating: { average: 5, count: 723 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 130.97, precisionAmount: 2 },
-			value: { currency: 'USD', amount: 119.79, precisionAmount: 2 },
+			regular: { currency: 'USD', amount: 130.97, precisionAmount: 2 },
+			discounted: { currency: 'USD', amount: 119.79, precisionAmount: 2 },
 		},
-		primaryImage: {
+		image: {
 			alt: 'Pureboost Running Shoe',
 			url: 'https://demo.vendure.io/assets/preview/a2/thomas-serer-420833-unsplash__preview.jpg',
 		},
@@ -680,10 +679,10 @@ export const products = [
 		rating: { average: 3, count: 26 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 69.99, precisionAmount: 2 },
-			value: { currency: 'USD', amount: 53.79, precisionAmount: 2 },
+			regular: { currency: 'USD', amount: 69.99, precisionAmount: 2 },
+			discounted: { currency: 'USD', amount: 53.79, precisionAmount: 2 },
 		},
-		primaryImage: {
+		image: {
 			alt: 'RunX Running Shoe',
 			url: 'https://demo.vendure.io/assets/preview/00/nikolai-chernichenko-1299748-unsplash__preview.jpg',
 		},
@@ -698,10 +697,10 @@ export const products = [
 		rating: { average: 5, count: 375 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 89.95, precisionAmount: 2 },
-			value: { currency: 'USD', amount: 78.79, precisionAmount: 2 },
+			regular: { currency: 'USD', amount: 89.95, precisionAmount: 2 },
+			discounted: { currency: 'USD', amount: 78.79, precisionAmount: 2 },
 		},
-		primaryImage: {
+		image: {
 			alt: 'Allstar Sneakers',
 			url: 'https://demo.vendure.io/assets/preview/aa/mitch-lensink-256007-unsplash__preview.jpg',
 		},
@@ -715,11 +714,11 @@ export const products = [
 		sku: 'product-35',
 		rating: { average: 4, count: 165 },
 		price: {
-			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 20.95, precisionAmount: 2 },
-			value: { currency: 'USD', amount: 18.65, precisionAmount: 2 },
+			isDiscounted: false,
+			regular: { currency: 'USD', amount: 20.95, precisionAmount: 2 },
+			discounted: { currency: 'USD', amount: 20.95, precisionAmount: 2 },
 		},
-		primaryImage: {
+		image: {
 			alt: 'Spiky Cactus',
 			url: 'https://demo.vendure.io/assets/preview/78/charles-deluvio-695736-unsplash__preview.jpg',
 		},
@@ -733,11 +732,11 @@ export const products = [
 		sku: 'product-36',
 		rating: { average: 4, count: 890 },
 		price: {
-			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 10.95, precisionAmount: 2 },
-			value: { currency: 'USD', amount: 8.19, precisionAmount: 2 },
+			isDiscounted: false,
+			regular: { currency: 'USD', amount: 10.95, precisionAmount: 2 },
+			discounted: { currency: 'USD', amount: 10.95, precisionAmount: 2 },
 		},
-		primaryImage: {
+		image: {
 			alt: 'Tulip Pot',
 			url: 'https://demo.vendure.io/assets/preview/14/natalia-y-345738-unsplash__preview.jpg',
 		},
@@ -751,11 +750,11 @@ export const products = [
 		sku: 'product-37',
 		rating: { average: 4, count: 376 },
 		price: {
-			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 25.15, precisionAmount: 2 },
-			value: { currency: 'USD', amount: 23.94, precisionAmount: 2 },
+			isDiscounted: false,
+			regular: { currency: 'USD', amount: 25.15, precisionAmount: 2 },
+			discounted: { currency: 'USD', amount: 25.15, precisionAmount: 2 },
 		},
-		primaryImage: {
+		image: {
 			alt: 'Hanging Plant',
 			url: 'https://demo.vendure.io/assets/preview/5b/alex-rodriguez-santibanez-200278-unsplash__preview.jpg',
 		},
@@ -770,10 +769,10 @@ export const products = [
 		rating: { average: 3, count: 621 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 10.45, precisionAmount: 2 },
-			value: { currency: 'USD', amount: 8.39, precisionAmount: 2 },
+			regular: { currency: 'USD', amount: 10.45, precisionAmount: 2 },
+			discounted: { currency: 'USD', amount: 8.39, precisionAmount: 2 },
 		},
-		primaryImage: {
+		image: {
 			alt: 'Aloe Vera',
 			url: 'https://demo.vendure.io/assets/preview/29/silvia-agrasar-227575-unsplash__preview.jpg',
 		},
@@ -787,11 +786,11 @@ export const products = [
 		sku: 'product-39',
 		rating: { average: 4, count: 475 },
 		price: {
-			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 12.95, precisionAmount: 2 },
-			value: { currency: 'USD', amount: 10.99, precisionAmount: 2 },
+			isDiscounted: false,
+			regular: { currency: 'USD', amount: 12.95, precisionAmount: 2 },
+			discounted: { currency: 'USD', amount: 12.95, precisionAmount: 2 },
 		},
-		primaryImage: {
+		image: {
 			alt: 'Fern Blechnum Gibbum',
 			url: 'https://demo.vendure.io/assets/preview/6d/caleb-george-536388-unsplash__preview.jpg',
 		},
@@ -806,10 +805,10 @@ export const products = [
 		rating: { average: 5, count: 349 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 42.35, precisionAmount: 2 },
-			value: { currency: 'USD', amount: 39.99, precisionAmount: 2 },
+			regular: { currency: 'USD', amount: 42.35, precisionAmount: 2 },
+			discounted: { currency: 'USD', amount: 39.99, precisionAmount: 2 },
 		},
-		primaryImage: {
+		image: {
 			alt: 'Assorted Indoor Succulents',
 			url: 'https://demo.vendure.io/assets/preview/81/annie-spratt-78044-unsplash__preview.jpg',
 		},
@@ -824,10 +823,10 @@ export const products = [
 		rating: { average: 5, count: 135 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 30.75, precisionAmount: 2 },
-			value: { currency: 'USD', amount: 25.79, precisionAmount: 2 },
+			regular: { currency: 'USD', amount: 30.75, precisionAmount: 2 },
+			discounted: { currency: 'USD', amount: 25.79, precisionAmount: 2 },
 		},
-		primaryImage: {
+		image: {
 			alt: 'Orchid',
 			url: 'https://demo.vendure.io/assets/preview/88/zoltan-kovacs-642412-unsplash__preview.jpg',
 		},
@@ -842,10 +841,10 @@ export const products = [
 		rating: { average: 5, count: 176 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 30.95, precisionAmount: 2 },
-			value: { currency: 'USD', amount: 25.79, precisionAmount: 2 },
+			regular: { currency: 'USD', amount: 30.95, precisionAmount: 2 },
+			discounted: { currency: 'USD', amount: 25.79, precisionAmount: 2 },
 		},
-		primaryImage: {
+		image: {
 			alt: 'Bonsai Tree',
 			url: 'https://demo.vendure.io/assets/preview/f3/mark-tegethoff-667351-unsplash__preview.jpg',
 		},
@@ -860,10 +859,10 @@ export const products = [
 		rating: { average: 5, count: 91 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 220.95, precisionAmount: 2 },
-			value: { currency: 'USD', amount: 150.99, precisionAmount: 2 },
+			regular: { currency: 'USD', amount: 220.95, precisionAmount: 2 },
+			discounted: { currency: 'USD', amount: 150.99, precisionAmount: 2 },
 		},
-		primaryImage: {
+		image: {
 			alt: 'Guardian Lion Statue',
 			url: 'https://demo.vendure.io/assets/preview/44/vincent-liu-525429-unsplash__preview.jpg',
 		},
@@ -878,10 +877,10 @@ export const products = [
 		rating: { average: 5, count: 76 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 9.95, precisionAmount: 2 },
-			value: { currency: 'USD', amount: 5.99, precisionAmount: 2 },
+			regular: { currency: 'USD', amount: 9.95, precisionAmount: 2 },
+			discounted: { currency: 'USD', amount: 5.99, precisionAmount: 2 },
 		},
-		primaryImage: {
+		image: {
 			alt: 'Hand Trowel',
 			url: 'https://demo.vendure.io/assets/preview/7d/neslihan-gunaydin-3493-unsplash__preview.jpg',
 		},
@@ -895,11 +894,11 @@ export const products = [
 		sku: 'product-45',
 		rating: { average: 4, count: 321 },
 		price: {
-			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 99.95, precisionAmount: 2 },
-			value: { currency: 'USD', amount: 78.99, precisionAmount: 2 },
+			isDiscounted: false,
+			regular: { currency: 'USD', amount: 99.95, precisionAmount: 2 },
+			discounted: { currency: 'USD', amount: 99.95, precisionAmount: 2 },
 		},
-		primaryImage: {
+		image: {
 			alt: 'Balloon Chair',
 			url: 'https://demo.vendure.io/assets/preview/ef/florian-klauer-14840-unsplash__preview.jpg',
 		},
@@ -914,10 +913,10 @@ export const products = [
 		rating: { average: 5, count: 479 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 360.95, precisionAmount: 2 },
-			value: { currency: 'USD', amount: 345.99, precisionAmount: 2 },
+			regular: { currency: 'USD', amount: 360.95, precisionAmount: 2 },
+			discounted: { currency: 'USD', amount: 345.99, precisionAmount: 2 },
 		},
-		primaryImage: {
+		image: {
 			alt: 'Grey Fabric Sofa',
 			url: 'https://demo.vendure.io/assets/preview/69/nathan-fertig-249917-unsplash__preview.jpg',
 		},
@@ -932,10 +931,10 @@ export const products = [
 		rating: { average: 3, count: 51 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 1495.55, precisionAmount: 2 },
-			value: { currency: 'USD', amount: 1457.79, precisionAmount: 2 },
+			regular: { currency: 'USD', amount: 1495.55, precisionAmount: 2 },
+			discounted: { currency: 'USD', amount: 1457.79, precisionAmount: 2 },
 		},
-		primaryImage: {
+		image: {
 			alt: 'Leather Sofa',
 			url: 'https://demo.vendure.io/assets/preview/3e/paul-weaver-1120584-unsplash__preview.jpg',
 		},
@@ -950,10 +949,10 @@ export const products = [
 		rating: { average: 5, count: 831 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 40.75, precisionAmount: 2 },
-			value: { currency: 'USD', amount: 35.79, precisionAmount: 2 },
+			regular: { currency: 'USD', amount: 40.75, precisionAmount: 2 },
+			discounted: { currency: 'USD', amount: 35.79, precisionAmount: 2 },
 		},
-		primaryImage: {
+		image: {
 			alt: 'Light Shade',
 			url: 'https://demo.vendure.io/assets/preview/5f/pierre-chatel-innocenti-483198-unsplash__preview.jpg',
 		},
@@ -968,10 +967,10 @@ export const products = [
 		rating: { average: 3, count: 210 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 150.25, precisionAmount: 2 },
-			value: { currency: 'USD', amount: 135.27, precisionAmount: 2 },
+			regular: { currency: 'USD', amount: 150.25, precisionAmount: 2 },
+			discounted: { currency: 'USD', amount: 135.27, precisionAmount: 2 },
 		},
-		primaryImage: {
+		image: {
 			alt: 'Wooden Side Desk',
 			url: 'https://demo.vendure.io/assets/preview/40/abel-y-costa-716024-unsplash__preview.jpg',
 		},
@@ -986,10 +985,10 @@ export const products = [
 		rating: { average: 5, count: 76 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 150.45, precisionAmount: 2 },
-			value: { currency: 'USD', amount: 135.39, precisionAmount: 2 },
+			regular: { currency: 'USD', amount: 150.45, precisionAmount: 2 },
+			discounted: { currency: 'USD', amount: 135.39, precisionAmount: 2 },
 		},
-		primaryImage: {
+		image: {
 			alt: 'Comfy Padded Chair',
 			url: 'https://demo.vendure.io/assets/preview/3b/kari-shea-398668-unsplash__preview.jpg',
 		},
@@ -1004,10 +1003,10 @@ export const products = [
 		rating: { average: 5, count: 124 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 97.77, precisionAmount: 2 },
-			value: { currency: 'USD', amount: 84.99, precisionAmount: 2 },
+			regular: { currency: 'USD', amount: 97.77, precisionAmount: 2 },
+			discounted: { currency: 'USD', amount: 84.99, precisionAmount: 2 },
 		},
-		primaryImage: {
+		image: {
 			alt: 'Black Eaves Chair',
 			url: 'https://demo.vendure.io/assets/preview/09/andres-jasso-220776-unsplash__preview.jpg',
 		},
@@ -1021,11 +1020,11 @@ export const products = [
 		sku: 'product-52',
 		rating: { average: 4, count: 524 },
 		price: {
-			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 20.99, precisionAmount: 2 },
-			value: { currency: 'USD', amount: 16.69, precisionAmount: 2 },
+			isDiscounted: false,
+			regular: { currency: 'USD', amount: 20.99, precisionAmount: 2 },
+			discounted: { currency: 'USD', amount: 20.99, precisionAmount: 2 },
 		},
-		primaryImage: {
+		image: {
 			alt: 'Wooden Stool',
 			url: 'https://demo.vendure.io/assets/preview/d0/ruslan-bardash-351288-unsplash__preview.jpg',
 		},
@@ -1039,11 +1038,11 @@ export const products = [
 		sku: 'product-53',
 		rating: { average: 4, count: 43 },
 		price: {
-			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 188.75, precisionAmount: 2 },
-			value: { currency: 'USD', amount: 156.97, precisionAmount: 2 },
+			isDiscounted: false,
+			regular: { currency: 'USD', amount: 188.75, precisionAmount: 2 },
+			discounted: { currency: 'USD', amount: 188.75, precisionAmount: 2 },
 		},
-		primaryImage: {
+		image: {
 			alt: 'Bedside Table',
 			url: 'https://demo.vendure.io/assets/preview/72/benjamin-voros-310026-unsplash__preview.jpg',
 		},
@@ -1057,11 +1056,11 @@ export const products = [
 		sku: 'product-54',
 		rating: { average: 4, count: 189 },
 		price: {
-			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 120.77, precisionAmount: 2 },
-			value: { currency: 'USD', amount: 100.79, precisionAmount: 2 },
+			isDiscounted: false,
+			regular: { currency: 'USD', amount: 120.77, precisionAmount: 2 },
+			discounted: { currency: 'USD', amount: 120.77, precisionAmount: 2 },
 		},
-		primaryImage: {
+		image: {
 			alt: 'Modern Cafe Chair',
 			url: 'https://demo.vendure.io/assets/preview/b1/jean-philippe-delberghe-1400011-unsplash__preview.jpg',
 		},
