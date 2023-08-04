@@ -1,12 +1,12 @@
-import { Slot, component$, useContext } from '@builder.io/qwik';
+import { Slot, component$, useComputed$, useContext } from '@builder.io/qwik';
 import { useTranslate } from 'qwik-speak';
-import { ACTIONS_CONTEXT, STORE_CONTEXT } from '~/shared/constants';
+import { ACTIONS_CONTEXT } from '~/shared/constants';
 import { Divider } from '../UI/Divider/Divider';
 
-export const OrderSummary = component$(async () => {
+export const OrderSummary = component$(() => {
 	const t = useTranslate();
-	const store = useContext(STORE_CONTEXT);
 	const actions = useContext(ACTIONS_CONTEXT);
+	const totalQuantity = useComputed$(() => actions.getCartQuantity());
 	return (
 		<div
 			class='md:shadow-lg md:rounded-md md:border md:border-neutral-100 col-span-5 md:sticky md:top-20 h-fit'
@@ -20,7 +20,7 @@ export const OrderSummary = component$(async () => {
 					class='typography-text-base font-semibold'
 					data-testid='total-in-cart'
 				>
-					({t('itemsInCart')} {await actions.getCartQuantity()})
+					({t('itemsInCart')} {totalQuantity})
 				</p>
 			</div>
 			<div class='px-4 pb-4 mt-3 md:px-6 md:pb-6 md:mt-0'>
