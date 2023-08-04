@@ -1,14 +1,32 @@
-import { component$, useContext } from '@builder.io/qwik';
+import { $, component$, useContext } from '@builder.io/qwik';
+import { routeLoader$ } from '@builder.io/qwik-city';
 import { Image } from 'qwik-image';
 import { useTranslate } from 'qwik-speak';
 import { SfButton, SfIconShoppingCart, SfRating } from 'qwik-storefront-ui';
+import { Pagination } from '~/components/Pagination/Pagination';
 import { ACTIONS_CONTEXT } from '~/shared/constants';
-import { useRandomProductsLoader } from '../layout';
+import type { Product } from '~/types/product';
+
+export const useProductsLoader = routeLoader$(async ({ env }) => {
+	const response = await fetch(`${env.get('HOST')}/api/products/?page=1`);
+	return (await response.json()) as {
+		products: Product[];
+		totalPages: number;
+	};
+});
 
 export default component$(() => {
-	const randomProducts = useRandomProductsLoader();
+	const products = useProductsLoader();
 	const t = useTranslate();
 	const actions = useContext(ACTIONS_CONTEXT);
+
+	const onPrevPage = $((page: number) => {
+		console.log('prev', page);
+	});
+
+	const onNextPage = $((page: number) => {
+		console.log('next', page);
+	});
 
 	return (
 		<>
@@ -721,9 +739,9 @@ export default component$(() => {
 									class='grid grid-cols-1 2xs:grid-cols-2 gap-4 md:gap-6 md:grid-cols-2 lg:grid-cols-3 3xl:grid-cols-4 mb-10 md:mb-5'
 									data-testid='category-grid'
 								>
-									{randomProducts.value.map((product, key) => (
+									{products.value.products.map((product) => (
 										<div
-											key={key}
+											key={product.id}
 											class='border border-neutral-200 rounded-md hover:shadow-lg flex-auto flex-shrink-0 max-w-[260px]'
 											data-testid='product-card'
 										>
@@ -798,94 +816,12 @@ export default component$(() => {
 										</div>
 									))}
 								</section>
-								<nav
-									class='flex justify-between items-center border-t border-neutral-200'
-									role='navigation'
-									aria-label='pagination'
-									data-testid='pagination'
-								>
-									<button
-										type='button'
-										class='inline-flex items-center justify-center font-medium text-base focus-visible:outline focus-visible:outline-offset rounded-md disabled:text-disabled-500 disabled:bg-disabled-300 disabled:shadow-none disabled:ring-0 disabled:cursor-not-allowed py-3 leading-6 px-6 gap-3 text-primary-700 hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900 disabled:bg-transparent gap-3 mt-2'
-										data-testid='button'
-										aria-label='Go to previous page'
-									>
-										<svg
-											viewBox='0 0 24 24'
-											data-testid='chevron-left'
-											xmlns='http://www.w3.org/2000/svg'
-											class='inline-block fill-current w-6 h-6 undefined'
-										>
-											<path d='M14.706 17.297a.998.998 0 0 0 0-1.41l-3.876-3.885 3.877-3.885a.998.998 0 0 0-1.412-1.41l-4.588 4.588a1 1 0 0 0 0 1.414l4.588 4.588a.997.997 0 0 0 1.41 0Z'></path>
-										</svg>
-										<span class='hidden sm:inline-flex'>Previous</span>
-									</button>
-									<ul class='flex flex-wrap justify-center'>
-										<li>
-											<div class='flex pt-1 border-t-4 border-transparent font-medium border-t-4 !border-primary-700'>
-												<button
-													type='button'
-													class='px-4 py-3 text-neutral-500 rounded-md hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900 !text-neutral-900 hover:!text-primary-800 active:!text-primary-900'
-													aria-label='Page 1 of 17'
-													aria-current='true'
-												>
-													1
-												</button>
-											</div>
-										</li>
-										<li>
-											<div class='flex pt-1 border-t-4 border-transparent'>
-												<button
-													type='button'
-													aria-label='Second page'
-													class='px-4 py-3 rounded-md text-neutral-500 hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900 '
-													aria-current='true'
-												>
-													2
-												</button>
-											</div>
-										</li>
-										<li>
-											<div class='flex pt-1 border-t-4 border-transparent'>
-												<button
-													type='button'
-													aria-hidden='true'
-													class='px-4 py-3 rounded-md text-neutral-500'
-												>
-													...
-												</button>
-											</div>
-										</li>
-										<li>
-											<div class='flex pt-1 border-t-4 border-transparent'>
-												<button
-													type='button'
-													class='px-4 py-3 rounded-md text-neutral-500 hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900 '
-													aria-label='Last page'
-													aria-current='false'
-												>
-													17
-												</button>
-											</div>
-										</li>
-									</ul>
-									<button
-										type='button'
-										class='inline-flex items-center justify-center font-medium text-base focus-visible:outline focus-visible:outline-offset rounded-md disabled:text-disabled-500 disabled:bg-disabled-300 disabled:shadow-none disabled:ring-0 disabled:cursor-not-allowed py-3 leading-6 px-6 gap-3 text-primary-700 hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900 disabled:bg-transparent gap-3 mt-2'
-										data-testid='button'
-										aria-label='Go to next page'
-									>
-										<span class='hidden sm:inline-flex'>Next</span>
-										<svg
-											viewBox='0 0 24 24'
-											data-testid='chevron-right'
-											xmlns='http://www.w3.org/2000/svg'
-											class='inline-block fill-current w-6 h-6 undefined'
-										>
-											<path d='M8.705 17.297a.998.998 0 0 1-.001-1.41l3.876-3.885-3.876-3.885a.998.998 0 0 1 1.412-1.41l4.587 4.588a1 1 0 0 1 0 1.414l-4.587 4.588a.997.997 0 0 1-1.411 0Z'></path>
-										</svg>
-									</button>
-								</nav>
+								<Pagination
+									initialPage={1}
+									totalPages={5}
+									onPrevPage={onPrevPage}
+									onNextPage={onNextPage}
+								/>
 							</div>
 						</div>
 					</div>
