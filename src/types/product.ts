@@ -9,9 +9,9 @@ export type Product = {
 		regularPrice: {
 			currency: string;
 			amount: number;
-			precisionAmount: string;
+			precisionAmount: number;
 		};
-		value: { currency: string; amount: number; precisionAmount: string };
+		value: { currency: string; amount: number; precisionAmount: number };
 	};
 	primaryImage: {
 		alt: string;

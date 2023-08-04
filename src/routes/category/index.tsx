@@ -807,7 +807,7 @@ export default component$(() => {
 														size='sm'
 														class='inline-flex items-center justify-center font-medium text-base focus-visible:outline focus-visible:outline-offset rounded-md disabled:text-disabled-500 disabled:bg-disabled-300 disabled:shadow-none disabled:ring-0 disabled:cursor-not-allowed leading-5 text-sm py-1.5 px-3 gap-1.5 text-white shadow hover:shadow-md active:shadow bg-primary-700 hover:bg-primary-800 active:bg-primary-900 disabled:bg-disabled-300 px-2 py-2'
 														onClick$={() =>
-															actions.updateCartWithProduct(product.id, 1)
+															actions.updateCartProduct(product.id, 1)
 														}
 													>
 														{t('addToCartShort@@Add')}

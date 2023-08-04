@@ -35,7 +35,7 @@ export const ProductSlider = component$<ProductSliderProps>(
 				</button> */}
 				<div class='items-center pb-4 motion-safe:scroll-smooth overflow-x-auto flex gap-4'>
 					{products.map((p) => (
-						<ProductCard key={p.id} class='max-w-[192px]' product={p} />
+						<ProductCard key={p.slug} class='max-w-[192px]' product={p} />
 					))}
 				</div>
 				{/* <button

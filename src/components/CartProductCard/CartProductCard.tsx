@@ -1,6 +1,8 @@
-import { component$ } from '@builder.io/qwik';
+import { component$, useContext } from '@builder.io/qwik';
 import { Image } from 'qwik-image';
 import { useTranslate } from 'qwik-speak';
+import { ACTIONS_CONTEXT } from '~/shared/constants';
+import { formatPrice } from '~/shared/utils';
 import type { Product } from '~/types/product';
 
 export interface CartProductCardProps {
@@ -11,16 +13,17 @@ export interface CartProductCardProps {
 export const CartProductCard = component$<CartProductCardProps>(
 	({ product, quantity }) => {
 		const t = useTranslate();
+		const actions = useContext(ACTIONS_CONTEXT);
 		return (
 			<div
 				class='relative flex first:border-t border-b-[1px] border-neutral-200 hover:shadow-lg min-w-[320px] p-4 last:mb-0'
 				data-testid='cart-product-card'
 			>
-				<div class='relative overflow-hidden rounded-md w-[100px] sm:w-[176px]'>
+				<div class='relative overflow-hidden rounded-md w-[250px] sm:w-[180px]'>
 					<a
 						class='focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm text-primary-700 underline hover:text-primary-800 active:text-primary-900'
 						data-testid='link'
-						href='/product/athletic-sneakers'
+						href={`/product/${product.slug}`}
 					>
 						<Image
 							loading='eager'
@@ -58,24 +61,44 @@ export const CartProductCard = component$<CartProductCardProps>(
 						<ul class='text-xs font-normal leading-5 sm:typography-text-sm text-neutral-700'>
 							<li>
 								<span class='mr-1'>size:</span>
-								<span class='font-medium'>40</span>
+								<span class='font-medium'>--</span>
 							</li>
 							<li>
 								<span class='mr-1'>color:</span>
-								<span class='font-medium'>White</span>
+								<span class='font-medium'>--</span>
 							</li>
 						</ul>
 					</div>
-					<div class='items-start sm:items-center sm:mt-auto flex flex-col sm:flex-row'>
-						<span class='text-secondary-700 sm:order-1 font-bold typography-text-sm sm:typography-text-lg sm:ml-auto'>
-							${product.price.value.amount}
+					<div class='my-2 sm:mb-0 '>
+						<ul class='text-xs font-normal leading-5 sm:typography-text-sm text-neutral-700 flex justify-between'>
+							<li>
+								<span class='mr-1'>{t('quantity')}:</span>
+								<span class='font-medium'>{quantity}</span>
+							</li>
+							<button
+								class='font-medium text-red-400 disabled:cursor-not-allowed hover:opacity-70 hover:text-red-500 pl-4'
+								onClick$={() => actions.removeProductFromCart(product.id)}
+							>
+								Remove
+							</button>
+						</ul>
+					</div>
+					<div class='items-start sm:items-center mt-auto flex flex-col sm:flex-row'>
+						<span class='flex flex-col items-end text-secondary-700 sm:order-1 font-bold typography-text-sm sm:typography-text-lg sm:ml-auto'>
 							<span class='text-neutral-500 ml-2 line-through typography-text-xs sm:typography-text-sm font-normal'>
-								${product.price.regularPrice.amount}
+								{formatPrice(
+									product.price.regularPrice.amount * quantity,
+									product.price.regularPrice.precisionAmount
+								)}
 							</span>
+							{formatPrice(
+								product.price.value.amount * quantity,
+								product.price.value.precisionAmount
+							)}
 						</span>
 						<div
 							data-testid='quantitySelector'
-							class='inline-flex flex-col items-center mt-4 sm:mt-0'
+							class='inline-flex flex-col items-center mt-4 sm:mt-auto'
 						>
 							<div class='flex border border-neutral-300 rounded-md h-full w-full'>
 								<button
@@ -84,27 +107,22 @@ export const CartProductCard = component$<CartProductCardProps>(
 									data-testid='quantitySelectorDecreaseButton'
 									aria-controls=':rf:'
 									aria-label='Decrease value'
+									disabled={quantity === 1}
 								>
 									<svg
 										viewBox='0 0 24 24'
 										data-testid='remove'
 										xmlns='http://www.w3.org/2000/svg'
-										class='inline-block fill-current w-6 h-6 undefined'
+										class='inline-block fill-current w-6 h-6'
+										onClick$={() => {
+											if (quantity > 1) {
+												actions.updateCartProduct(product.id, -1);
+											}
+										}}
 									>
 										<path d='M6 13a.968.968 0 0 1-.713-.288A.967.967 0 0 1 5 12a.97.97 0 0 1 .287-.713A.97.97 0 0 1 6 11h12a.97.97 0 0 1 .712.287c.192.192.288.43.288.713s-.096.52-.288.712A.965.965 0 0 1 18 13H6Z'></path>
 									</svg>
 								</button>
-								<input
-									data-testid='quantitySelectorInput'
-									id=':rf:'
-									type='number'
-									role='spinbutton'
-									class='appearance-none flex-1 mx-2 w-8 text-center bg-transparent font-medium [&amp;::-webkit-inner-spin-button]:appearance-none [&amp;::-webkit-inner-spin-button]:display-none [&amp;::-webkit-inner-spin-button]:m-0 [&amp;::-webkit-outer-spin-button]:display-none [&amp;::-webkit-outer-spin-button]:m-0 [-moz-appearance:textfield] [&amp;::-webkit-outer-spin-button]:appearance-none disabled:placeholder-disabled-900 focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm'
-									min='1'
-									max='10'
-									aria-label='Quantity Selector'
-									value={quantity}
-								/>
 								<button
 									type='button'
 									class='inline-flex items-center justify-center font-medium text-base focus-visible:outline focus-visible:outline-offset rounded-md disabled:text-disabled-500 disabled:bg-disabled-300 disabled:shadow-none disabled:ring-0 disabled:cursor-not-allowed p-2 gap-2 text-primary-700 hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900 disabled:bg-transparent rounded-l-none'
@@ -116,7 +134,8 @@ export const CartProductCard = component$<CartProductCardProps>(
 										viewBox='0 0 24 24'
 										data-testid='add'
 										xmlns='http://www.w3.org/2000/svg'
-										class='inline-block fill-current w-6 h-6 undefined'
+										class='inline-block fill-current w-6 h-6'
+										onClick$={() => actions.updateCartProduct(product.id, 1)}
 									>
 										<path d='M12 19a.965.965 0 0 1-.712-.288A.965.965 0 0 1 11 18v-5H6a.968.968 0 0 1-.713-.288A.967.967 0 0 1 5 12a.97.97 0 0 1 .287-.713A.97.97 0 0 1 6 11h5V6c0-.283.096-.521.288-.713A.967.967 0 0 1 12 5a.97.97 0 0 1 .713.287A.97.97 0 0 1 13 6v5h5a.97.97 0 0 1 .712.287c.192.192.288.43.288.713s-.096.52-.288.712A.965.965 0 0 1 18 13h-5v5a.97.97 0 0 1-.287.712A.968.968 0 0 1 12 19Z'></path>
 									</svg>

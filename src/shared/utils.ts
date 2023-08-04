@@ -45,3 +45,6 @@ export const generateDocumentHead = (
 	];
 	return { title, meta: [...OG_METATAGS, ...TWITTER_METATAGS] };
 };
+
+export const formatPrice = (price: number, digits: number) =>
+	'$' + price.toFixed(digits);

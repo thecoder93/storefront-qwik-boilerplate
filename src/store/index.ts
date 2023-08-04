@@ -9,8 +9,8 @@ import {
 	LOCAL_STORAGE_CART_KEY,
 	STORE_CONTEXT,
 } from '~/shared/constants';
-import type { Actions, Store } from '~/types/store';
-import { actions as appActions } from './actions';
+import type { Store } from '~/types/store';
+import { actions as appActions, type Actions } from './actions';
 
 const initialData: Store = { cart: { products: [] } };
 

@@ -1,5 +1,3 @@
-import type { PropFunction } from '@builder.io/qwik';
-
 export type Store = {
 	cart: Cart;
 };
@@ -11,8 +9,4 @@ type Cart = { products: Product[] };
 type Product = {
 	id: string;
 	quantity: number;
-};
-
-export type Actions = {
-	updateCartWithProduct: PropFunction<(id: string, quantity: number) => void>;
 };

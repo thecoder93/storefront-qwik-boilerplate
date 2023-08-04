@@ -86,8 +86,8 @@ export const products = [
 		rating: { average: 4, count: 26 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 89.95, precisionAmount: '2' },
-			value: { currency: 'USD', amount: 100.99, precisionAmount: '2' },
+			regularPrice: { currency: 'USD', amount: 89.95, precisionAmount: 2 },
+			value: { currency: 'USD', amount: 100.99, precisionAmount: 2 },
 		},
 		primaryImage: {
 			alt: 'Athletic sneakers',
@@ -104,8 +104,8 @@ export const products = [
 		rating: { average: 5, count: 610 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 1558.8, precisionAmount: '2' },
-			value: { currency: 'USD', amount: 1358.8, precisionAmount: '2' },
+			regularPrice: { currency: 'USD', amount: 1558.8, precisionAmount: 2 },
+			value: { currency: 'USD', amount: 1358.8, precisionAmount: 2 },
 		},
 		primaryImage: {
 			alt: 'Laptop',
@@ -122,8 +122,8 @@ export const products = [
 		rating: { average: 4.1, count: 111 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 485.99, precisionAmount: '2' },
-			value: { currency: 'USD', amount: 385.99, precisionAmount: '2' },
+			regularPrice: { currency: 'USD', amount: 485.99, precisionAmount: 2 },
+			value: { currency: 'USD', amount: 385.99, precisionAmount: 2 },
 		},
 		primaryImage: {
 			alt: 'Tablet',
@@ -140,8 +140,8 @@ export const products = [
 		rating: { average: 4, count: 245 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 25.19, precisionAmount: '2' },
-			value: { currency: 'USD', amount: 22.79, precisionAmount: '2' },
+			regularPrice: { currency: 'USD', amount: 25.19, precisionAmount: 2 },
+			value: { currency: 'USD', amount: 22.79, precisionAmount: 2 },
 		},
 		primaryImage: {
 			alt: 'Wireless Optical Mouse',
@@ -158,8 +158,8 @@ export const products = [
 		rating: { average: 3, count: 591 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 372.19, precisionAmount: '2' },
-			value: { currency: 'USD', amount: 250.19, precisionAmount: '2' },
+			regularPrice: { currency: 'USD', amount: 372.19, precisionAmount: 2 },
+			value: { currency: 'USD', amount: 250.19, precisionAmount: 2 },
 		},
 		primaryImage: {
 			alt: '32-Inch Monitor',
@@ -176,8 +176,8 @@ export const products = [
 		rating: { average: 5, count: 456 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 203.95, precisionAmount: '2' },
-			value: { currency: 'USD', amount: 172.99, precisionAmount: '2' },
+			regularPrice: { currency: 'USD', amount: 203.95, precisionAmount: 2 },
+			value: { currency: 'USD', amount: 172.99, precisionAmount: 2 },
 		},
 		primaryImage: {
 			alt: 'Curvy Monitor',
@@ -194,8 +194,8 @@ export const products = [
 		rating: { average: 5, count: 89 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 178.79, precisionAmount: '2' },
-			value: { currency: 'USD', amount: 150.19, precisionAmount: '2' },
+			regularPrice: { currency: 'USD', amount: 178.79, precisionAmount: 2 },
+			value: { currency: 'USD', amount: 150.19, precisionAmount: 2 },
 		},
 		primaryImage: {
 			alt: 'High Performance RAM',
@@ -212,8 +212,8 @@ export const products = [
 		rating: { average: 4, count: 365 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 1590.95, precisionAmount: '2' },
-			value: { currency: 'USD', amount: 1150.99, precisionAmount: '2' },
+			regularPrice: { currency: 'USD', amount: 1590.95, precisionAmount: 2 },
+			value: { currency: 'USD', amount: 1150.99, precisionAmount: 2 },
 		},
 		primaryImage: {
 			alt: 'Gaming PC',
@@ -230,8 +230,8 @@ export const products = [
 		rating: { average: 4, count: 765 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 100.95, precisionAmount: '2' },
-			value: { currency: 'USD', amount: 45.99, precisionAmount: '2' },
+			regularPrice: { currency: 'USD', amount: 100.95, precisionAmount: 2 },
+			value: { currency: 'USD', amount: 45.99, precisionAmount: 2 },
 		},
 		primaryImage: {
 			alt: 'Hard Drive',
@@ -248,8 +248,8 @@ export const products = [
 		rating: { average: 4, count: 62 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 120.95, precisionAmount: '2' },
-			value: { currency: 'USD', amount: 89.99, precisionAmount: '2' },
+			regularPrice: { currency: 'USD', amount: 120.95, precisionAmount: 2 },
+			value: { currency: 'USD', amount: 89.99, precisionAmount: 2 },
 		},
 		primaryImage: {
 			alt: 'Clacky Keyboard',
@@ -266,8 +266,8 @@ export const products = [
 		rating: { average: 5, count: 1670 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 10.95, precisionAmount: '2' },
-			value: { currency: 'USD', amount: 7.99, precisionAmount: '2' },
+			regularPrice: { currency: 'USD', amount: 10.95, precisionAmount: 2 },
+			value: { currency: 'USD', amount: 7.99, precisionAmount: 2 },
 		},
 		primaryImage: {
 			alt: 'Ethernet Cable',
@@ -284,8 +284,8 @@ export const products = [
 		rating: { average: 4, count: 3489 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 15.95, precisionAmount: '2' },
-			value: { currency: 'USD', amount: 12.99, precisionAmount: '2' },
+			regularPrice: { currency: 'USD', amount: 15.95, precisionAmount: 2 },
+			value: { currency: 'USD', amount: 12.99, precisionAmount: 2 },
 		},
 		primaryImage: {
 			alt: 'USB Cable',
@@ -302,8 +302,8 @@ export const products = [
 		rating: { average: 4, count: 54 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 250.99, precisionAmount: '2' },
-			value: { currency: 'USD', amount: 209.79, precisionAmount: '2' },
+			regularPrice: { currency: 'USD', amount: 250.99, precisionAmount: 2 },
+			value: { currency: 'USD', amount: 209.79, precisionAmount: 2 },
 		},
 		primaryImage: {
 			alt: 'Instant Camera',
@@ -320,8 +320,8 @@ export const products = [
 		rating: { average: 3, count: 126 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 200.19, precisionAmount: '2' },
-			value: { currency: 'USD', amount: 125.99, precisionAmount: '2' },
+			regularPrice: { currency: 'USD', amount: 200.19, precisionAmount: 2 },
+			value: { currency: 'USD', amount: 125.99, precisionAmount: 2 },
 		},
 		primaryImage: {
 			alt: 'Camera Lens',
@@ -338,8 +338,8 @@ export const products = [
 		rating: { average: 5, count: 12 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 6450.19, precisionAmount: '2' },
-			value: { currency: 'USD', amount: 6400.99, precisionAmount: '2' },
+			regularPrice: { currency: 'USD', amount: 6450.19, precisionAmount: 2 },
+			value: { currency: 'USD', amount: 6400.99, precisionAmount: 2 },
 		},
 		primaryImage: {
 			alt: 'Vintage Folding Camera',
@@ -356,8 +356,8 @@ export const products = [
 		rating: { average: 4, count: 1252 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 20.55, precisionAmount: '2' },
-			value: { currency: 'USD', amount: 17.99, precisionAmount: '2' },
+			regularPrice: { currency: 'USD', amount: 20.55, precisionAmount: 2 },
+			value: { currency: 'USD', amount: 17.99, precisionAmount: 2 },
 		},
 		primaryImage: {
 			alt: 'Tripod',
@@ -374,8 +374,8 @@ export const products = [
 		rating: { average: 4, count: 345 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 50.95, precisionAmount: '2' },
-			value: { currency: 'USD', amount: 24.99, precisionAmount: '2' },
+			regularPrice: { currency: 'USD', amount: 50.95, precisionAmount: 2 },
+			value: { currency: 'USD', amount: 24.99, precisionAmount: 2 },
 		},
 		primaryImage: {
 			alt: 'Instamatic Camera',
@@ -392,8 +392,8 @@ export const products = [
 		rating: { average: 4, count: 341 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 1200.19, precisionAmount: '2' },
-			value: { currency: 'USD', amount: 1080.99, precisionAmount: '2' },
+			regularPrice: { currency: 'USD', amount: 1200.19, precisionAmount: 2 },
+			value: { currency: 'USD', amount: 1080.99, precisionAmount: 2 },
 		},
 		primaryImage: {
 			alt: 'Compact Digital Camera',
@@ -410,8 +410,8 @@ export const products = [
 		rating: { average: 3, count: 456 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 890.95, precisionAmount: '2' },
-			value: { currency: 'USD', amount: 756.99, precisionAmount: '2' },
+			regularPrice: { currency: 'USD', amount: 890.95, precisionAmount: 2 },
+			value: { currency: 'USD', amount: 756.99, precisionAmount: 2 },
 		},
 		primaryImage: {
 			alt: 'Nikkormat SLR Camera',
@@ -428,8 +428,8 @@ export const products = [
 		rating: { average: 5, count: 564 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 625.95, precisionAmount: '2' },
-			value: { currency: 'USD', amount: 600.99, precisionAmount: '2' },
+			regularPrice: { currency: 'USD', amount: 625.95, precisionAmount: 2 },
+			value: { currency: 'USD', amount: 600.99, precisionAmount: 2 },
 		},
 		primaryImage: {
 			alt: 'Compact SLR Camera',
@@ -446,8 +446,8 @@ export const products = [
 		rating: { average: 4, count: 476 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 960.55, precisionAmount: '2' },
-			value: { currency: 'USD', amount: 900.99, precisionAmount: '2' },
+			regularPrice: { currency: 'USD', amount: 960.55, precisionAmount: 2 },
+			value: { currency: 'USD', amount: 900.99, precisionAmount: 2 },
 		},
 		primaryImage: {
 			alt: 'Twin Lens Camera',
@@ -464,8 +464,8 @@ export const products = [
 		rating: { average: 5, count: 34 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 3199.79, precisionAmount: '2' },
-			value: { currency: 'USD', amount: 2998.99, precisionAmount: '2' },
+			regularPrice: { currency: 'USD', amount: 3199.79, precisionAmount: 2 },
+			value: { currency: 'USD', amount: 2998.99, precisionAmount: 2 },
 		},
 		primaryImage: {
 			alt: 'Road Bike',
@@ -482,8 +482,8 @@ export const products = [
 		rating: { average: 5, count: 2600 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 9.95, precisionAmount: '2' },
-			value: { currency: 'USD', amount: 9.59, precisionAmount: '2' },
+			regularPrice: { currency: 'USD', amount: 9.95, precisionAmount: 2 },
+			value: { currency: 'USD', amount: 9.59, precisionAmount: 2 },
 		},
 		primaryImage: {
 			alt: 'Skipping Rope',
@@ -500,8 +500,8 @@ export const products = [
 		rating: { average: 3, count: 432 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 45.95, precisionAmount: '2' },
-			value: { currency: 'USD', amount: 39.65, precisionAmount: '2' },
+			regularPrice: { currency: 'USD', amount: 45.95, precisionAmount: 2 },
+			value: { currency: 'USD', amount: 39.65, precisionAmount: 2 },
 		},
 		primaryImage: {
 			alt: 'Boxing Gloves',
@@ -518,8 +518,8 @@ export const products = [
 		rating: { average: 5, count: 59 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 280.95, precisionAmount: '2' },
-			value: { currency: 'USD', amount: 260.99, precisionAmount: '2' },
+			regularPrice: { currency: 'USD', amount: 280.95, precisionAmount: 2 },
+			value: { currency: 'USD', amount: 260.99, precisionAmount: 2 },
 		},
 		primaryImage: {
 			alt: 'Tent',
@@ -536,8 +536,8 @@ export const products = [
 		rating: { average: 4, count: 87 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 29.95, precisionAmount: '2' },
-			value: { currency: 'USD', amount: 20.99, precisionAmount: '2' },
+			regularPrice: { currency: 'USD', amount: 29.95, precisionAmount: 2 },
+			value: { currency: 'USD', amount: 20.99, precisionAmount: 2 },
 		},
 		primaryImage: {
 			alt: 'Cruiser Skateboard',
@@ -554,8 +554,8 @@ export const products = [
 		rating: { average: 5, count: 125 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 85.95, precisionAmount: '2' },
-			value: { currency: 'USD', amount: 68.99, precisionAmount: '2' },
+			regularPrice: { currency: 'USD', amount: 85.95, precisionAmount: 2 },
+			value: { currency: 'USD', amount: 68.99, precisionAmount: 2 },
 		},
 		primaryImage: {
 			alt: 'Football',
@@ -572,8 +572,8 @@ export const products = [
 		rating: { average: 5, count: 3491 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 18.95, precisionAmount: '2' },
-			value: { currency: 'USD', amount: 15.99, precisionAmount: '2' },
+			regularPrice: { currency: 'USD', amount: 18.95, precisionAmount: 2 },
+			value: { currency: 'USD', amount: 15.99, precisionAmount: 2 },
 		},
 		primaryImage: {
 			alt: 'Tennis Ball',
@@ -590,8 +590,8 @@ export const products = [
 		rating: { average: 4, count: 135 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 48.95, precisionAmount: '2' },
-			value: { currency: 'USD', amount: 42.99, precisionAmount: '2' },
+			regularPrice: { currency: 'USD', amount: 48.95, precisionAmount: 2 },
+			value: { currency: 'USD', amount: 42.99, precisionAmount: 2 },
 		},
 		primaryImage: {
 			alt: 'Basketball',
@@ -608,8 +608,8 @@ export const products = [
 		rating: { average: 5, count: 342 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 119.95, precisionAmount: '2' },
-			value: { currency: 'USD', amount: 100.99, precisionAmount: '2' },
+			regularPrice: { currency: 'USD', amount: 119.95, precisionAmount: 2 },
+			value: { currency: 'USD', amount: 100.99, precisionAmount: 2 },
 		},
 		primaryImage: {
 			alt: 'Ultraboost Running Shoe',
@@ -626,8 +626,8 @@ export const products = [
 		rating: { average: 4, count: 541 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 200.95, precisionAmount: '2' },
-			value: { currency: 'USD', amount: 192.99, precisionAmount: '2' },
+			regularPrice: { currency: 'USD', amount: 200.95, precisionAmount: 2 },
+			value: { currency: 'USD', amount: 192.99, precisionAmount: 2 },
 		},
 		primaryImage: {
 			alt: 'Freerun Running Shoe',
@@ -644,8 +644,8 @@ export const products = [
 		rating: { average: 5, count: 238 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 175.95, precisionAmount: '2' },
-			value: { currency: 'USD', amount: 168.99, precisionAmount: '2' },
+			regularPrice: { currency: 'USD', amount: 175.95, precisionAmount: 2 },
+			value: { currency: 'USD', amount: 168.99, precisionAmount: 2 },
 		},
 		primaryImage: {
 			alt: 'Hi-Top Basketball Shoe',
@@ -662,8 +662,8 @@ export const products = [
 		rating: { average: 5, count: 723 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 130.97, precisionAmount: '2' },
-			value: { currency: 'USD', amount: 119.79, precisionAmount: '2' },
+			regularPrice: { currency: 'USD', amount: 130.97, precisionAmount: 2 },
+			value: { currency: 'USD', amount: 119.79, precisionAmount: 2 },
 		},
 		primaryImage: {
 			alt: 'Pureboost Running Shoe',
@@ -680,8 +680,8 @@ export const products = [
 		rating: { average: 3, count: 26 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 69.99, precisionAmount: '2' },
-			value: { currency: 'USD', amount: 53.79, precisionAmount: '2' },
+			regularPrice: { currency: 'USD', amount: 69.99, precisionAmount: 2 },
+			value: { currency: 'USD', amount: 53.79, precisionAmount: 2 },
 		},
 		primaryImage: {
 			alt: 'RunX Running Shoe',
@@ -698,8 +698,8 @@ export const products = [
 		rating: { average: 5, count: 375 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 89.95, precisionAmount: '2' },
-			value: { currency: 'USD', amount: 78.79, precisionAmount: '2' },
+			regularPrice: { currency: 'USD', amount: 89.95, precisionAmount: 2 },
+			value: { currency: 'USD', amount: 78.79, precisionAmount: 2 },
 		},
 		primaryImage: {
 			alt: 'Allstar Sneakers',
@@ -716,8 +716,8 @@ export const products = [
 		rating: { average: 4, count: 165 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 20.95, precisionAmount: '2' },
-			value: { currency: 'USD', amount: 18.65, precisionAmount: '2' },
+			regularPrice: { currency: 'USD', amount: 20.95, precisionAmount: 2 },
+			value: { currency: 'USD', amount: 18.65, precisionAmount: 2 },
 		},
 		primaryImage: {
 			alt: 'Spiky Cactus',
@@ -734,8 +734,8 @@ export const products = [
 		rating: { average: 4, count: 890 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 10.95, precisionAmount: '2' },
-			value: { currency: 'USD', amount: 8.19, precisionAmount: '2' },
+			regularPrice: { currency: 'USD', amount: 10.95, precisionAmount: 2 },
+			value: { currency: 'USD', amount: 8.19, precisionAmount: 2 },
 		},
 		primaryImage: {
 			alt: 'Tulip Pot',
@@ -752,8 +752,8 @@ export const products = [
 		rating: { average: 4, count: 376 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 25.15, precisionAmount: '2' },
-			value: { currency: 'USD', amount: 23.94, precisionAmount: '2' },
+			regularPrice: { currency: 'USD', amount: 25.15, precisionAmount: 2 },
+			value: { currency: 'USD', amount: 23.94, precisionAmount: 2 },
 		},
 		primaryImage: {
 			alt: 'Hanging Plant',
@@ -770,8 +770,8 @@ export const products = [
 		rating: { average: 3, count: 621 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 10.45, precisionAmount: '2' },
-			value: { currency: 'USD', amount: 8.39, precisionAmount: '2' },
+			regularPrice: { currency: 'USD', amount: 10.45, precisionAmount: 2 },
+			value: { currency: 'USD', amount: 8.39, precisionAmount: 2 },
 		},
 		primaryImage: {
 			alt: 'Aloe Vera',
@@ -788,8 +788,8 @@ export const products = [
 		rating: { average: 4, count: 475 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 12.95, precisionAmount: '2' },
-			value: { currency: 'USD', amount: 10.99, precisionAmount: '2' },
+			regularPrice: { currency: 'USD', amount: 12.95, precisionAmount: 2 },
+			value: { currency: 'USD', amount: 10.99, precisionAmount: 2 },
 		},
 		primaryImage: {
 			alt: 'Fern Blechnum Gibbum',
@@ -806,8 +806,8 @@ export const products = [
 		rating: { average: 5, count: 349 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 42.35, precisionAmount: '2' },
-			value: { currency: 'USD', amount: 39.99, precisionAmount: '2' },
+			regularPrice: { currency: 'USD', amount: 42.35, precisionAmount: 2 },
+			value: { currency: 'USD', amount: 39.99, precisionAmount: 2 },
 		},
 		primaryImage: {
 			alt: 'Assorted Indoor Succulents',
@@ -824,8 +824,8 @@ export const products = [
 		rating: { average: 5, count: 135 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 30.75, precisionAmount: '2' },
-			value: { currency: 'USD', amount: 25.79, precisionAmount: '2' },
+			regularPrice: { currency: 'USD', amount: 30.75, precisionAmount: 2 },
+			value: { currency: 'USD', amount: 25.79, precisionAmount: 2 },
 		},
 		primaryImage: {
 			alt: 'Orchid',
@@ -842,8 +842,8 @@ export const products = [
 		rating: { average: 5, count: 176 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 30.95, precisionAmount: '2' },
-			value: { currency: 'USD', amount: 25.79, precisionAmount: '2' },
+			regularPrice: { currency: 'USD', amount: 30.95, precisionAmount: 2 },
+			value: { currency: 'USD', amount: 25.79, precisionAmount: 2 },
 		},
 		primaryImage: {
 			alt: 'Bonsai Tree',
@@ -860,8 +860,8 @@ export const products = [
 		rating: { average: 5, count: 91 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 220.95, precisionAmount: '2' },
-			value: { currency: 'USD', amount: 150.99, precisionAmount: '2' },
+			regularPrice: { currency: 'USD', amount: 220.95, precisionAmount: 2 },
+			value: { currency: 'USD', amount: 150.99, precisionAmount: 2 },
 		},
 		primaryImage: {
 			alt: 'Guardian Lion Statue',
@@ -878,8 +878,8 @@ export const products = [
 		rating: { average: 5, count: 76 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 9.95, precisionAmount: '2' },
-			value: { currency: 'USD', amount: 5.99, precisionAmount: '2' },
+			regularPrice: { currency: 'USD', amount: 9.95, precisionAmount: 2 },
+			value: { currency: 'USD', amount: 5.99, precisionAmount: 2 },
 		},
 		primaryImage: {
 			alt: 'Hand Trowel',
@@ -896,8 +896,8 @@ export const products = [
 		rating: { average: 4, count: 321 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 99.95, precisionAmount: '2' },
-			value: { currency: 'USD', amount: 78.99, precisionAmount: '2' },
+			regularPrice: { currency: 'USD', amount: 99.95, precisionAmount: 2 },
+			value: { currency: 'USD', amount: 78.99, precisionAmount: 2 },
 		},
 		primaryImage: {
 			alt: 'Balloon Chair',
@@ -914,8 +914,8 @@ export const products = [
 		rating: { average: 5, count: 479 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 360.95, precisionAmount: '2' },
-			value: { currency: 'USD', amount: 345.99, precisionAmount: '2' },
+			regularPrice: { currency: 'USD', amount: 360.95, precisionAmount: 2 },
+			value: { currency: 'USD', amount: 345.99, precisionAmount: 2 },
 		},
 		primaryImage: {
 			alt: 'Grey Fabric Sofa',
@@ -932,8 +932,8 @@ export const products = [
 		rating: { average: 3, count: 51 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 1495.55, precisionAmount: '2' },
-			value: { currency: 'USD', amount: 1457.79, precisionAmount: '2' },
+			regularPrice: { currency: 'USD', amount: 1495.55, precisionAmount: 2 },
+			value: { currency: 'USD', amount: 1457.79, precisionAmount: 2 },
 		},
 		primaryImage: {
 			alt: 'Leather Sofa',
@@ -950,8 +950,8 @@ export const products = [
 		rating: { average: 5, count: 831 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 40.75, precisionAmount: '2' },
-			value: { currency: 'USD', amount: 35.79, precisionAmount: '2' },
+			regularPrice: { currency: 'USD', amount: 40.75, precisionAmount: 2 },
+			value: { currency: 'USD', amount: 35.79, precisionAmount: 2 },
 		},
 		primaryImage: {
 			alt: 'Light Shade',
@@ -968,8 +968,8 @@ export const products = [
 		rating: { average: 3, count: 210 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 150.25, precisionAmount: '2' },
-			value: { currency: 'USD', amount: 135.27, precisionAmount: '2' },
+			regularPrice: { currency: 'USD', amount: 150.25, precisionAmount: 2 },
+			value: { currency: 'USD', amount: 135.27, precisionAmount: 2 },
 		},
 		primaryImage: {
 			alt: 'Wooden Side Desk',
@@ -986,8 +986,8 @@ export const products = [
 		rating: { average: 5, count: 76 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 150.45, precisionAmount: '2' },
-			value: { currency: 'USD', amount: 135.39, precisionAmount: '2' },
+			regularPrice: { currency: 'USD', amount: 150.45, precisionAmount: 2 },
+			value: { currency: 'USD', amount: 135.39, precisionAmount: 2 },
 		},
 		primaryImage: {
 			alt: 'Comfy Padded Chair',
@@ -1004,8 +1004,8 @@ export const products = [
 		rating: { average: 5, count: 124 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 97.77, precisionAmount: '2' },
-			value: { currency: 'USD', amount: 84.99, precisionAmount: '2' },
+			regularPrice: { currency: 'USD', amount: 97.77, precisionAmount: 2 },
+			value: { currency: 'USD', amount: 84.99, precisionAmount: 2 },
 		},
 		primaryImage: {
 			alt: 'Black Eaves Chair',
@@ -1022,8 +1022,8 @@ export const products = [
 		rating: { average: 4, count: 524 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 20.99, precisionAmount: '2' },
-			value: { currency: 'USD', amount: 16.69, precisionAmount: '2' },
+			regularPrice: { currency: 'USD', amount: 20.99, precisionAmount: 2 },
+			value: { currency: 'USD', amount: 16.69, precisionAmount: 2 },
 		},
 		primaryImage: {
 			alt: 'Wooden Stool',
@@ -1040,8 +1040,8 @@ export const products = [
 		rating: { average: 4, count: 43 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 188.75, precisionAmount: '2' },
-			value: { currency: 'USD', amount: 156.97, precisionAmount: '2' },
+			regularPrice: { currency: 'USD', amount: 188.75, precisionAmount: 2 },
+			value: { currency: 'USD', amount: 156.97, precisionAmount: 2 },
 		},
 		primaryImage: {
 			alt: 'Bedside Table',
@@ -1058,8 +1058,8 @@ export const products = [
 		rating: { average: 4, count: 189 },
 		price: {
 			isDiscounted: true,
-			regularPrice: { currency: 'USD', amount: 120.77, precisionAmount: '2' },
-			value: { currency: 'USD', amount: 100.79, precisionAmount: '2' },
+			regularPrice: { currency: 'USD', amount: 120.77, precisionAmount: 2 },
+			value: { currency: 'USD', amount: 100.79, precisionAmount: 2 },
 		},
 		primaryImage: {
 			alt: 'Modern Cafe Chair',

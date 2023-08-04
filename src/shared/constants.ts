@@ -1,5 +1,6 @@
 import { createContextId } from '@builder.io/qwik';
-import type { Actions, ReadonlyStore } from '~/types/store';
+import type { Actions } from '~/store/actions';
+import type { ReadonlyStore } from '~/types/store';
 
 export const DEFAULT_METADATA_URL = 'storefront-qwik-boilerplate.vercel.app';
 export const DEFAULT_METADATA_TITLE = 'Qwik and Storefront UI';
