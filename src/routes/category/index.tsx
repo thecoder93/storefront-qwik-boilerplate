@@ -1,5 +1,5 @@
-import { $, component$, useContext } from '@builder.io/qwik';
-import { routeLoader$ } from '@builder.io/qwik-city';
+import { $, component$, useComputed$, useContext } from '@builder.io/qwik';
+import { routeLoader$, useLocation, useNavigate } from '@builder.io/qwik-city';
 import { Image } from 'qwik-image';
 import { useTranslate } from 'qwik-speak';
 import { SfButton, SfIconShoppingCart, SfRating } from 'qwik-storefront-ui';
@@ -7,8 +7,9 @@ import { Pagination } from '~/components/Pagination/Pagination';
 import { ACTIONS_CONTEXT } from '~/shared/constants';
 import type { Product } from '~/types/product';
 
-export const useProductsLoader = routeLoader$(async ({ env }) => {
-	const response = await fetch(`${env.get('HOST')}/api/products/?page=1`);
+export const useProductsLoader = routeLoader$(async ({ env, query }) => {
+	const page = query.get('page') || 1;
+	const response = await fetch(`${env.get('HOST')}/api/products/?page=${page}`);
 	return (await response.json()) as {
 		products: Product[];
 		totalPages: number;
@@ -16,16 +17,19 @@ export const useProductsLoader = routeLoader$(async ({ env }) => {
 });
 
 export default component$(() => {
-	const products = useProductsLoader();
 	const t = useTranslate();
+	const location = useLocation();
+	const navigate = useNavigate();
+	const products = useProductsLoader();
 	const actions = useContext(ACTIONS_CONTEXT);
+	const initialPageSig = useComputed$(() =>
+		parseInt(location.url.searchParams.get('page') || '1', 10)
+	);
 
-	const onPrevPage = $((page: number) => {
-		console.log('prev', page);
-	});
-
-	const onNextPage = $((page: number) => {
-		console.log('next', page);
+	const onPageChange = $((page: number) => {
+		const url = new URL(location.url);
+		url.searchParams.set('page', page.toString());
+		navigate(url.href);
 	});
 
 	return (
@@ -741,7 +745,7 @@ export default component$(() => {
 								>
 									{products.value.products.map((product) => (
 										<div
-											key={product.id}
+											key={product.slug}
 											class='border border-neutral-200 rounded-md hover:shadow-lg flex-auto flex-shrink-0 max-w-[260px]'
 											data-testid='product-card'
 										>
@@ -817,10 +821,10 @@ export default component$(() => {
 									))}
 								</section>
 								<Pagination
-									initialPage={1}
-									totalPages={5}
-									onPrevPage={onPrevPage}
-									onNextPage={onNextPage}
+									initialPage={initialPageSig.value}
+									totalPages={products.value.totalPages}
+									onPrevPage={onPageChange}
+									onNextPage={onPageChange}
 								/>
 							</div>
 						</div>
