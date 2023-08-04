@@ -79,12 +79,12 @@ export const display = [
 
 export const products: Product[] = [
 	{
-		id: '1',
+		id: '0',
 		slug: 'athletic-sneakers',
 		name: 'Athletic sneakers',
 		description:
 			'Lightweight • Non slip • Flexible outsole • Easy to wear on and off',
-		sku: 'product-1',
+		sku: 'product-0',
 		rating: { average: 4, count: 26 },
 		price: {
 			isDiscounted: false,

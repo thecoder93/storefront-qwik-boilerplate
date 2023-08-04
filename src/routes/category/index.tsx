@@ -833,8 +833,7 @@ export default component$(() => {
 									class='mt-6'
 									initialPage={initialPageSig.value}
 									totalPages={products.value.totalPages}
-									onPrevPage={onPageChange}
-									onNextPage={onPageChange}
+									onPageChange={onPageChange}
 								/>
 							</div>
 						</div>

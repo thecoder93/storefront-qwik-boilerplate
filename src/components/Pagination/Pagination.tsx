@@ -11,12 +11,11 @@ export interface PaginationProps {
 	class: string;
 	initialPage: number;
 	totalPages: number;
-	onPrevPage: PropFunction<(page: number) => void>;
-	onNextPage: PropFunction<(page: number) => void>;
+	onPageChange: PropFunction<(page: number) => void>;
 }
 
 export const Pagination = component$<PaginationProps>(
-	({ class: _class, initialPage, totalPages, onPrevPage, onNextPage }) => {
+	({ class: _class, initialPage, totalPages, onPageChange }) => {
 		const t = useTranslate();
 		const selectedPageSig = useSignal(
 			Math.max(1, Math.min(initialPage, totalPages))
@@ -42,7 +41,7 @@ export const Pagination = component$<PaginationProps>(
 					onClick$={() => {
 						if (selectedPageSig.value !== 1) {
 							selectedPageSig.value -= 1;
-							onPrevPage(selectedPageSig.value);
+							onPageChange(selectedPageSig.value);
 						}
 					}}
 				>
@@ -73,7 +72,10 @@ export const Pagination = component$<PaginationProps>(
 										}}
 										aria-label={`Page ${page} of ${totalPages}`}
 										aria-current={selectedPageSig.value === page}
-										onClick$={() => (selectedPageSig.value = page)}
+										onClick$={() => {
+											selectedPageSig.value = page;
+											onPageChange(page);
+										}}
 									>
 										{page}
 									</button>
@@ -92,7 +94,7 @@ export const Pagination = component$<PaginationProps>(
 					onClick$={() => {
 						if (selectedPageSig.value < totalPages) {
 							selectedPageSig.value += 1;
-							onNextPage(selectedPageSig.value);
+							onPageChange(selectedPageSig.value);
 						}
 					}}
 				>
