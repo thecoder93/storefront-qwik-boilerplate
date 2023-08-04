@@ -1,5 +1,7 @@
 import { component$ } from '@builder.io/qwik';
 import { Image } from 'qwik-image';
+import { OrderSummary } from '~/components/OrderSummary/OrderSummary';
+import { Divider } from '~/components/UI/Divider/Divider';
 
 export default component$(() => {
 	return (
@@ -46,10 +48,7 @@ export default component$(() => {
 					</div>
 					<div class='md:grid md:grid-cols-12 md:gap-x-6'>
 						<div class='col-span-7 mb-10 md:mb-0'>
-							<hr
-								class='w-full h-px bg-neutral-200 w-screen md:w-auto -mx-4 md:mx-0'
-								data-testid='divider'
-							/>
+							<Divider class='w-screen md:w-auto -mx-4 md:mx-0' />
 							<div data-testid='contact-information' class='md:px-4 py-6'>
 								<div class='flex justify-between items-center'>
 									<h2 class='text-neutral-900 text-lg font-bold mb-4'>
@@ -70,10 +69,7 @@ export default component$(() => {
 									</button>
 								</div>
 							</div>
-							<hr
-								class='w-full h-px bg-neutral-200 w-screen md:w-auto -mx-4 md:mx-0'
-								data-testid='divider'
-							/>
+							<Divider class='w-screen md:w-auto -mx-4 md:mx-0' />
 							<div data-testid='checkout-address' class='md:px-4 py-6'>
 								<div class='flex justify-between items-center'>
 									<h2 class='text-neutral-900 text-lg font-bold mb-4'>
@@ -94,10 +90,7 @@ export default component$(() => {
 									</button>
 								</div>
 							</div>
-							<hr
-								class='w-full h-px bg-neutral-200 w-screen md:w-auto -mx-4 md:mx-0'
-								data-testid='divider'
-							/>
+							<Divider class='w-screen md:w-auto -mx-4 md:mx-0' />
 							<div data-testid='checkout-address' class='md:px-4 py-6'>
 								<div class='flex justify-between items-center'>
 									<h2 class='text-neutral-900 text-lg font-bold mb-4'>
@@ -115,10 +108,7 @@ export default component$(() => {
 									</button>
 								</div>
 							</div>
-							<hr
-								class='w-full h-px bg-neutral-200 w-screen md:w-auto -mx-4 md:mx-0'
-								data-testid='divider'
-							/>
+							<Divider class='w-screen md:w-auto -mx-4 md:mx-0' />
 							<div data-testid='shipping-method' class='md:px-4 my-6'>
 								<div class='flex justify-between items-center'>
 									<h3 class='text-neutral-900 text-lg font-bold'>
@@ -173,10 +163,7 @@ export default component$(() => {
 									</ul>
 								</div>
 							</div>
-							<hr
-								class='w-full h-px bg-neutral-200 w-screen md:w-auto -mx-4 md:mx-0'
-								data-testid='divider'
-							/>
+							<Divider class='w-screen md:w-auto -mx-4 md:mx-0' />
 							<div data-testid='checkout-payment' class='md:px-4 py-6'>
 								<h3 class='text-neutral-900 text-lg font-bold mb-4'>
 									Payment method
@@ -253,122 +240,35 @@ export default component$(() => {
 									</button>
 								</div>
 							</div>
-							<hr
-								class='w-full h-px bg-neutral-200 w-screen md:w-auto -mx-4 md:mx-0 mb-10'
-								data-testid='divider'
-							/>
+							<Divider class=' w-screen md:w-auto -mx-4 md:mx-0 mb-10' />
 						</div>
-						<div
-							class='md:shadow-lg md:rounded-md md:border md:border-neutral-100 col-span-5 md:sticky md:top-20 h-fit'
-							data-testid='order-summary'
-						>
-							<div class='flex justify-between items-end bg-neutral-100 md:bg-transparent py-2 px-4 md:px-6 md:pt-6 md:pb-4'>
-								<p class='typography-headline-4 font-bold md:typography-headline-3'>
-									Order Summary
-								</p>
-								<p
-									class='typography-text-base font-semibold'
-									data-testid='total-in-cart'
-								>
-									(Items: 1)
-								</p>
-							</div>
-							<div class='px-4 pb-4 mt-3 md:px-6 md:pb-6 md:mt-0'>
-								<div class='flex justify-between typography-text-base pb-4'>
-									<div class='flex flex-col grow pr-2'>
-										<p>Items subtotal</p>
-										<p class='ml-auto typography-text-xs text-neutral-500'>
-											Original price
-										</p>
-										<p class='ml-auto typography-text-xs text-secondary-700'>
-											Savings
-										</p>
-										<p class='my-2'>Delivery</p>
-										<p>Estimated Sales Tax</p>
-									</div>
-									<div class='flex flex-col text-right'>
-										<p data-testid='special-price'>$89.95</p>
-										<p class='typography-text-xs text-neutral-500'>$100.99</p>
-										<p class='typography-text-xs text-secondary-700'>$20</p>
-										<p class='my-2'>$0</p>
-										<p>$1.38</p>
-									</div>
-								</div>
-								<div class='flex items-center py-4 border-t border-neutral-200'>
-									<p>Promo Code</p>
-									<button
-										type='button'
-										class='inline-flex items-center justify-center font-medium text-base focus-visible:outline focus-visible:outline-offset rounded-md disabled:text-disabled-500 disabled:bg-disabled-300 disabled:shadow-none disabled:ring-0 disabled:cursor-not-allowed leading-5 text-sm py-1.5 px-3 gap-1.5 text-primary-700 hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900 disabled:bg-transparent ml-auto mr-2'
-										data-testid='button'
-									>
-										Remove
-									</button>
-									<p>$20</p>
-								</div>
-								<div class='flex gap-x-2 py-4 border-y border-neutral-200 mb-4'>
-									<div
-										class='flex items-center bg-white rounded-md ring-inset text-neutral-500 hover:ring-primary-700 focus-within:caret-primary-700 active:caret-primary-700 active:ring-primary-700 active:ring-2 focus-within:ring-primary-700 focus-within:ring-2 ring-1 ring-neutral-200 py-2 px-4 grow'
-										data-testid='input'
-									>
-										<input
-											class='min-w-[80px] w-full text-base outline-none appearance-none text-neutral-900 disabled:cursor-not-allowed disabled:bg-transparent read-only:bg-transparent'
-											type='text'
-											data-testid='input-field'
-											placeholder='Enter promo code'
-										/>
-									</div>
-									<button
-										type='button'
-										class='inline-flex items-center justify-center font-medium text-base focus-visible:outline focus-visible:outline-offset rounded-md disabled:text-disabled-500 disabled:bg-disabled-300 disabled:shadow-none disabled:ring-0 disabled:cursor-not-allowed py-2 leading-6 px-4 gap-2 text-primary-700 hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900 ring-1 ring-primary-700 hover:shadow-md active:shadow shadow hover:ring-primary-800 active:ring-primary-900 disabled:ring-1 disabled:ring-disabled-300 disabled:bg-white/50'
-										data-testid='button'
-									>
-										Apply
-									</button>
-								</div>
-								<div class='px-3 py-1.5 bg-secondary-100 text-secondary-700 typography-text-sm rounded-md text-center mb-4'>
-									<div class='inline-flex items-center justify-center rounded-md font-normal text-secondary-800 bg-secondary-100 text-sm p-1.5 gap-1.5 w-full'>
-										You are saving $20 on your order today!
-									</div>
-								</div>
-								<div class='flex justify-between typography-headline-4 md:typography-headline-3 font-bold pb-4 mb-4'>
-									<p>Total</p>
-									<p data-testid='total'>$89.95</p>
-								</div>
-								<hr
-									class='w-full h-px bg-neutral-200 my-4 max-md:-mx-4 max-md:w-auto'
-									data-testid='divider'
-								/>
+						<OrderSummary>
+							<a
+								class='inline-flex items-center justify-center font-medium text-base focus-visible:outline focus-visible:outline-offset rounded-md disabled:text-disabled-500 disabled:bg-disabled-300 disabled:shadow-none disabled:ring-0 disabled:cursor-not-allowed py-3 leading-6 px-6 gap-3 text-white shadow hover:shadow-md active:shadow bg-primary-700 hover:bg-primary-800 active:bg-primary-900 disabled:bg-disabled-300 w-full mb-4 md:mb-0'
+								data-testid='button'
+								href='/order/success'
+							>
+								Place order and pay
+							</a>
+							<p class='text-sm text-center mt-4 pb-4 md:pb-0'>
+								By placing my order, you agree to our{' '}
 								<a
-									class='inline-flex items-center justify-center font-medium text-base focus-visible:outline focus-visible:outline-offset rounded-md disabled:text-disabled-500 disabled:bg-disabled-300 disabled:shadow-none disabled:ring-0 disabled:cursor-not-allowed py-3 leading-6 px-6 gap-3 text-white shadow hover:shadow-md active:shadow bg-primary-700 hover:bg-primary-800 active:bg-primary-900 disabled:bg-disabled-300 w-full mb-4 md:mb-0'
-									data-testid='button'
-									href='/order/success'
+									class='focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm text-primary-700 underline hover:text-primary-800 active:text-primary-900 focus:outline focus:outline-offset-2 focus:outline-2 outline-secondary-600 rounded'
+									data-testid='link'
+									href='/checkout#'
 								>
-									Place order and pay
+									Terms and Conditions
+								</a>{' '}
+								and our{' '}
+								<a
+									class='focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm text-primary-700 underline hover:text-primary-800 active:text-primary-900 focus:outline focus:outline-offset-2 focus:outline-2 outline-secondary-600 rounded'
+									data-testid='link'
+									href='/checkout#'
+								>
+									Privacy Policy
 								</a>
-								<p class='text-sm text-center mt-4 pb-4 md:pb-0'>
-									By placing my order, you agree to our{' '}
-									<a
-										class='focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm text-primary-700 underline hover:text-primary-800 active:text-primary-900 focus:outline focus:outline-offset-2 focus:outline-2 outline-secondary-600 rounded'
-										data-testid='link'
-										href='/checkout#'
-									>
-										Terms and Conditions
-									</a>{' '}
-									and our{' '}
-									<a
-										class='focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm text-primary-700 underline hover:text-primary-800 active:text-primary-900 focus:outline focus:outline-offset-2 focus:outline-2 outline-secondary-600 rounded'
-										data-testid='link'
-										href='/checkout#'
-									>
-										Privacy Policy
-									</a>
-								</p>
-								<hr
-									class='w-full h-px bg-neutral-200 my-10 md:hidden -mx-4 w-auto'
-									data-testid='divider'
-								/>
-							</div>
-						</div>
+							</p>
+						</OrderSummary>
 					</div>
 				</div>
 			</div>

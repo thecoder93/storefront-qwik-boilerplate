@@ -5,6 +5,7 @@ import { useTranslate } from 'qwik-speak';
 import { SfButton, SfIconShoppingCart, SfRating } from 'qwik-storefront-ui';
 import { ProductNotFound } from '~/components/ProductNotFound/ProductNotFound';
 import { ProductSlider } from '~/components/ProductSlider/ProductSlider';
+import { Divider } from '~/components/UI/Divider/Divider';
 import { useRandomProductsLoader } from '~/routes/layout';
 import { ACTIONS_CONTEXT, IMAGE_PLACHEHOLDER } from '~/shared/constants';
 import { generateDocumentHead } from '~/shared/utils';
@@ -428,10 +429,7 @@ export default component$(() => {
 							</div>
 						</section>
 						<section class='grid-in-left-bottom md:mt-8'>
-							<hr
-								class='w-full h-px bg-neutral-200 mb-6'
-								data-testid='divider'
-							/>
+							<Divider class='mb-6' />
 							<div class='px-4'>
 								<span class='block mb-2 mt-2 text-base font-medium leading-6 text-neutral-900'>
 									Size
@@ -534,10 +532,7 @@ export default component$(() => {
 									</label>
 								</div>
 							</div>
-							<hr
-								class='w-full h-px bg-neutral-200 mt-4 mb-2 md:mt-8'
-								data-testid='divider'
-							/>
+							<Divider class='mt-4 mb-2 md:mt-8' />
 							<div>
 								<details data-testid='accordion-item'>
 									<summary class='md:rounded-md w-full hover:bg-neutral-100 py-2 pl-4 pr-3 flex justify-between items-center list-none [&amp;::-webkit-details-marker]:hidden cursor-pointer focus-visible:outline focus-visible:outline-offset focus-visible:outline focus-visible:rounded-sm'>
@@ -560,10 +555,7 @@ export default component$(() => {
 										</p>
 									</div>
 								</details>
-								<hr
-									class='w-full h-px bg-neutral-200 my-4'
-									data-testid='divider'
-								/>
+								<Divider class=' my-4' />
 								<details data-testid='accordion-item'>
 									<summary class='md:rounded-md w-full hover:bg-neutral-100 py-2 pl-4 pr-3 flex justify-between items-center list-none [&amp;::-webkit-details-marker]:hidden cursor-pointer focus-visible:outline focus-visible:outline-offset focus-visible:outline focus-visible:rounded-sm'>
 										<h2 class='font-bold font-headings text-lg leading-6 md:text-2xl'>
@@ -1060,10 +1052,7 @@ export default component$(() => {
 								</details>
 							</div>
 						</section>
-						<hr
-							class='w-full h-px bg-neutral-200 mt-4 mb-2'
-							data-testid='divider'
-						/>
+						<Divider class='mt-4 mb-2' />
 					</div>
 					<section class='mx-4 mt-28 mb-20'>
 						<p
