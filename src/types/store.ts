@@ -4,7 +4,7 @@ export type Store = {
 
 export type ReadonlyStore = Readonly<Store>;
 
-type Cart = { products: Product[] };
+type Cart = { products: Product[]; shippingOption: number };
 
 type Product = {
 	id: string;

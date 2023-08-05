@@ -4,10 +4,11 @@ import { Image } from 'qwik-image';
 import { useTranslate } from 'qwik-speak';
 import { OrderSummary } from '~/components/OrderSummary/OrderSummary';
 import { Divider } from '~/components/UI/Divider/Divider';
-import { ACTIONS_CONTEXT } from '~/shared/constants';
+import { ACTIONS_CONTEXT, STORE_CONTEXT } from '~/shared/constants';
 
 export default component$(() => {
 	const t = useTranslate();
+	const store = useContext(STORE_CONTEXT);
 	const actions = useContext(ACTIONS_CONTEXT);
 	return (
 		<main data-testid='checkout-layout'>
@@ -131,17 +132,22 @@ export default component$(() => {
 										>
 											<span class='flex flex-col w-full min-w-0'>
 												<div class='flex gap-2'>
-													<input
-														type='radio'
-														class='h-5 w-5 border-2 p-[3px] bg-clip-content rounded-full appearance-none cursor-pointer focus-visible:outline focus-visible:outline-offset disabled:border-disabled-500 disabled:cursor-not-allowed disabled:checked:bg-disabled-500 disabled:checked:border-disabled-500 border-neutral-500 active:border-primary-900 hover:border-primary-700 checked:bg-primary-700 checked:border-primary-700 hover:checked:bg-primary-800 hover:checked:border-primary-800 active:checked:bg-primary-900 active:checked:border-primary-900'
-														name='Standard'
-														value='1'
+													<div
+														class={{
+															'h-5 w-5 border-2 p-[3px] bg-clip-content rounded-full appearance-none cursor-pointer focus-visible:outline focus-visible:outline-offset border-neutral-500 active:border-primary-900 hover:border-primary-700':
+																true,
+															'bg-primary-700 border-primary-700 hover:bg-primary-800 hover:border-primary-800 active:bg-primary-900 active:border-primary-900':
+																store.cart.shippingOption === 1,
+														}}
+														onClick$={() => {
+															actions.changeShippingCosts(1);
+														}}
 													/>
 													<div>
 														<p>Standard</p>
-														<p class='text-xs text-neutral-500'>tomorrow</p>
+														<p class='text-xs text-neutral-500'>5 days</p>
 													</div>
-													<p class='ml-auto'>$3</p>
+													<p class='ml-auto'>$5</p>
 												</div>
 											</span>
 										</label>
@@ -151,17 +157,22 @@ export default component$(() => {
 										>
 											<span class='flex flex-col w-full min-w-0'>
 												<div class='flex gap-2'>
-													<input
-														type='radio'
-														class='h-5 w-5 border-2 p-[3px] bg-clip-content rounded-full appearance-none cursor-pointer focus-visible:outline focus-visible:outline-offset disabled:border-disabled-500 disabled:cursor-not-allowed disabled:checked:bg-disabled-500 disabled:checked:border-disabled-500 border-neutral-500 active:border-primary-900 hover:border-primary-700 checked:bg-primary-700 checked:border-primary-700 hover:checked:bg-primary-800 hover:checked:border-primary-800 active:checked:bg-primary-900 active:checked:border-primary-900'
-														name='Express'
-														value='2'
+													<div
+														class={{
+															'h-5 w-5 border-2 p-[3px] bg-clip-content rounded-full appearance-none cursor-pointer focus-visible:outline focus-visible:outline-offset border-neutral-500 active:border-primary-900 hover:border-primary-700':
+																true,
+															'bg-primary-700 border-primary-700 hover:bg-primary-800 hover:border-primary-800 active:bg-primary-900 active:border-primary-900':
+																store.cart.shippingOption === 2,
+														}}
+														onClick$={() => {
+															actions.changeShippingCosts(2);
+														}}
 													/>
 													<div>
 														<p>Express</p>
 														<p class='text-xs text-neutral-500'>tomorrow</p>
 													</div>
-													<p class='ml-auto'>$10</p>
+													<p class='ml-auto'>$15</p>
 												</div>
 											</span>
 										</label>

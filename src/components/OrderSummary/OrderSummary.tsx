@@ -1,4 +1,5 @@
 import { Slot, component$, useComputed$, useContext } from '@builder.io/qwik';
+import { useLocation } from '@builder.io/qwik-city';
 import { useTranslate } from 'qwik-speak';
 import { STORE_CONTEXT } from '~/shared/constants';
 import {
@@ -7,11 +8,16 @@ import {
 	getCartRegularTotal,
 	getCartSavingTotal,
 	getCartTotal,
+	getShippingCosts,
 } from '~/store/selectors';
 import { Divider } from '../UI/Divider/Divider';
 
 export const OrderSummary = component$(() => {
 	const t = useTranslate();
+	const location = useLocation();
+	const isCheckoutPathSig = useComputed$(() =>
+		location.url.pathname.includes('checkout')
+	);
 	const store = useContext(STORE_CONTEXT);
 	const cartQuantitySig = useComputed$(() => getCartQuantity(store.cart));
 	return (
@@ -91,9 +97,15 @@ export const OrderSummary = component$(() => {
 						{t('savingsTag', { amount: '$20' })}
 					</div>
 				</div>
+				{isCheckoutPathSig.value && (
+					<div class='flex justify-between typography-text-base pb-4 mb-4'>
+						<p>{t('shippingDelivery')}</p>
+						<p data-testid='total'>{getShippingCosts(store.cart)}</p>
+					</div>
+				)}
 				<div class='flex justify-between typography-headline-4 md:typography-headline-3 font-bold pb-4 mb-4'>
 					<p>{t('total')}</p>
-					<p data-testid='total'>{getCartTotal(store.cart, 20, 2)}</p>
+					<p data-testid='total'>{getCartTotal(store.cart, 20)}</p>
 				</div>
 				<Divider class='my-4 max-md:-mx-4 max-md:w-auto' />
 				<Slot />

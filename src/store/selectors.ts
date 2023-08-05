@@ -39,18 +39,14 @@ export const getCartSavingTotal = (cart: Store['cart']) => {
 	return formatPrice(total, 2);
 };
 
-export const getCartTotal = (
-	cart: Store['cart'],
-	promo: number,
-	tax: number
-) => {
+export const getCartTotal = (cart: Store['cart'], promo: number) => {
 	const total = cartProductsWithQuantity(cart).reduce(
 		(total, productWithQty) =>
 			total +
 			productWithQty.product!.price.discounted.amount * productWithQty.quantity,
 		0
 	);
-	return formatPrice(total - promo + tax, 2);
+	return formatPrice(total - promo + (cart.shippingOption === 1 ? 5 : 15), 2);
 };
 
 const cartProductsWithQuantity = (cart: Store['cart']) =>
@@ -58,3 +54,6 @@ const cartProductsWithQuantity = (cart: Store['cart']) =>
 		product: products.find((p) => p.id === cartProduct.id),
 		quantity: cartProduct.quantity,
 	}));
+
+export const getShippingCosts = (cart: Store['cart']) =>
+	cart.shippingOption === 1 ? formatPrice(5, 2) : formatPrice(15, 2);

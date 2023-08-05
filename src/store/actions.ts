@@ -5,6 +5,7 @@ export type Actions = {
 	updateCartProduct: PropFunction<(id: string, quantity: number) => void>;
 	removeProductFromCart: PropFunction<(id: string) => void>;
 	placeOrder: PropFunction<() => void>;
+	changeShippingCosts: PropFunction<(id: number) => void>;
 };
 
 export const actions = (store: Store) =>
@@ -23,5 +24,8 @@ export const actions = (store: Store) =>
 		}),
 		placeOrder: $(() => {
 			store.cart.products = [];
+		}),
+		changeShippingCosts: $((id: number) => {
+			store.cart.shippingOption = id;
 		}),
 	} satisfies Actions);

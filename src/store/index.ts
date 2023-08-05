@@ -12,7 +12,7 @@ import {
 import type { Store } from '~/types/store';
 import { actions as appActions, type Actions } from './actions';
 
-const initialData: Store = { cart: { products: [] } };
+const initialData: Store = { cart: { products: [], shippingOption: 1 } };
 
 export const useAppStore = () => {
 	const isStoreInitializedSig = useSignal(false);
