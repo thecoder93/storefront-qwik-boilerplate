@@ -1,7 +1,13 @@
 import { Slot, component$, useComputed$, useContext } from '@builder.io/qwik';
 import { useTranslate } from 'qwik-speak';
 import { STORE_CONTEXT } from '~/shared/constants';
-import { getCartQuantity } from '~/store/selectors';
+import {
+	getCartDiscountendTotal,
+	getCartQuantity,
+	getCartRegularTotal,
+	getCartSavingTotal,
+	getCartTotal,
+} from '~/store/selectors';
 import { Divider } from '../UI/Divider/Divider';
 
 export const OrderSummary = component$(() => {
@@ -31,16 +37,22 @@ export const OrderSummary = component$(() => {
 						<p class='ml-auto typography-text-xs text-neutral-500'>
 							{t('originalPrice')}
 						</p>
-						<p class='ml-auto typography-text-xs text-secondary-700'>Savings</p>
+						<p class='ml-auto typography-text-xs text-secondary-700'>
+							{t('savings')}
+						</p>
 						<p class='my-2'>{t('delivery')}</p>
-						<p>{t('estimatedTax')}</p>
 					</div>
 					<div class='flex flex-col text-right'>
-						<p data-testid='special-price'>$89.95</p>
-						<p class='typography-text-xs text-neutral-500'>$100.99</p>
-						<p class='typography-text-xs text-secondary-700'>$20</p>
+						<p data-testid='special-price'>
+							{getCartDiscountendTotal(store.cart)}
+						</p>
+						<p class='typography-text-xs text-neutral-500'>
+							{getCartRegularTotal(store.cart)}
+						</p>
+						<p class='typography-text-xs text-secondary-700'>
+							{getCartSavingTotal(store.cart)}
+						</p>
 						<p class='my-2'>$0</p>
-						<p>$1.38</p>
 					</div>
 				</div>
 				<div class='flex items-center py-4 border-t border-neutral-200'>
@@ -81,7 +93,7 @@ export const OrderSummary = component$(() => {
 				</div>
 				<div class='flex justify-between typography-headline-4 md:typography-headline-3 font-bold pb-4 mb-4'>
 					<p>{t('total')}</p>
-					<p data-testid='total'>$89.95</p>
+					<p data-testid='total'>{getCartTotal(store.cart, 20, 2)}</p>
 				</div>
 				<Divider class='my-4 max-md:-mx-4 max-md:w-auto' />
 				<Slot />
