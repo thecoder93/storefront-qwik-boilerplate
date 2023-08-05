@@ -17,7 +17,7 @@ export const CategoryCard = component$(
 	({ items, ...attributes }: CategoryCardProps) => {
 		return (
 			<div
-				class='max-w-screen-3xl mx-auto md:px-10 px-4 mb-10 flex flex-nowrap md:flex-wrap justify-center overflow-x-scroll scrollbar-hidden'
+				class='max-w-screen-3xl mx-auto md:px-10 px-4 mb-10 flex flex-wrap justify-center overflow-x-scroll scrollbar-hidden'
 				data-testid='category-card'
 				{...attributes}
 			>

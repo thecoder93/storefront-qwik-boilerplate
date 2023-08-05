@@ -61,7 +61,7 @@ export const CartProductCard = component$<CartProductCardProps>(
 					>
 						{product.name}
 					</Link>
-					<div class='my-2 sm:mb-0 '>
+					<div class='mt-auto sm:mb-0 '>
 						<ul class='text-xs font-normal leading-5 sm:typography-text-sm text-neutral-700 flex justify-between'>
 							<div
 								data-testid='quantitySelector'
@@ -139,7 +139,10 @@ export const CartProductCard = component$<CartProductCardProps>(
 							)}
 						</span>
 						<span class='font-medium mt-2 ml-1'>
-							{quantity} x {product.price.discounted.amount}
+							{quantity} x {formatPrice(
+								product.price.discounted.amount,
+								product.price.discounted.precisionAmount
+							)}
 						</span>
 					</div>
 				</div>

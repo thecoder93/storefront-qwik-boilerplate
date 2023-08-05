@@ -1,6 +1,7 @@
 import { Slot, component$, useComputed$, useContext } from '@builder.io/qwik';
 import { useLocation } from '@builder.io/qwik-city';
 import { useTranslate } from 'qwik-speak';
+import { SfIconDelete } from 'qwik-storefront-ui';
 import { STORE_CONTEXT } from '~/shared/constants';
 import {
 	getCartDiscountendTotal,
@@ -65,10 +66,10 @@ export const OrderSummary = component$(() => {
 					<p>{t('promoCode')}</p>
 					<button
 						type='button'
-						class='inline-flex items-center justify-center font-medium text-base focus-visible:outline focus-visible:outline-offset rounded-md disabled:text-disabled-500 disabled:bg-disabled-300 disabled:shadow-none disabled:ring-0 disabled:cursor-not-allowed leading-5 text-sm py-1.5 px-3 gap-1.5 text-primary-700 hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900 disabled:bg-transparent ml-auto mr-2'
+						class='inline-flex items-center justify-center font-medium text-base focus-visible:outline focus-visible:outline-offset rounded-md disabled:text-disabled-500 disabled:bg-disabled-300 disabled:shadow-none disabled:ring-0 disabled:cursor-not-allowed leading-5 text-sm py-1.5 px-3 gap-1.5 text-primary-700 hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900 disabled:bg-transparent mr-auto ml-2 border border-neutral-300 rounded-md'
 						data-testid='button'
 					>
-						{t('remove')}
+						<SfIconDelete />
 					</button>
 					<p>$20</p>
 				</div>
