@@ -3,6 +3,8 @@ import type { Product } from '~/types/product';
 export * from './footerData';
 export * from './sortingOptions';
 
+export const priceFilters = ['100', '200'];
+
 export const heroMock = {
 	description:
 		'This fashionable sneaker collection features various colors, comfort and style.',
@@ -15,9 +17,16 @@ export const heroMock = {
 	title: 'Sneaker hot drops',
 };
 
-export const items = [
+export const items: {
+	id: string;
+	name: string;
+	slug: string;
+	subcategories: [];
+	productCount: number;
+	image: string;
+}[] = [
 	{
-		id: 'fbcd250e-b53a-40a7-9087-e4303de6ea90',
+		id: '1',
 		name: 'New',
 		slug: 'category',
 		subcategories: [],
@@ -25,7 +34,7 @@ export const items = [
 		image: '/images/new-card.webp',
 	},
 	{
-		id: '03bf5dad-1b4b-44db-adf0-6ee858cdc358',
+		id: '2',
 		name: 'Men',
 		slug: 'category',
 		subcategories: [],
@@ -33,7 +42,7 @@ export const items = [
 		image: '/images/men-card.webp',
 	},
 	{
-		id: 'af4ce472-45e9-4dd4-9988-275d229ce287',
+		id: '3',
 		name: 'Women',
 		slug: 'category',
 		subcategories: [],
@@ -79,7 +88,7 @@ export const display = [
 
 export const products: Product[] = [
 	{
-		id: '0',
+		id: 0,
 		slug: 'athletic-sneakers',
 		name: 'Athletic sneakers',
 		description:
@@ -94,7 +103,7 @@ export const products: Product[] = [
 		image: { alt: 'Athletic sneakers', url: '/images/product.webp' },
 	},
 	{
-		id: '1',
+		id: 1,
 		name: 'Laptop',
 		slug: 'laptop',
 		description:
@@ -112,7 +121,7 @@ export const products: Product[] = [
 		},
 	},
 	{
-		id: '2',
+		id: 2,
 		name: 'Tablet',
 		slug: 'tablet',
 		description:
@@ -130,7 +139,7 @@ export const products: Product[] = [
 		},
 	},
 	{
-		id: '3',
+		id: 3,
 		name: 'Wireless Optical Mouse',
 		slug: 'cordless-mouse',
 		description:
@@ -148,7 +157,7 @@ export const products: Product[] = [
 		},
 	},
 	{
-		id: '4',
+		id: 4,
 		name: '32-Inch Monitor',
 		slug: '32-inch-monitor',
 		description:
@@ -166,7 +175,7 @@ export const products: Product[] = [
 		},
 	},
 	{
-		id: '5',
+		id: 5,
 		name: 'Curvy Monitor',
 		slug: 'curvy-monitor',
 		description:
@@ -184,7 +193,7 @@ export const products: Product[] = [
 		},
 	},
 	{
-		id: '6',
+		id: 6,
 		name: 'High Performance RAM',
 		slug: 'high-performance-ram',
 		description:
@@ -202,7 +211,7 @@ export const products: Product[] = [
 		},
 	},
 	{
-		id: '7',
+		id: 7,
 		name: 'Gaming PC',
 		slug: 'gaming-pc',
 		description:
@@ -220,7 +229,7 @@ export const products: Product[] = [
 		},
 	},
 	{
-		id: '8',
+		id: 8,
 		name: 'Hard Drive',
 		slug: 'hard-drive',
 		description:
@@ -238,7 +247,7 @@ export const products: Product[] = [
 		},
 	},
 	{
-		id: '9',
+		id: 9,
 		name: 'Clacky Keyboard',
 		slug: 'clacky-keyboard',
 		description:
@@ -256,7 +265,7 @@ export const products: Product[] = [
 		},
 	},
 	{
-		id: '10',
+		id: 10,
 		name: 'Ethernet Cable',
 		slug: 'ethernet-cable',
 		description:
@@ -274,7 +283,7 @@ export const products: Product[] = [
 		},
 	},
 	{
-		id: '11',
+		id: 11,
 		name: 'USB Cable',
 		slug: 'usb-cable',
 		description:
@@ -292,7 +301,7 @@ export const products: Product[] = [
 		},
 	},
 	{
-		id: '12',
+		id: 12,
 		name: 'Instant Camera',
 		slug: 'instant-camera',
 		description:
@@ -310,7 +319,7 @@ export const products: Product[] = [
 		},
 	},
 	{
-		id: '13',
+		id: 13,
 		name: 'Camera Lens',
 		slug: 'camera-lens',
 		description:
@@ -328,7 +337,7 @@ export const products: Product[] = [
 		},
 	},
 	{
-		id: '14',
+		id: 14,
 		name: 'Vintage Folding Camera',
 		slug: 'vintage-folding-camera',
 		description:
@@ -346,7 +355,7 @@ export const products: Product[] = [
 		},
 	},
 	{
-		id: '15',
+		id: 15,
 		name: 'Tripod',
 		slug: 'tripod',
 		description:
@@ -364,7 +373,7 @@ export const products: Product[] = [
 		},
 	},
 	{
-		id: '16',
+		id: 16,
 		name: 'Instamatic Camera',
 		slug: 'instamatic-camera',
 		description:
@@ -382,7 +391,7 @@ export const products: Product[] = [
 		},
 	},
 	{
-		id: '17',
+		id: 17,
 		name: 'Compact Digital Camera',
 		slug: 'compact-digital-camera',
 		description:
@@ -400,7 +409,7 @@ export const products: Product[] = [
 		},
 	},
 	{
-		id: '18',
+		id: 18,
 		name: 'Nikkormat SLR Camera',
 		slug: 'nikkormat-slr-camera',
 		description:
@@ -418,7 +427,7 @@ export const products: Product[] = [
 		},
 	},
 	{
-		id: '19',
+		id: 19,
 		name: 'Compact SLR Camera',
 		slug: 'compact-slr-camera',
 		description:
@@ -436,7 +445,7 @@ export const products: Product[] = [
 		},
 	},
 	{
-		id: '20',
+		id: 20,
 		name: 'Twin Lens Camera',
 		slug: 'twin-lens-camera',
 		description:
@@ -454,7 +463,7 @@ export const products: Product[] = [
 		},
 	},
 	{
-		id: '21',
+		id: 21,
 		name: 'Road Bike',
 		slug: 'road-bike',
 		description:
@@ -472,7 +481,7 @@ export const products: Product[] = [
 		},
 	},
 	{
-		id: '22',
+		id: 22,
 		name: 'Skipping Rope',
 		slug: 'skipping-rope',
 		description:
@@ -490,7 +499,7 @@ export const products: Product[] = [
 		},
 	},
 	{
-		id: '23',
+		id: 23,
 		name: 'Boxing Gloves',
 		slug: 'boxing-gloves',
 		description:
@@ -508,7 +517,7 @@ export const products: Product[] = [
 		},
 	},
 	{
-		id: '24',
+		id: 24,
 		name: 'Tent',
 		slug: 'tent',
 		description:
@@ -526,7 +535,7 @@ export const products: Product[] = [
 		},
 	},
 	{
-		id: '25',
+		id: 25,
 		name: 'Cruiser Skateboard',
 		slug: 'cruiser-skateboard',
 		description:
@@ -544,7 +553,7 @@ export const products: Product[] = [
 		},
 	},
 	{
-		id: '26',
+		id: 26,
 		name: 'Football',
 		slug: 'football',
 		description:
@@ -562,7 +571,7 @@ export const products: Product[] = [
 		},
 	},
 	{
-		id: '27',
+		id: 27,
 		name: 'Tennis Ball',
 		slug: 'tennis-ball',
 		description:
@@ -580,7 +589,7 @@ export const products: Product[] = [
 		},
 	},
 	{
-		id: '28',
+		id: 28,
 		name: 'Basketball',
 		slug: 'basketball',
 		description:
@@ -598,7 +607,7 @@ export const products: Product[] = [
 		},
 	},
 	{
-		id: '29',
+		id: 29,
 		name: 'Ultraboost Running Shoe',
 		slug: 'ultraboost-running-shoe',
 		description:
@@ -616,7 +625,7 @@ export const products: Product[] = [
 		},
 	},
 	{
-		id: '30',
+		id: 30,
 		name: 'Freerun Running Shoe',
 		slug: 'freerun-running-shoe',
 		description:
@@ -634,7 +643,7 @@ export const products: Product[] = [
 		},
 	},
 	{
-		id: '31',
+		id: 31,
 		name: 'Hi-Top Basketball Shoe',
 		slug: 'hi-top-basketball-shoe',
 		description:
@@ -652,7 +661,7 @@ export const products: Product[] = [
 		},
 	},
 	{
-		id: '32',
+		id: 32,
 		name: 'Pureboost Running Shoe',
 		slug: 'pureboost-running-shoe',
 		description:
@@ -670,7 +679,7 @@ export const products: Product[] = [
 		},
 	},
 	{
-		id: '33',
+		id: 33,
 		name: 'RunX Running Shoe',
 		slug: 'runx-running-shoe',
 		description:
@@ -688,7 +697,7 @@ export const products: Product[] = [
 		},
 	},
 	{
-		id: '34',
+		id: 34,
 		name: 'Allstar Sneakers',
 		slug: 'allstar-sneakers',
 		description:
@@ -706,7 +715,7 @@ export const products: Product[] = [
 		},
 	},
 	{
-		id: '35',
+		id: 35,
 		name: 'Spiky Cactus',
 		slug: 'spiky-cactus',
 		description:
@@ -724,7 +733,7 @@ export const products: Product[] = [
 		},
 	},
 	{
-		id: '36',
+		id: 36,
 		name: 'Tulip Pot',
 		slug: 'tulip-pot',
 		description:
@@ -742,7 +751,7 @@ export const products: Product[] = [
 		},
 	},
 	{
-		id: '37',
+		id: 37,
 		name: 'Hanging Plant',
 		slug: 'hanging-plant',
 		description:
@@ -760,7 +769,7 @@ export const products: Product[] = [
 		},
 	},
 	{
-		id: '38',
+		id: 38,
 		name: 'Aloe Vera',
 		slug: 'aloe-vera',
 		description:
@@ -778,7 +787,7 @@ export const products: Product[] = [
 		},
 	},
 	{
-		id: '39',
+		id: 39,
 		name: 'Fern Blechnum Gibbum',
 		slug: 'fern-blechnum-gibbum',
 		description:
@@ -796,7 +805,7 @@ export const products: Product[] = [
 		},
 	},
 	{
-		id: '40',
+		id: 40,
 		name: 'Assorted Indoor Succulents',
 		slug: 'assorted-succulents',
 		description:
@@ -814,7 +823,7 @@ export const products: Product[] = [
 		},
 	},
 	{
-		id: '41',
+		id: 41,
 		name: 'Orchid',
 		slug: 'orchid',
 		description:
@@ -832,7 +841,7 @@ export const products: Product[] = [
 		},
 	},
 	{
-		id: '42',
+		id: 42,
 		name: 'Bonsai Tree',
 		slug: 'bonsai-tree',
 		description:
@@ -850,7 +859,7 @@ export const products: Product[] = [
 		},
 	},
 	{
-		id: '43',
+		id: 43,
 		name: 'Guardian Lion Statue',
 		slug: 'guardian-lion-statue',
 		description:
@@ -868,7 +877,7 @@ export const products: Product[] = [
 		},
 	},
 	{
-		id: '44',
+		id: 44,
 		name: 'Hand Trowel',
 		slug: 'hand-trowel',
 		description:
@@ -886,7 +895,7 @@ export const products: Product[] = [
 		},
 	},
 	{
-		id: '45',
+		id: 45,
 		name: 'Balloon Chair',
 		slug: 'balloon-chair',
 		description:
@@ -904,7 +913,7 @@ export const products: Product[] = [
 		},
 	},
 	{
-		id: '46',
+		id: 46,
 		name: 'Grey Fabric Sofa',
 		slug: 'grey-fabric-sofa',
 		description:
@@ -922,7 +931,7 @@ export const products: Product[] = [
 		},
 	},
 	{
-		id: '47',
+		id: 47,
 		name: 'Leather Sofa',
 		slug: 'leather-sofa',
 		description:
@@ -940,7 +949,7 @@ export const products: Product[] = [
 		},
 	},
 	{
-		id: '48',
+		id: 48,
 		name: 'Light Shade',
 		slug: 'light-shade',
 		description:
@@ -958,7 +967,7 @@ export const products: Product[] = [
 		},
 	},
 	{
-		id: '49',
+		id: 49,
 		name: 'Wooden Side Desk',
 		slug: 'wooden-side-desk',
 		description:
@@ -976,7 +985,7 @@ export const products: Product[] = [
 		},
 	},
 	{
-		id: '50',
+		id: 50,
 		name: 'Comfy Padded Chair',
 		slug: 'comfy-padded-chair',
 		description:
@@ -994,7 +1003,7 @@ export const products: Product[] = [
 		},
 	},
 	{
-		id: '51',
+		id: 51,
 		name: 'Black Eaves Chair',
 		slug: 'black-eaves-chair',
 		description:
@@ -1012,7 +1021,7 @@ export const products: Product[] = [
 		},
 	},
 	{
-		id: '52',
+		id: 52,
 		name: 'Wooden Stool',
 		slug: 'wooden-stool',
 		description:
@@ -1030,7 +1039,7 @@ export const products: Product[] = [
 		},
 	},
 	{
-		id: '53',
+		id: 53,
 		name: 'Bedside Table',
 		slug: 'bedside-table',
 		description:
@@ -1048,7 +1057,7 @@ export const products: Product[] = [
 		},
 	},
 	{
-		id: '54',
+		id: 54,
 		name: 'Modern Cafe Chair',
 		slug: 'modern-cafe-chair',
 		description:

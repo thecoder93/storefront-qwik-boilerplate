@@ -7,6 +7,6 @@ export type ReadonlyStore = Readonly<Store>;
 type Cart = { products: Product[]; shippingOption: number };
 
 type Product = {
-	id: string;
+	id: number;
 	quantity: number;
 };
