@@ -253,7 +253,7 @@ export default component$(() => {
 								data-testid='button'
 								href='/order/success'
 								onClick$={() => {
-									actions.getCartQuantity();
+									actions.placeOrder();
 								}}
 							>
 								{t('placeOrder')}
