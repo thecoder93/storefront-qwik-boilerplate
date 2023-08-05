@@ -9,14 +9,5 @@ export const config: SpeakConfig = {
 	supportedLocales: [
 		{ lang: 'en-US', currency: 'USD', timeZone: 'America/Los_Angeles' },
 	],
-	assets: [
-		'address',
-		'cart',
-		'category',
-		'checkout',
-		'common',
-		'footer',
-		'order',
-		'product',
-	],
+	assets: ['app'],
 };
