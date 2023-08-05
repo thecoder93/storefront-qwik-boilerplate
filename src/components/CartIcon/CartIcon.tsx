@@ -1,9 +1,11 @@
-import { component$, useContext } from '@builder.io/qwik';
+import { component$, useComputed$, useContext } from '@builder.io/qwik';
 import { Link } from '@builder.io/qwik-city';
-import { ACTIONS_CONTEXT } from '~/shared/constants';
+import { STORE_CONTEXT } from '~/shared/constants';
+import { getCartQuantity } from '~/store/selectors';
 
 export const CartIcon = component$(() => {
-	const actions = useContext(ACTIONS_CONTEXT);
+	const store = useContext(STORE_CONTEXT);
+	const cartQuantitySig = useComputed$(() => getCartQuantity(store.cart));
 	return (
 		<nav class='flex flex-row flex-nowrap ml-auto'>
 			<Link
@@ -23,7 +25,7 @@ export const CartIcon = component$(() => {
 					</svg>
 					<div class='rounded-[inherit] absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 bg-inherit pointer-events-none p-0.5'>
 						<div class='rounded-[inherit] text-center py-0.5 px-1 text-3xs font-medium min-w-[0.75rem] text-neutral-900 bg-white'>
-							{actions.getCartQuantity()}
+							{cartQuantitySig.value}
 						</div>
 					</div>
 				</div>

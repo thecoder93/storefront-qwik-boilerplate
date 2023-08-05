@@ -4,7 +4,6 @@ import type { Store } from '~/types/store';
 export type Actions = {
 	updateCartProduct: PropFunction<(id: string, quantity: number) => void>;
 	removeProductFromCart: PropFunction<(id: string) => void>;
-	getCartQuantity: PropFunction<() => number>;
 	placeOrder: PropFunction<() => void>;
 };
 
@@ -21,13 +20,6 @@ export const actions = (store: Store) =>
 		}),
 		removeProductFromCart: $((id: string) => {
 			store.cart.products = store.cart.products.filter((p) => p.id !== id);
-		}),
-		getCartQuantity: $(() => {
-			return store.cart.products
-				.map((item) => {
-					return item.quantity;
-				})
-				.reduce((acc, currentValue) => acc + currentValue, 0);
 		}),
 		placeOrder: $(() => {
 			store.cart.products = [];
