@@ -7,7 +7,12 @@ import {
 } from '@builder.io/qwik-city';
 import { Image } from 'qwik-image';
 import { useTranslate } from 'qwik-speak';
-import { SfButton, SfIconShoppingCart, SfRating } from 'qwik-storefront-ui';
+import {
+	SfButton,
+	SfIconDelete,
+	SfIconShoppingCart,
+	SfRating,
+} from 'qwik-storefront-ui';
 import { Pagination } from '~/components/Pagination/Pagination';
 import { PriceFilter } from '~/components/PriceFilter/PriceFilter';
 import { ACTIONS_CONTEXT } from '~/shared/constants';
@@ -19,6 +24,7 @@ export const useProductsLoader = routeLoader$(async ({ env, url }) => {
 	return (await response.json()) as {
 		products: Product[];
 		totalPages: number;
+		totalProducts: number;
 	};
 });
 
@@ -28,13 +34,20 @@ export default component$(() => {
 	const navigate = useNavigate();
 	const products = useProductsLoader();
 	const actions = useContext(ACTIONS_CONTEXT);
-	const initialPageSig = useComputed$(() => {
-		console.log(location.url.searchParams.get('page'));
-		return parseInt(location.url.searchParams.get('page') || '1', 10);
-	});
+	const initialPageSig = useComputed$(() =>
+		parseInt(location.url.searchParams.get('page') || '1', 10)
+	);
+	const searchSig = useComputed$(() => location.url.searchParams.get('search'));
+
 	const onPageChange = $((page: number) => {
 		const url = new URL(location.url);
 		url.searchParams.set('page', page.toString());
+		navigate(url.href);
+	});
+
+	const removeSearch = $(() => {
+		const url = new URL(location.url);
+		url.searchParams.delete('search');
 		navigate(url.href);
 	});
 
@@ -314,6 +327,17 @@ export default component$(() => {
 										>
 											Filters
 										</span>
+										{searchSig.value && (
+											<button
+												type='button'
+												class='inline-flex items-center justify-center font-medium text-base focus-visible:outline focus-visible:outline-offset rounded-md disabled:text-disabled-500 disabled:bg-disabled-300 disabled:shadow-none disabled:ring-0 disabled:cursor-not-allowed leading-5 text-sm py-1.5 px-3 gap-1.5 text-primary-700 hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900 disabled:bg-transparent ml-2 mt-2 mb-4 border border-neutral-300 rounded-md'
+												data-testid='button'
+												onClick$={removeSearch}
+											>
+												{searchSig.value}
+												<SfIconDelete />
+											</button>
+										)}
 										<PriceFilter />
 									</div>
 									<div class='p-4 md:mt-2 flex flex-wrap justify-between border-t border-t-neutral-200 md:border-0 gap-3'>
@@ -330,7 +354,7 @@ export default component$(() => {
 							<div class='flex-1'>
 								<div class='flex justify-between items-center mb-6'>
 									<span class='font-bold font-headings md:text-lg'>
-										398 Products
+										{products.value.totalProducts} Products
 									</span>
 									<button
 										type='button'

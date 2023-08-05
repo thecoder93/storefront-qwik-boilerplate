@@ -13,7 +13,7 @@ import { CartIcon } from '~/components/CartIcon/CartIcon';
 import { Footer } from '~/components/Footer/Footer';
 import { NavbarTop } from '~/components/NavbarTop/NavbarTop';
 import { ScrollToTopButton } from '~/components/ScrollToTopButton/ScrollToTopButton';
-import { Search } from '~/components/search/search';
+import { Search } from '~/components/Search/Search';
 import { sleep } from '~/shared/utils';
 import { useAppStore } from '~/store';
 import type { Product } from '~/types/product';
