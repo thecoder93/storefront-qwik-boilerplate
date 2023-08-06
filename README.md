@@ -1,4 +1,7 @@
-# Qwik City App ⚡️
+# Qwik Storefront UI e-commerce
+
+![preview](./public/images/social-image.png)
+
 
 - [Qwik Docs](https://qwik.builder.io/)
 - [Discord](https://qwik.builder.io/chat)
