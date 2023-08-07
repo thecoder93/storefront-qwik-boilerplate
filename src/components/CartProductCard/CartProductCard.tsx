@@ -73,17 +73,17 @@ export const CartProductCard = component$<CartProductCardProps>(
 										aria-controls=':rf:'
 										aria-label='Decrease value'
 										disabled={quantity === 1}
+										onClick$={() => {
+											if (quantity > 1) {
+												actions.updateCartProduct(product.id, -1);
+											}
+										}}
 									>
 										<svg
 											viewBox='0 0 24 24'
 											data-testid='remove'
 											xmlns='http://www.w3.org/2000/svg'
 											class='inline-block fill-current w-6 h-6'
-											onClick$={() => {
-												if (quantity > 1) {
-													actions.updateCartProduct(product.id, -1);
-												}
-											}}
 										>
 											<path d='M6 13a.968.968 0 0 1-.713-.288A.967.967 0 0 1 5 12a.97.97 0 0 1 .287-.713A.97.97 0 0 1 6 11h12a.97.97 0 0 1 .712.287c.192.192.288.43.288.713s-.096.52-.288.712A.965.965 0 0 1 18 13H6Z'></path>
 										</svg>
@@ -94,13 +94,13 @@ export const CartProductCard = component$<CartProductCardProps>(
 										data-testid='quantitySelectorIncreaseButton'
 										aria-controls=':rf:'
 										aria-label='Increase value'
+										onClick$={() => actions.updateCartProduct(product.id, 1)}
 									>
 										<svg
 											viewBox='0 0 24 24'
 											data-testid='add'
 											xmlns='http://www.w3.org/2000/svg'
 											class='inline-block fill-current w-6 h-6'
-											onClick$={() => actions.updateCartProduct(product.id, 1)}
 										>
 											<path d='M12 19a.965.965 0 0 1-.712-.288A.965.965 0 0 1 11 18v-5H6a.968.968 0 0 1-.713-.288A.967.967 0 0 1 5 12a.97.97 0 0 1 .287-.713A.97.97 0 0 1 6 11h5V6c0-.283.096-.521.288-.713A.967.967 0 0 1 12 5a.97.97 0 0 1 .713.287A.97.97 0 0 1 13 6v5h5a.97.97 0 0 1 .712.287c.192.192.288.43.288.713s-.096.52-.288.712A.965.965 0 0 1 18 13h-5v5a.97.97 0 0 1-.287.712A.968.968 0 0 1 12 19Z'></path>
 										</svg>
