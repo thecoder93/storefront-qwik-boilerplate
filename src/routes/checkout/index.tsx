@@ -1,4 +1,4 @@
-import { component$, useContext } from '@builder.io/qwik';
+import { component$ } from '@builder.io/qwik';
 import { Image } from 'qwik-image';
 import { useTranslate } from 'qwik-speak';
 import { OrderSummary } from '~/components/OrderSummary/OrderSummary';
