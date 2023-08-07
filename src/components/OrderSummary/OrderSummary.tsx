@@ -39,23 +39,31 @@ export const OrderSummary = component$(() => {
 				<div class='flex justify-between typography-text-base pb-4'>
 					<div class='flex flex-col grow pr-2'>
 						<p>{$localize`itemsSubtotal`}</p>
-						<p class='ml-auto typography-text-xs text-neutral-500'>
-							{$localize`originalPrice`}
-						</p>
-						<p class='ml-auto typography-text-xs text-secondary-700'>
-							{$localize`savings`}
-						</p>
+						{getCartSavingTotal(store.cart) !== '$0.00' && (
+							<>
+								<p class='ml-auto typography-text-xs text-neutral-500'>
+									{$localize`originalPrice`}
+								</p>
+								<p class='ml-auto typography-text-xs text-secondary-700'>
+									{$localize`savings`}
+								</p>
+							</>
+						)}
 					</div>
 					<div class='flex flex-col text-right'>
 						<p data-testid='special-price'>
 							{getCartDiscountendTotal(store.cart)}
 						</p>
-						<p class='typography-text-xs text-neutral-500'>
-							{getCartRegularTotal(store.cart)}
-						</p>
-						<p class='typography-text-xs text-secondary-700'>
-							{getCartSavingTotal(store.cart)}
-						</p>
+						{getCartSavingTotal(store.cart) !== '$0.00' && (
+							<>
+								<p class='typography-text-xs text-neutral-500'>
+									{getCartRegularTotal(store.cart)}
+								</p>
+								<p class='typography-text-xs text-secondary-700'>
+									{getCartSavingTotal(store.cart)}
+								</p>
+							</>
+						)}
 					</div>
 				</div>
 				<div class='flex items-center py-4 border-t border-neutral-200'>
