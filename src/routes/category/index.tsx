@@ -1,10 +1,5 @@
 import { $, component$, useComputed$, useContext } from '@builder.io/qwik';
-import {
-	Link,
-	routeLoader$,
-	useLocation,
-	useNavigate,
-} from '@builder.io/qwik-city';
+import { routeLoader$, useLocation, useNavigate } from '@builder.io/qwik-city';
 import { Image } from 'qwik-image';
 import { useTranslate } from 'qwik-speak';
 import {
@@ -83,22 +78,22 @@ export default component$(() => {
 								</div>
 							</li>
 							<li class="peer hidden sm:flex peer-[:nth-of-type(even)]:before:content-['/'] peer-[:nth-of-type(even)]:before:px-2 peer-[:nth-of-type(even)]:before:leading-5 last-of-type:flex last-of-type:before:font-normal last-of-type:before:text-neutral-500 text-neutral-500 last-of-type:text-neutral-900 last-of-type:font-medium">
-								<Link
+								<a
 									class='focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm underline hover:text-primary-800 active:text-primary-900 leading-5 no-underline hover:underline active:underline whitespace-nowrap outline-secondary-600 text-inherit'
 									data-testid='link'
 									href='/'
 								>
 									{t('home')}
-								</Link>
+								</a>
 							</li>
 							<li class="peer hidden sm:flex peer-[:nth-of-type(even)]:before:content-['/'] peer-[:nth-of-type(even)]:before:px-2 peer-[:nth-of-type(even)]:before:leading-5 last-of-type:flex last-of-type:before:font-normal last-of-type:before:text-neutral-500 text-neutral-500 last-of-type:text-neutral-900 last-of-type:font-medium">
-								<Link
+								<a
 									class='focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm underline hover:text-primary-800 active:text-primary-900 leading-5 no-underline hover:underline active:underline whitespace-nowrap outline-secondary-600 text-inherit'
 									data-testid='link'
 									href='/category'
 								>
 									{t('allProducts')}
-								</Link>
+								</a>
 							</li>
 						</ol>
 					</nav>
@@ -144,7 +139,7 @@ export default component$(() => {
 										>
 											category
 										</span>
-										<Link data-testid='category-tree-item' href='/category'>
+										<a data-testid='category-tree-item' href='/category'>
 											<span
 												class='inline-flex items-center gap-2 w-full hover:bg-neutral-100 active:bg-neutral-200 cursor-pointer focus-visible:outline focus-visible:outline-offset focus-visible:relative focus-visible:z-10 p-4 md:sf-list-item-sm md:py-1.5 sf-list-item'
 												data-testid='list-item'
@@ -168,9 +163,9 @@ export default component$(() => {
 													</span>
 												</span>
 											</span>
-										</Link>
+										</a>
 										<div class='mt-4 mb-6 md:mt-2' data-testid='categories'>
-											<Link data-testid='category-tree-item' href='/category'>
+											<a data-testid='category-tree-item' href='/category'>
 												<span
 													class='inline-flex items-center gap-2 w-full hover:bg-neutral-100 active:bg-neutral-200 cursor-pointer focus-visible:outline focus-visible:outline-offset focus-visible:relative focus-visible:z-10 p-4 md:sf-list-item-sm md:py-1.5 sf-list-item'
 													data-testid='list-item'
@@ -192,8 +187,8 @@ export default component$(() => {
 														</span>
 													</span>
 												</span>
-											</Link>
-											<Link data-testid='category-tree-item' href='/category'>
+											</a>
+											<a data-testid='category-tree-item' href='/category'>
 												<span
 													class='inline-flex items-center gap-2 w-full hover:bg-neutral-100 active:bg-neutral-200 cursor-pointer focus-visible:outline focus-visible:outline-offset focus-visible:relative focus-visible:z-10 p-4 md:sf-list-item-sm md:py-1.5 sf-list-item'
 													data-testid='list-item'
@@ -215,8 +210,8 @@ export default component$(() => {
 														</span>
 													</span>
 												</span>
-											</Link>
-											<Link data-testid='category-tree-item' href='/category'>
+											</a>
+											<a data-testid='category-tree-item' href='/category'>
 												<span
 													class='inline-flex items-center gap-2 w-full hover:bg-neutral-100 active:bg-neutral-200 cursor-pointer focus-visible:outline focus-visible:outline-offset focus-visible:relative focus-visible:z-10 p-4 md:sf-list-item-sm md:py-1.5 sf-list-item'
 													data-testid='list-item'
@@ -238,8 +233,8 @@ export default component$(() => {
 														</span>
 													</span>
 												</span>
-											</Link>
-											<Link data-testid='category-tree-item' href='/category'>
+											</a>
+											<a data-testid='category-tree-item' href='/category'>
 												<span
 													class='inline-flex items-center gap-2 w-full hover:bg-neutral-100 active:bg-neutral-200 cursor-pointer focus-visible:outline focus-visible:outline-offset focus-visible:relative focus-visible:z-10 p-4 md:sf-list-item-sm md:py-1.5 sf-list-item'
 													data-testid='list-item'
@@ -261,8 +256,8 @@ export default component$(() => {
 														</span>
 													</span>
 												</span>
-											</Link>
-											<Link data-testid='category-tree-item' href='/category'>
+											</a>
+											<a data-testid='category-tree-item' href='/category'>
 												<span
 													class='inline-flex items-center gap-2 w-full hover:bg-neutral-100 active:bg-neutral-200 cursor-pointer focus-visible:outline focus-visible:outline-offset focus-visible:relative focus-visible:z-10 p-4 md:sf-list-item-sm md:py-1.5 sf-list-item'
 													data-testid='list-item'
@@ -284,7 +279,7 @@ export default component$(() => {
 														</span>
 													</span>
 												</span>
-											</Link>
+											</a>
 										</div>
 										<span
 											class='block py-2 px-4 mb-6 bg-neutral-100 typography-headline-6 font-bold text-neutral-900 uppercase tracking-widest md:rounded-md'
@@ -383,7 +378,7 @@ export default component$(() => {
 											data-testid='product-card'
 										>
 											<div class='relative'>
-												<Link
+												<a
 													class='focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm text-primary-700 underline hover:text-primary-800 active:text-primary-900 relative block w-[230px] p-1'
 													data-testid='link'
 													href={`/product/${product.slug}`}
@@ -398,23 +393,23 @@ export default component$(() => {
 														src={product.image.url}
 														alt={product.image.alt}
 													/>
-												</Link>
+												</a>
 											</div>
 											<div class='p-2 border-t border-neutral-200 typography-text-sm px-6 py-4'>
-												<Link
+												<a
 													class='focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm underline hover:text-primary-800 active:text-primary-900 no-underline'
 													data-testid='link'
 													href={`/product/${product.slug}`}
 												>
 													{product.name}
-												</Link>
+												</a>
 												<div class='flex items-center mt-2'>
 													<SfRating
 														size='xs'
 														value={product.rating.average}
 														ariaLabel={`${product.rating.average} out of 5`}
 													/>
-													<Link
+													<a
 														class='focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm underline hover:text-primary-800 active:text-primary-900 ml-1 no-underline'
 														data-testid='link'
 														href='/category#'
@@ -425,7 +420,7 @@ export default component$(() => {
 														>
 															{product.rating.count}
 														</span>
-													</Link>
+													</a>
 												</div>
 												<p class='block py-2 font-normal typography-text-xs text-neutral-700 text-justify'></p>
 												<div class='flex items-center justify-between'>

@@ -1,5 +1,5 @@
 import { component$, useContext } from '@builder.io/qwik';
-import { Link, routeLoader$, type DocumentHead } from '@builder.io/qwik-city';
+import { routeLoader$, type DocumentHead } from '@builder.io/qwik-city';
 import { Image } from 'qwik-image';
 import { useTranslate } from 'qwik-speak';
 import { SfButton, SfIconShoppingCart, SfRating } from 'qwik-storefront-ui';
@@ -64,31 +64,31 @@ export default component$(() => {
 								</div>
 							</li>
 							<li class="peer hidden sm:flex peer-[:nth-of-type(even)]:before:content-['/'] peer-[:nth-of-type(even)]:before:px-2 peer-[:nth-of-type(even)]:before:leading-5 last-of-type:flex last-of-type:before:font-normal last-of-type:before:text-neutral-500 text-neutral-500 last-of-type:text-neutral-900 last-of-type:font-medium">
-								<Link
+								<a
 									class='focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm underline hover:text-primary-800 active:text-primary-900 leading-5 no-underline hover:underline active:underline whitespace-nowrap outline-secondary-600 text-inherit'
 									data-testid='link'
 									href='/'
 								>
 									Home
-								</Link>
+								</a>
 							</li>
 							<li class="peer hidden sm:flex peer-[:nth-of-type(even)]:before:content-['/'] peer-[:nth-of-type(even)]:before:px-2 peer-[:nth-of-type(even)]:before:leading-5 last-of-type:flex last-of-type:before:font-normal last-of-type:before:text-neutral-500 text-neutral-500 last-of-type:text-neutral-900 last-of-type:font-medium">
-								<Link
+								<a
 									class='focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm underline hover:text-primary-800 active:text-primary-900 leading-5 no-underline hover:underline active:underline whitespace-nowrap outline-secondary-600 text-inherit'
 									data-testid='link'
 									href='/category'
 								>
 									Category
-								</Link>
+								</a>
 							</li>
 							<li class="peer hidden sm:flex peer-[:nth-of-type(even)]:before:content-['/'] peer-[:nth-of-type(even)]:before:px-2 peer-[:nth-of-type(even)]:before:leading-5 last-of-type:flex last-of-type:before:font-normal last-of-type:before:text-neutral-500 text-neutral-500 last-of-type:text-neutral-900 last-of-type:font-medium">
-								<Link
+								<a
 									class='focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm underline hover:text-primary-800 active:text-primary-900 leading-5 no-underline hover:underline active:underline whitespace-nowrap outline-secondary-600 text-inherit'
 									data-testid='link'
 									href={`/product/${product.value.slug}`}
 								>
 									{product.value.name}
-								</Link>
+								</a>
 							</li>
 						</ol>
 					</nav>
@@ -236,13 +236,13 @@ export default component$(() => {
 									>
 										{product.value.rating.count}
 									</span>
-									<Link
+									<a
 										class='focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm underline hover:text-primary-800 active:text-primary-900 ml-2 text-xs text-neutral-500'
 										data-testid='link'
 										href='#'
 									>
 										{product.value.rating.count} reviews
-									</Link>
+									</a>
 								</div>
 								<p
 									class='mb-4 font-normal typography-text-sm'
@@ -376,13 +376,13 @@ export default component$(() => {
 									</svg>
 									<p class='text-sm'>
 										Free shipping, arrives by Thu, Apr 7. Want it faster?{' '}
-										<Link
+										<a
 											class='focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm underline hover:text-primary-800 active:text-primary-900'
 											data-testid='link'
 											href='#'
 										>
 											Add an address
-										</Link>{' '}
+										</a>{' '}
 										to see options{' '}
 									</p>
 								</div>
@@ -397,13 +397,13 @@ export default component$(() => {
 									</svg>
 									<p class='text-sm'>
 										Pickup not available at Super center.{' '}
-										<Link
+										<a
 											class='focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm underline hover:text-primary-800 active:text-primary-900'
 											data-testid='link'
 											href='#'
 										>
 											Check availability nearby
-										</Link>
+										</a>
 									</p>
 								</div>
 								<div class='flex mt-4'>
@@ -417,13 +417,13 @@ export default component$(() => {
 									</svg>
 									<p class='text-sm'>
 										Free 30-Day returns.{' '}
-										<Link
+										<a
 											class='focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm underline hover:text-primary-800 active:text-primary-900'
 											data-testid='link'
 											href='#'
 										>
 											Details
-										</Link>
+										</a>
 									</p>
 								</div>
 							</div>

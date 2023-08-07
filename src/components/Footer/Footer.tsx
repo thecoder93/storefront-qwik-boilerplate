@@ -1,5 +1,4 @@
 import { component$ } from '@builder.io/qwik';
-import { Link } from '@builder.io/qwik-city';
 import { useTranslate } from 'qwik-speak';
 import { contactOptions, homePageCategories, socialMedia } from '~/mocks';
 import { Divider } from '../UI/Divider/Divider';
@@ -23,13 +22,13 @@ export const Footer = component$<FooterProps>(({ class: _class = '' }) => {
 							{t(`categories.${key}.label`)}
 						</p>
 						{subcategories.map(({ link, key: subcategoryKey }) => (
-							<Link
+							<a
 								href={link}
 								class='text-sm leading-5 py-2 text-neutral-600 hover:underline'
 								key={subcategoryKey}
 							>
 								{t(`categories.${key}.subcategories.${subcategoryKey}`)}
-							</Link>
+							</a>
 						))}
 					</div>
 				))}
@@ -45,12 +44,12 @@ export const Footer = component$<FooterProps>(({ class: _class = '' }) => {
 						class='mx-auto my-4 text-center flex flex-col items-center'
 					>
 						<div class='w-8'>{icon}</div>
-						<Link
+						<a
 							href={link}
 							class='py-1 my-2 font-medium typography-text-lg font-body no-underline text-neutral-600 hover:underline hover:!text-neutral-900 active:underline active:!text-neutral-900'
 						>
 							{t(`contactOptions.${key}.label`)}
-						</Link>
+						</a>
 						{details.map((option) => (
 							<p class='text-sm leading-5' key={option}>
 								{t(`contactOptions.${key}.details.${option}`)}
@@ -63,7 +62,7 @@ export const Footer = component$<FooterProps>(({ class: _class = '' }) => {
 				<div class='mx-auto max-w-screen-3xl text-sm leading-5 text-white justify-end px-4 py-10 lg:flex lg:py-6'>
 					<div class='flex justify-center gap-6 lg:self-start'>
 						{socialMedia.map(({ icon, label, link }) => (
-							<Link
+							<a
 								key={label}
 								href={link}
 								title={t('socialLabel', { label })}
@@ -71,7 +70,7 @@ export const Footer = component$<FooterProps>(({ class: _class = '' }) => {
 								data-testid={label}
 							>
 								{icon}
-							</Link>
+							</a>
 						))}
 					</div>
 					<div class='flex items-center justify-center gap-6 leading-5 text-center typography-text-sm font-body pt-6 lg:pt-0 lg:ml-auto '>
