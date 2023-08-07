@@ -62,19 +62,20 @@ export default component$(() => {
 	return (
 		<>
 			<NavbarTop isCheckoutPath={isCheckoutPathSig.value}>
-				<SfButton
-					class='!px-2 mr-auto text-white bg-transparent hover:bg-primary-800 hover:text-white active:bg-primary-900 active:text-white font-body hidden md:inline-flex'
-					as={'a'}
-					href='/category'
-					variant='tertiary'
-				>
-					<div q:slot='suffix'>
-						<SfIconExpandMore />
-					</div>
-					<span>{$localize`allProductsLinkText`}</span>
-				</SfButton>
 				{!isCheckoutPathSig.value && (
 					<>
+						<SfButton
+							class='!px-2 mr-auto text-white bg-transparent hover:bg-primary-800 hover:text-white active:bg-primary-900 active:text-white font-body hidden md:inline-flex'
+							as={'a'}
+							href='/category'
+							variant='tertiary'
+						>
+							<div q:slot='suffix'>
+								<SfIconExpandMore />
+							</div>
+							<span>{$localize`allProductsLinkText`}</span>
+						</SfButton>
+
 						<Search />
 						<CartIcon />
 					</>
