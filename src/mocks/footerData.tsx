@@ -11,105 +11,105 @@ import {
 
 export const homePageCategories = [
 	{
-		key: 'howToBuy',
+		key: 'How to buy',
 		subcategories: [
 			{
-				key: 'paymentMethods',
+				key: 'Payment methods',
 				link: '/',
 			},
 			{
-				key: 'orderPickup',
+				key: 'Order pickup',
 				link: '/',
 			},
 			{
-				key: 'purchaseStatus',
+				key: 'Purchase status',
 				link: '/',
 			},
 			{
-				key: 'trackOrders',
+				key: 'Track orders',
 				link: '/',
 			},
 			{
-				key: 'returns',
+				key: 'Returns',
 				link: '/',
 			},
 		],
 	},
 	{
-		key: 'help',
+		key: 'Help',
 		subcategories: [
 			{
-				key: 'helpCenter',
+				key: 'Help center',
 				link: '/',
 			},
 			{
-				key: 'securityFraud',
+				key: 'Security & fraud',
 				link: '/',
 			},
 			{
-				key: 'feedback',
+				key: 'Feedback',
 				link: '/',
 			},
 			{
-				key: 'contact',
+				key: 'Contact',
 				link: '/',
 			},
 		],
 	},
 	{
-		key: 'services',
+		key: 'Services',
 		subcategories: [
 			{
-				key: 'giftCards',
+				key: 'Gift cards',
 				link: '/',
 			},
 			{
-				key: 'storeLocator',
+				key: 'Store Locator',
 				link: '/',
 			},
 			{
-				key: 'clickCollect',
+				key: 'Click & Collect',
 				link: '/',
 			},
 			{
-				key: 'sameDayDelivery',
+				key: 'Same Day Delivery',
 				link: '/',
 			},
 			{
-				key: 'shippingDelivery',
+				key: 'Shipping & Delivery',
 				link: '/',
 			},
 			{
-				key: 'couponsDiscounts',
+				key: 'Coupons & Discounts',
 				link: '/',
 			},
 			{
-				key: 'newsletter',
+				key: 'Newsletter',
 				link: '/',
 			},
 		],
 	},
 	{
-		key: 'about',
+		key: 'About',
 		subcategories: [
 			{
-				key: 'aboutUs',
+				key: 'About us',
 				link: '/',
 			},
 			{
-				key: 'jobs',
+				key: 'Jobs',
 				link: '/',
 			},
 			{
-				key: 'pressCenter',
+				key: 'Press Center',
 				link: '/',
 			},
 			{
-				key: 'affiliateProgram',
+				key: 'Affiliate program',
 				link: '/',
 			},
 			{
-				key: 'suppliers',
+				key: 'Suppliers',
 				link: '/',
 			},
 		],
@@ -153,21 +153,21 @@ export const socialMedia = [
 ];
 export const contactOptions = [
 	{
-		key: 'helpCenter',
+		key: 'Help center',
 		link: '/',
-		details: ['description'],
+		details: ['Find answers online anytime'],
 		icon: <SfIconHelp size='lg' />,
 	},
 	{
-		key: 'liveChat',
+		key: 'Live chat',
 		link: '/',
-		details: ['openingHours-1', 'openingHours-2'],
+		details: ['Mon–Fri, 5am–10pm PT', 'Sat–Sun, 6am–9pm PT'],
 		icon: <SfIconContactSupport size='lg' />,
 	},
 	{
-		key: 'phone',
+		key: '1 234 567 8901',
 		link: '/',
-		details: ['openingHours-1', 'openingHours-2'],
+		details: ['Mon–Fri, 5am–10pm PT', 'Sat–Sun, 6am–9pm PT'],
 		icon: <SfIconCall size='lg' />,
 	},
 ];

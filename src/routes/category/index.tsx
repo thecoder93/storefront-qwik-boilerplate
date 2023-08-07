@@ -6,7 +6,6 @@ import {
 	useNavigate,
 } from '@builder.io/qwik-city';
 import { Image } from 'qwik-image';
-import { useTranslate } from 'qwik-speak';
 import {
 	SfButton,
 	SfIconDelete,
@@ -29,7 +28,6 @@ export const useProductsLoader = routeLoader$(async ({ env, url }) => {
 });
 
 export default component$(() => {
-	const t = useTranslate();
 	const location = useLocation();
 	const navigate = useNavigate();
 	const products = useProductsLoader();
@@ -88,7 +86,7 @@ export default component$(() => {
 									data-testid='link'
 									href='/'
 								>
-									{t('home')}
+									{$localize`home`}
 								</Link>
 							</li>
 							<li class="peer hidden sm:flex peer-[:nth-of-type(even)]:before:content-['/'] peer-[:nth-of-type(even)]:before:px-2 peer-[:nth-of-type(even)]:before:leading-5 last-of-type:flex last-of-type:before:font-normal last-of-type:before:text-neutral-500 text-neutral-500 last-of-type:text-neutral-900 last-of-type:font-medium">
@@ -97,7 +95,7 @@ export default component$(() => {
 									data-testid='link'
 									href='/category'
 								>
-									{t('allProducts')}
+									{$localize`allProducts`}
 								</Link>
 							</li>
 						</ol>
@@ -446,7 +444,7 @@ export default component$(() => {
 															actions.updateCartProduct(product.id, 1)
 														}
 													>
-														{t('addToCartShort')}
+														{$localize`addToCartShort`}
 														<div q:slot='prefix'>
 															<SfIconShoppingCart size='sm' class='w-5 h-5' />
 														</div>

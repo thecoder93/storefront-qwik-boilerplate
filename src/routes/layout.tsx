@@ -7,7 +7,6 @@ import {
 } from '@builder.io/qwik-city';
 import type { ImageTransformerProps } from 'qwik-image';
 import { useImageProvider } from 'qwik-image';
-import { useTranslate } from 'qwik-speak';
 import { SfButton, SfIconExpandMore } from 'qwik-storefront-ui';
 import { CartIcon } from '~/components/CartIcon/CartIcon';
 import { Footer } from '~/components/Footer/Footer';
@@ -17,12 +16,17 @@ import { Search } from '~/components/Search/Search';
 import { sleep } from '~/shared/utils';
 import { useAppStore } from '~/store';
 import type { Product } from '~/types/product';
+import { extractLang } from '~/utils/i18n';
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
 	cacheControl({
 		staleWhileRevalidate: 60 * 60 * 24 * 7,
 		maxAge: 5,
 	});
+};
+
+export const onRequest: RequestHandler = ({ request, locale }) => {
+	locale(extractLang(request.headers.get('accept-language'), request.url));
 };
 
 export const useAddressForm = routeAction$(async () => {
@@ -38,7 +42,6 @@ export const useRandomProductsLoader = routeLoader$(
 );
 
 export default component$(() => {
-	const t = useTranslate();
 	useAppStore();
 
 	const location = useLocation();
@@ -68,7 +71,7 @@ export default component$(() => {
 					<div q:slot='suffix'>
 						<SfIconExpandMore />
 					</div>
-					<span>{t('allProductsLinkText')}</span>
+					<span>{$localize`allProductsLinkText`}</span>
 				</SfButton>
 				{!isCheckoutPathSig.value && (
 					<>

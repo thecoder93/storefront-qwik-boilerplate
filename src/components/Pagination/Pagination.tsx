@@ -1,6 +1,5 @@
 import type { PropFunction } from '@builder.io/qwik';
 import { component$ } from '@builder.io/qwik';
-import { useTranslate } from 'qwik-speak';
 import {
 	SfButton,
 	SfIconChevronLeft,
@@ -16,8 +15,6 @@ export interface PaginationProps {
 
 export const Pagination = component$<PaginationProps>(
 	({ class: _class, selectedPage, totalPages, onPageChange }) => {
-		const t = useTranslate();
-
 		return (
 			<nav
 				class={[
@@ -44,7 +41,7 @@ export const Pagination = component$<PaginationProps>(
 					<div q:slot='prefix'>
 						<SfIconChevronLeft />
 					</div>
-					<span class='hidden sm:inline-flex'>{t('prev')}</span>
+					<span class='hidden sm:inline-flex'>{$localize`prev`}</span>
 				</SfButton>
 				<ul class='flex flex-wrap justify-center'>
 					{[...new Array(totalPages + 1).keys()].map((page: number) => {
@@ -92,7 +89,7 @@ export const Pagination = component$<PaginationProps>(
 						}
 					}}
 				>
-					<span class='hidden sm:inline-flex'>{t('next')}</span>
+					<span class='hidden sm:inline-flex'>{$localize`next`}</span>
 					<div q:slot='suffix'>
 						<SfIconChevronRight />
 					</div>

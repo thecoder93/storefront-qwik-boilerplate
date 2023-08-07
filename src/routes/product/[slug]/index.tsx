@@ -1,7 +1,6 @@
 import { component$, useContext } from '@builder.io/qwik';
 import { Link, routeLoader$, type DocumentHead } from '@builder.io/qwik-city';
 import { Image } from 'qwik-image';
-import { useTranslate } from 'qwik-speak';
 import { SfButton, SfIconShoppingCart, SfRating } from 'qwik-storefront-ui';
 import { ProductNotFound } from '~/components/ProductNotFound/ProductNotFound';
 import { ProductSlider } from '~/components/ProductSlider/ProductSlider';
@@ -30,7 +29,6 @@ export const useProductLoader = routeLoader$(
 
 export default component$(() => {
 	const product = useProductLoader();
-	const t = useTranslate();
 	const store = useContext(STORE_CONTEXT);
 	const actions = useContext(ACTIONS_CONTEXT);
 
@@ -218,7 +216,7 @@ export default component$(() => {
 												actions.updateCartProduct(product.value.id, 1)
 											}
 										>
-											{t('addToCart')}
+											{$localize`addToCart`}
 											<div q:slot='prefix'>
 												<SfIconShoppingCart size='sm' class='w-5 h-5' />
 											</div>

@@ -1,13 +1,11 @@
 import { component$ } from '@builder.io/qwik';
 import { Link } from '@builder.io/qwik-city';
 import { Image } from 'qwik-image';
-import { useTranslate } from 'qwik-speak';
 import { OrderSummary } from '~/components/OrderSummary/OrderSummary';
 import { ShippingMethodSelector } from '~/components/ShippingMethodSelector/ShippingMethodSelector';
 import { Divider } from '~/components/UI/Divider/Divider';
 
 export default component$(() => {
-	const t = useTranslate();
 	return (
 		<main data-testid='checkout-layout'>
 			<div
@@ -199,24 +197,24 @@ export default component$(() => {
 								data-testid='button'
 								href='/order/success'
 							>
-								{t('placeOrder')}
+								{$localize`placeOrder`}
 							</Link>
 							<p class='text-sm text-center mt-4 pb-4 md:pb-0'>
-								{t('termsInfo1')}{' '}
+								{$localize`termsInfo1`}{' '}
 								<Link
 									class='focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm text-primary-700 underline hover:text-primary-800 active:text-primary-900 focus:outline focus:outline-offset-2 focus:outline-2 outline-secondary-600 rounded'
 									data-testid='link'
 									href='/checkout#'
 								>
-									{t('termsInfo2')}
+									{$localize`termsInfo2`}
 								</Link>{' '}
-								{t('termsInfo3')}{' '}
+								{$localize`termsInfo3`}{' '}
 								<Link
 									class='focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm text-primary-700 underline hover:text-primary-800 active:text-primary-900 focus:outline focus:outline-offset-2 focus:outline-2 outline-secondary-600 rounded'
 									data-testid='link'
 									href='/checkout#'
 								>
-									{t('termsInfo4')}
+									{$localize`termsInfo4`}
 								</Link>
 							</p>
 						</OrderSummary>

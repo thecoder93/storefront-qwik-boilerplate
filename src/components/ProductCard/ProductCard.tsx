@@ -1,7 +1,6 @@
 import { component$, useContext } from '@builder.io/qwik';
 import { Link } from '@builder.io/qwik-city';
 import { Image } from 'qwik-image';
-import { useTranslate } from 'qwik-speak';
 import {
 	SfButton,
 	SfCounter,
@@ -20,9 +19,7 @@ export type ProductCardProps = {
 
 export const ProductCard = component$<ProductCardProps>(
 	({ product, class: _class, ...attributes }) => {
-		const t = useTranslate();
 		const actions = useContext(ACTIONS_CONTEXT);
-
 		return (
 			<div
 				class={[
@@ -84,7 +81,7 @@ export const ProductCard = component$<ProductCardProps>(
 							class='inline-flex items-center justify-center font-medium text-base focus-visible:outline focus-visible:outline-offset rounded-md disabled:text-disabled-500 disabled:bg-disabled-300 disabled:shadow-none disabled:ring-0 disabled:cursor-not-allowed leading-5 text-sm py-1.5 px-3 gap-1.5 text-white shadow hover:shadow-md active:shadow bg-primary-700 hover:bg-primary-800 active:bg-primary-900 disabled:bg-disabled-300'
 							onClick$={() => actions.updateCartProduct(product.id, 1)}
 						>
-							{t('addToCartShort')}
+							{$localize`addToCartShort`}
 							<div q:slot='prefix'>
 								<SfIconShoppingCart size='sm' class='w-5 h-5' />
 							</div>

@@ -1,6 +1,5 @@
 import { Slot, component$, useComputed$, useContext } from '@builder.io/qwik';
 import { useLocation } from '@builder.io/qwik-city';
-import { useTranslate } from 'qwik-speak';
 import { SfIconDelete } from 'qwik-storefront-ui';
 import { STORE_CONTEXT } from '~/shared/constants';
 import {
@@ -14,7 +13,6 @@ import {
 import { Divider } from '../UI/Divider/Divider';
 
 export const OrderSummary = component$(() => {
-	const t = useTranslate();
 	const location = useLocation();
 	const isCheckoutPathSig = useComputed$(() =>
 		location.url.pathname.includes('checkout')
@@ -28,26 +26,26 @@ export const OrderSummary = component$(() => {
 		>
 			<div class='flex justify-between items-end bg-neutral-100 md:bg-transparent py-2 px-4 md:px-6 md:pt-6 md:pb-4'>
 				<p class='typography-headline-4 font-bold md:typography-headline-3'>
-					{t('orderSummary')}
+					{$localize`orderSummary`}
 				</p>
 				<p
 					class='typography-text-base font-semibold'
 					data-testid='total-in-cart'
 				>
-					({t('itemsInCart')} {cartQuantitySig.value})
+					({$localize`itemsInCart`} {cartQuantitySig.value})
 				</p>
 			</div>
 			<div class='px-4 pb-4 mt-3 md:px-6 md:pb-6 md:mt-0'>
 				<div class='flex justify-between typography-text-base pb-4'>
 					<div class='flex flex-col grow pr-2'>
-						<p>{t('itemsSubtotal')}</p>
+						<p>{$localize`itemsSubtotal`}</p>
 						<p class='ml-auto typography-text-xs text-neutral-500'>
-							{t('originalPrice')}
+							{$localize`originalPrice`}
 						</p>
 						<p class='ml-auto typography-text-xs text-secondary-700'>
-							{t('savings')}
+							{$localize`savings`}
 						</p>
-						<p class='my-2'>{t('delivery')}</p>
+						<p class='my-2'>{$localize`delivery`}</p>
 					</div>
 					<div class='flex flex-col text-right'>
 						<p data-testid='special-price'>
@@ -63,7 +61,7 @@ export const OrderSummary = component$(() => {
 					</div>
 				</div>
 				<div class='flex items-center py-4 border-t border-neutral-200'>
-					<p>{t('promoCode')}</p>
+					<p>{$localize`promoCode`}</p>
 					<button
 						type='button'
 						class='inline-flex items-center justify-center font-medium text-base focus-visible:outline focus-visible:outline-offset rounded-md disabled:text-disabled-500 disabled:bg-disabled-300 disabled:shadow-none disabled:ring-0 disabled:cursor-not-allowed leading-5 text-sm py-1.5 px-3 gap-1.5 text-primary-700 hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900 disabled:bg-transparent mr-auto ml-2 border border-neutral-300 rounded-md'
@@ -90,22 +88,22 @@ export const OrderSummary = component$(() => {
 						class='inline-flex items-center justify-center font-medium text-base focus-visible:outline focus-visible:outline-offset rounded-md disabled:text-disabled-500 disabled:bg-disabled-300 disabled:shadow-none disabled:ring-0 disabled:cursor-not-allowed py-2 leading-6 px-4 gap-2 text-primary-700 hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900 ring-1 ring-primary-700 hover:shadow-md active:shadow shadow hover:ring-primary-800 active:ring-primary-900 disabled:ring-1 disabled:ring-disabled-300 disabled:bg-white/50'
 						data-testid='button'
 					>
-						{t('apply')}
+						{$localize`apply`}
 					</button>
 				</div>
 				<div class='px-3 py-1.5 bg-secondary-100 text-secondary-700 typography-text-sm rounded-md text-center mb-4'>
 					<div class='inline-flex items-center justify-center rounded-md font-normal text-secondary-800 bg-secondary-100 text-sm p-1.5 gap-1.5 w-full'>
-						{t('savingsTag', { amount: '$20' })}
+						{$localize`savingsTag $20`}
 					</div>
 				</div>
 				{isCheckoutPathSig.value && (
 					<div class='flex justify-between typography-text-base pb-4 mb-4'>
-						<p>{t('shippingDelivery')}</p>
+						<p>{$localize`shippingDelivery`}</p>
 						<p data-testid='total'>{getShippingCosts(store.cart)}</p>
 					</div>
 				)}
 				<div class='flex justify-between typography-headline-4 md:typography-headline-3 font-bold pb-4 mb-4'>
-					<p>{t('total')}</p>
+					<p>{$localize`total`}</p>
 					<p data-testid='total'>{getCartTotal(store.cart, 20)}</p>
 				</div>
 				<Divider class='my-4 max-md:-mx-4 max-md:w-auto' />

@@ -1,16 +1,14 @@
 import { component$, useContext } from '@builder.io/qwik';
-import { useTranslate } from 'qwik-speak';
 import { ACTIONS_CONTEXT, STORE_CONTEXT } from '~/shared/constants';
 
 export const ShippingMethodSelector = component$(() => {
-	const t = useTranslate();
 	const store = useContext(STORE_CONTEXT);
 	const actions = useContext(ACTIONS_CONTEXT);
 	return (
 		<div data-testid='shipping-method' class='md:px-4 my-6'>
 			<div class='flex justify-between items-center'>
 				<h3 class='text-neutral-900 text-lg font-bold'>
-					{t('shippingMethod.heading')}
+					{$localize`shippingMethod.heading`}
 				</h3>
 			</div>
 			<div class='mt-4'>

@@ -1,9 +1,7 @@
 import { component$, useSignal, useVisibleTask$ } from '@builder.io/qwik';
-import { useTranslate } from 'qwik-speak';
 import { SfButton, SfIconExpandLess } from 'qwik-storefront-ui';
 
 export const ScrollToTopButton = component$(() => {
-	const t = useTranslate();
 	const elRefSig = useSignal<Element>();
 
 	useVisibleTask$(() => {
@@ -31,7 +29,7 @@ export const ScrollToTopButton = component$(() => {
 				square
 				onClick$={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
 				variant='secondary'
-				aria-label={t('scrollTop')}
+				aria-label={$localize`scrollTop`}
 				class='bg-white transition-opacity fixed right-4 bottom-20 opacity-100 pointer-events-auto'
 			>
 				<div q:slot='prefix'>

@@ -1,12 +1,10 @@
 import { component$, useContext, useVisibleTask$ } from '@builder.io/qwik';
 import { Link } from '@builder.io/qwik-city';
 import { Image } from 'qwik-image';
-import { useTranslate } from 'qwik-speak';
 import { SfButton } from 'qwik-storefront-ui';
 import { ACTIONS_CONTEXT } from '~/shared/constants';
 
 export default component$(() => {
-	const t = useTranslate();
 	const actions = useContext(ACTIONS_CONTEXT);
 	useVisibleTask$(() => {
 		actions.placeOrder();
@@ -20,15 +18,15 @@ export default component$(() => {
 					objectFit='fill'
 					width={200}
 					height={200}
-					alt={t('orderSuccessfulImageAlt')}
+					alt={$localize`orderSuccessfulImageAlt`}
 					src={'/images/order-success.svg'}
 				/>
 				<h1 class='mt-6 mb-1 text-2xl'>Thank you!</h1>
 				<span class='font-medium'>Your order was completed successfully.</span>
 				<div class='border border-1 border-neutral-200 rounded bg-neutral-100 p-4 w-full my-4 text-sm'>
-					<h5 class='font-medium text-base'>{t('etaDelivery')}</h5>
-					<p class='capitalize'>{t('tomorrow')}</p>
-					<h5 class='font-medium text-base mt-4'>{t('orderNumber')}</h5>
+					<h5 class='font-medium text-base'>{$localize`etaDelivery`}</h5>
+					<p class='capitalize'>{$localize`tomorrow`}</p>
+					<h5 class='font-medium text-base mt-4'>{$localize`orderNumber`}</h5>
 					<p>123456789</p>
 				</div>
 				<SfButton
@@ -38,7 +36,7 @@ export default component$(() => {
 					class='max-md:w-full'
 					variant='secondary'
 				>
-					{t('continueShopping')}
+					{$localize`continueShopping`}
 				</SfButton>
 			</div>
 		</div>

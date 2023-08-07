@@ -1,6 +1,5 @@
 import { component$ } from '@builder.io/qwik';
 import { Link } from '@builder.io/qwik-city';
-import { useTranslate } from 'qwik-speak';
 import { contactOptions, homePageCategories, socialMedia } from '~/mocks';
 import { Divider } from '../UI/Divider/Divider';
 
@@ -9,8 +8,6 @@ type FooterProps = {
 };
 
 export const Footer = component$<FooterProps>(({ class: _class = '' }) => {
-	const t = useTranslate();
-
 	return (
 		<footer class={['pt-10 bg-neutral-100', _class]} data-testid='footer'>
 			<div
@@ -20,7 +17,7 @@ export const Footer = component$<FooterProps>(({ class: _class = '' }) => {
 				{homePageCategories.map(({ key, subcategories }) => (
 					<div key={key} class='min-w-[25%] xs:min-w-[50%] flex flex-col'>
 						<p class='font-medium leading-7 text-neutral-900 text-lg pb-2'>
-							{t(`categories.${key}.label`)}
+							{key}
 						</p>
 						{subcategories.map(({ link, key: subcategoryKey }) => (
 							<Link
@@ -28,7 +25,7 @@ export const Footer = component$<FooterProps>(({ class: _class = '' }) => {
 								class='text-sm leading-5 py-2 text-neutral-600 hover:underline'
 								key={subcategoryKey}
 							>
-								{t(`categories.${key}.subcategories.${subcategoryKey}`)}
+								{subcategoryKey}
 							</Link>
 						))}
 					</div>
@@ -49,11 +46,11 @@ export const Footer = component$<FooterProps>(({ class: _class = '' }) => {
 							href={link}
 							class='py-1 my-2 font-medium typography-text-lg font-body no-underline text-neutral-600 hover:underline hover:!text-neutral-900 active:underline active:!text-neutral-900'
 						>
-							{t(`contactOptions.${key}.label`)}
+							{key}
 						</Link>
 						{details.map((option) => (
 							<p class='text-sm leading-5' key={option}>
-								{t(`contactOptions.${key}.details.${option}`)}
+								{option}
 							</p>
 						))}
 					</div>
@@ -66,7 +63,7 @@ export const Footer = component$<FooterProps>(({ class: _class = '' }) => {
 							<Link
 								key={label}
 								href={link}
-								title={t('socialLabel', { label })}
+								title={label}
 								class='hover:bg-neutral-500 hover:shadow-[0_0_0_8px] hover:shadow-neutral-500 rounded-sm'
 								data-testid={label}
 							>

@@ -48,3 +48,10 @@ export const generateDocumentHead = (
 
 export const formatPrice = (price: number, digits: number) =>
 	'$' + price.toFixed(digits);
+
+export const useTranslate = () => {
+	return (...args: any) => {
+		console.log(args);
+		return 'test';
+	};
+};

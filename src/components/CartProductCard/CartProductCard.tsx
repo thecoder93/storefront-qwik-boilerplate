@@ -1,7 +1,6 @@
 import { component$, useContext } from '@builder.io/qwik';
 import { Link } from '@builder.io/qwik-city';
 import { Image } from 'qwik-image';
-import { useTranslate } from 'qwik-speak';
 import { SfIconDelete } from 'qwik-storefront-ui';
 import { ACTIONS_CONTEXT } from '~/shared/constants';
 import { formatPrice } from '~/shared/utils';
@@ -14,7 +13,6 @@ export interface CartProductCardProps {
 
 export const CartProductCard = component$<CartProductCardProps>(
 	({ product, quantity }) => {
-		const t = useTranslate();
 		const actions = useContext(ACTIONS_CONTEXT);
 		return (
 			<div
@@ -49,7 +47,7 @@ export const CartProductCard = component$<CartProductCardProps>(
 							>
 								<path d='M14.25 21.4c-.383.383-.858.575-1.425.575-.567 0-1.042-.192-1.425-.575l-8.8-8.8a2.069 2.069 0 0 1-.6-1.45V4c0-.55.196-1.021.588-1.413A1.925 1.925 0 0 1 4 2h7.15c.283 0 .55.054.8.162.25.109.467.255.65.438l8.8 8.825c.383.383.575.854.575 1.412a1.92 1.92 0 0 1-.575 1.413l-7.15 7.15ZM6.5 8c.417 0 .77-.146 1.062-.438C7.854 7.271 8 6.917 8 6.5c0-.417-.146-.77-.438-1.062A1.444 1.444 0 0 0 6.5 5c-.417 0-.77.146-1.062.438A1.444 1.444 0 0 0 5 6.5c0 .417.146.77.438 1.062.291.292.645.438 1.062.438Z'></path>
 							</svg>
-							{t('sale')}
+							{$localize`sale`}
 						</div>
 					)}
 				</div>
@@ -139,7 +137,8 @@ export const CartProductCard = component$<CartProductCardProps>(
 							)}
 						</span>
 						<span class='font-medium mt-2 ml-1'>
-							{quantity} x {formatPrice(
+							{quantity} x{' '}
+							{formatPrice(
 								product.price.discounted.amount,
 								product.price.discounted.precisionAmount
 							)}
