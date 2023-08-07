@@ -11,7 +11,8 @@ export const getCartDiscountendTotal = (cart: Store['cart']) => {
 	const total = cartProductsWithQuantity(cart).reduce(
 		(total, productWithQty) =>
 			total +
-			productWithQty.product!.price.discounted.amount * productWithQty.quantity,
+			(productWithQty.product?.price.discounted.amount || 0) *
+				productWithQty.quantity,
 		0
 	);
 	return formatPrice(total, 2);
@@ -21,7 +22,8 @@ export const getCartRegularTotal = (cart: Store['cart']) => {
 	const total = cartProductsWithQuantity(cart).reduce(
 		(total, productWithQty) =>
 			total +
-			productWithQty.product!.price.regular.amount * productWithQty.quantity,
+			(productWithQty.product?.price.regular.amount || 0) *
+				productWithQty.quantity,
 		0
 	);
 	return formatPrice(total, 2);
@@ -31,8 +33,8 @@ export const getCartSavingTotal = (cart: Store['cart']) => {
 	const total = cartProductsWithQuantity(cart).reduce(
 		(total, productWithQty) =>
 			total +
-			(productWithQty.product!.price.regular.amount -
-				productWithQty.product!.price.discounted.amount) *
+			((productWithQty.product?.price.regular.amount || 0) -
+				(productWithQty.product?.price.discounted.amount || 0)) *
 				productWithQty.quantity,
 		0
 	);
@@ -43,7 +45,8 @@ export const getCartTotal = (cart: Store['cart'], promo: number) => {
 	const total = cartProductsWithQuantity(cart).reduce(
 		(total, productWithQty) =>
 			total +
-			productWithQty.product!.price.discounted.amount * productWithQty.quantity,
+			(productWithQty.product?.price.discounted.amount || 0) *
+				productWithQty.quantity,
 		0
 	);
 	return formatPrice(total - promo + (cart.shippingOption === 1 ? 5 : 15), 2);
