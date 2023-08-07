@@ -1,11 +1,16 @@
-import { component$ } from '@builder.io/qwik';
+import { component$, useContext, useVisibleTask$ } from '@builder.io/qwik';
 import { Link } from '@builder.io/qwik-city';
 import { Image } from 'qwik-image';
 import { useTranslate } from 'qwik-speak';
 import { SfButton } from 'qwik-storefront-ui';
+import { ACTIONS_CONTEXT } from '~/shared/constants';
 
 export default component$(() => {
 	const t = useTranslate();
+	const actions = useContext(ACTIONS_CONTEXT);
+	useVisibleTask$(() => {
+		actions.placeOrder();
+	});
 	return (
 		<div class='px-4 md:px-0' data-testid='order-success-page'>
 			<div class='border border-1 border-neutral-200 mt-10 mb-20 rounded p-4 md:p-6 flex flex-col items-center max-w-2xl mx-auto'>
