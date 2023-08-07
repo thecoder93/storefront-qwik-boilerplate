@@ -970,6 +970,6 @@ export const head: DocumentHead = ({ resolveValue, url }) => {
 		url.href,
 		product.name,
 		product.description,
-		product.image.url
+		product.image.url || undefined
 	);
 };
