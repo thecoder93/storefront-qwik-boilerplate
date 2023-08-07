@@ -57,3 +57,6 @@ const cartProductsWithQuantity = (cart: Store['cart']) =>
 
 export const getShippingCosts = (cart: Store['cart']) =>
 	cart.shippingOption === 1 ? formatPrice(5, 2) : formatPrice(15, 2);
+
+export const getCartProductQuantity = (cart: Store['cart'], id: number) =>
+	cart.products.find((p) => p.id === id)?.quantity || 0;

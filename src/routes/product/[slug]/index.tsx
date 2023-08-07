@@ -7,8 +7,13 @@ import { ProductNotFound } from '~/components/ProductNotFound/ProductNotFound';
 import { ProductSlider } from '~/components/ProductSlider/ProductSlider';
 import { Divider } from '~/components/UI/Divider/Divider';
 import { useRandomProductsLoader } from '~/routes/layout';
-import { ACTIONS_CONTEXT, IMAGE_PLACHEHOLDER } from '~/shared/constants';
+import {
+	ACTIONS_CONTEXT,
+	IMAGE_PLACHEHOLDER,
+	STORE_CONTEXT,
+} from '~/shared/constants';
 import { generateDocumentHead } from '~/shared/utils';
+import { getCartProductQuantity } from '~/store/selectors';
 import type { Product } from '~/types/product';
 
 export const useProductLoader = routeLoader$(
@@ -26,6 +31,7 @@ export const useProductLoader = routeLoader$(
 export default component$(() => {
 	const product = useProductLoader();
 	const t = useTranslate();
+	const store = useContext(STORE_CONTEXT);
 	const actions = useContext(ACTIONS_CONTEXT);
 
 	if (!product.value) {
@@ -124,67 +130,6 @@ export default component$(() => {
 										</div>
 									</div>
 								</div>
-								{/* <div class='md:-order-1 overflow-hidden flex-shrink-0 basis-auto'>
-									<div class='items-center relative flex-col h-full inline-flex hidden md:inline-flex'>
-										<button
-										type='button'
-										class='inline-flex items-center justify-center font-medium text-base focus-visible:outline focus-visible:outline-offset rounded-md disabled:text-disabled-500 disabled:bg-disabled-300 disabled:shadow-none disabled:ring-0 disabled:cursor-not-allowed p-1.5 gap-1.5 text-primary-700 hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900 ring-1 ring-primary-700 hover:shadow-md active:shadow shadow hover:ring-primary-800 active:ring-primary-900 disabled:ring-1 disabled:ring-disabled-300 disabled:bg-white/50 absolute !rounded-full bg-white z-10 top-4 rotate-90 disabled:!hidden !ring-neutral-500 !text-neutral-500'
-										data-testid='button'
-										aria-label='Previous'
-									>
-										<svg
-											viewBox='0 0 24 24'
-											data-testid='chevron-left'
-											xmlns='http://www.w3.org/2000/svg'
-											class='inline-block fill-current w-6 h-6 undefined'
-										>
-											<path d='M14.706 17.297a.998.998 0 0 0 0-1.41l-3.876-3.885 3.877-3.885a.998.998 0 0 0-1.412-1.41l-4.588 4.588a1 1 0 0 0 0 1.414l4.588 4.588a.997.997 0 0 0 1.41 0Z'></path>
-										</svg>
-									</button>
-										<div class="flex-row w-full items-center md:flex-col md:h-full md:px-0 md:scroll-pl-4 snap-y snap-mandatory flex gap-0.5 md:gap-2 overflow-auto [&amp;::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none'] motion-safe:scroll-smooth overflow-y-auto flex flex-col gap-4">
-											<button
-												type='button'
-												aria-current='true'
-												aria-label='Go to slide 1'
-												class='w-20 h-[88px] relative shrink-0 pb-1 border-b-4 snap-start cursor-pointer transition-colors flex-grow-0 border-primary-700'
-											>
-												<Image
-													loading='eager'
-													layout='fixed'
-													width={80}
-													height={80}
-													data-testid='image-slot'
-													class='object-cover rounded-md aspect-square w-full h-full'
-													src={product.value.primaryImage.url}
-													alt={product.value.primaryImage.alt}
-												/>
-											</button>
-										</div>
-										<button
-										type='button'
-										class='inline-flex items-center justify-center font-medium text-base focus-visible:outline focus-visible:outline-offset rounded-md disabled:text-disabled-500 disabled:bg-disabled-300 disabled:shadow-none disabled:ring-0 disabled:cursor-not-allowed p-1.5 gap-1.5 text-primary-700 hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900 ring-1 ring-primary-700 hover:shadow-md active:shadow shadow hover:ring-primary-800 active:ring-primary-900 disabled:ring-1 disabled:ring-disabled-300 disabled:bg-white/50 absolute !rounded-full bg-white z-10 bottom-4 rotate-90 disabled:!hidden !ring-neutral-500 !text-neutral-500'
-										data-testid='button'
-										aria-label='Next'
-									>
-										<svg
-											viewBox='0 0 24 24'
-											data-testid='chevron-right'
-											xmlns='http://www.w3.org/2000/svg'
-											class='inline-block fill-current w-6 h-6 undefined'
-										>
-											<path d='M8.705 17.297a.998.998 0 0 1-.001-1.41l3.876-3.885-3.876-3.885a.998.998 0 0 1 1.412-1.41l4.587 4.588a1 1 0 0 1 0 1.414l-4.587 4.588a.997.997 0 0 1-1.411 0Z'></path>
-										</svg>
-									</button>
-									</div>
-									<div class='flex md:hidden gap-0.5' role='group'>
-										<button
-											type='button'
-											aria-current='true'
-											aria-label='Go to slide 1'
-											class='relative shrink-0 pb-1 border-b-4 cursor-pointer transition-colors flex-grow  border-primary-700'
-										></button>
-									</div>
-								</div> */}
 							</div>
 						</section>
 						<section class='mb-10 grid-in-right md:mb-0'>
@@ -252,7 +197,7 @@ export default component$(() => {
 									and off
 								</p>
 								<div class='py-4 mb-4 border-gray-200 border-y'>
-									<div class='inline-flex items-center justify-center rounded-md font-normal text-primary-800 bg-primary-100 text-sm p-1.5 gap-1.5 w-full mb-4'>
+									<div class='inline-flex items-center justify-center rounded-md font-normal text-primary-800 bg-primary-100 text-sm p-1.5 gap-1.5 w-full'>
 										<svg
 											viewBox='0 0 24 24'
 											data-testid='shopping-cart-checkout'
@@ -261,59 +206,10 @@ export default component$(() => {
 										>
 											<path d='M7 22c-.55 0-1.02-.196-1.412-.587A1.926 1.926 0 0 1 5 20c0-.55.196-1.02.588-1.413A1.926 1.926 0 0 1 7 18c.55 0 1.02.196 1.412.587C8.804 18.98 9 19.45 9 20s-.196 1.02-.588 1.413A1.926 1.926 0 0 1 7 22Zm10 0c-.55 0-1.02-.196-1.412-.587A1.926 1.926 0 0 1 15 20c0-.55.196-1.02.588-1.413A1.926 1.926 0 0 1 17 18c.55 0 1.02.196 1.413.587.391.392.587.863.587 1.413s-.196 1.02-.587 1.413A1.926 1.926 0 0 1 17 22ZM11.3 9.3a.948.948 0 0 1-.275-.7.95.95 0 0 1 .275-.7l.875-.9H9a.968.968 0 0 1-.713-.287A.968.968 0 0 1 8 6c0-.283.096-.52.287-.713A.968.968 0 0 1 9 5h3.175l-.9-.9a.916.916 0 0 1-.287-.7c.008-.267.112-.5.312-.7.2-.183.433-.28.7-.288.267-.008.5.088.7.288l2.6 2.6c.1.1.17.208.212.325.042.117.063.242.063.375s-.02.258-.063.375a.878.878 0 0 1-.212.325l-2.6 2.6a.977.977 0 0 1-.688.287.93.93 0 0 1-.712-.287ZM7 17c-.767 0-1.346-.33-1.737-.988-.392-.658-.396-1.312-.013-1.962L6.6 11.6 3 4H2a.968.968 0 0 1-.712-.288A.968.968 0 0 1 1 3c0-.283.096-.52.288-.712A.968.968 0 0 1 2 2h1.65c.183 0 .358.05.525.15a.93.93 0 0 1 .375.425L8.525 11h7.025l3.6-6.5A.973.973 0 0 1 20 4a.94.94 0 0 1 .863.487.937.937 0 0 1 .012.988L17.3 11.95c-.183.333-.43.592-.738.775A1.945 1.945 0 0 1 15.55 13H8.1L7 15h11a.97.97 0 0 1 .712.287c.192.192.288.43.288.713s-.096.52-.288.712A.968.968 0 0 1 18 17H7Z'></path>
 										</svg>
-										1 product in cart
+										{getCartProductQuantity(store.cart, product.value.id)}{' '}
+										product in cart
 									</div>
-									<div class='flex flex-col md:flex-row flex-wrap gap-4'>
-										<div
-											data-testid='quantitySelector'
-											class='inline-flex flex-col items-center h-12  min-w-[145px] flex-grow flex-shrink-0 basis-0'
-										>
-											<div class='flex border border-neutral-300 rounded-md h-full w-full'>
-												<button
-													type='button'
-													class='inline-flex items-center justify-center font-medium text-base focus-visible:outline focus-visible:outline-offset rounded-md disabled:text-disabled-500 disabled:bg-disabled-300 disabled:shadow-none disabled:ring-0 disabled:cursor-not-allowed p-2 gap-2 text-primary-700 hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900 disabled:bg-transparent rounded-r-none'
-													data-testid='quantitySelectorDecreaseButton'
-													aria-controls=':r1:'
-													aria-label='Decrease value'
-												>
-													<svg
-														viewBox='0 0 24 24'
-														data-testid='remove'
-														xmlns='http://www.w3.org/2000/svg'
-														class='inline-block fill-current w-6 h-6 undefined'
-													>
-														<path d='M6 13a.968.968 0 0 1-.713-.288A.967.967 0 0 1 5 12a.97.97 0 0 1 .287-.713A.97.97 0 0 1 6 11h12a.97.97 0 0 1 .712.287c.192.192.288.43.288.713s-.096.52-.288.712A.965.965 0 0 1 18 13H6Z'></path>
-													</svg>
-												</button>
-												<input
-													data-testid='quantitySelectorInput'
-													id=':r1:'
-													type='number'
-													role='spinbutton'
-													class='appearance-none flex-1 mx-2 w-8 text-center bg-transparent font-medium [&amp;::-webkit-inner-spin-button]:appearance-none [&amp;::-webkit-inner-spin-button]:display-none [&amp;::-webkit-inner-spin-button]:m-0 [&amp;::-webkit-outer-spin-button]:display-none [&amp;::-webkit-outer-spin-button]:m-0 [-moz-appearance:textfield] [&amp;::-webkit-outer-spin-button]:appearance-none disabled:placeholder-disabled-900 focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm'
-													min='1'
-													max='999'
-													aria-label='Quantity Selector'
-													value='1'
-												/>
-												<button
-													type='button'
-													class='inline-flex items-center justify-center font-medium text-base focus-visible:outline focus-visible:outline-offset rounded-md disabled:text-disabled-500 disabled:bg-disabled-300 disabled:shadow-none disabled:ring-0 disabled:cursor-not-allowed p-2 gap-2 text-primary-700 hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900 disabled:bg-transparent rounded-l-none'
-													data-testid='quantitySelectorIncreaseButton'
-													aria-controls=':r1:'
-													aria-label='Increase value'
-												>
-													<svg
-														viewBox='0 0 24 24'
-														data-testid='add'
-														xmlns='http://www.w3.org/2000/svg'
-														class='inline-block fill-current w-6 h-6 undefined'
-													>
-														<path d='M12 19a.965.965 0 0 1-.712-.288A.965.965 0 0 1 11 18v-5H6a.968.968 0 0 1-.713-.288A.967.967 0 0 1 5 12a.97.97 0 0 1 .287-.713A.97.97 0 0 1 6 11h5V6c0-.283.096-.521.288-.713A.967.967 0 0 1 12 5a.97.97 0 0 1 .713.287A.97.97 0 0 1 13 6v5h5a.97.97 0 0 1 .712.287c.192.192.288.43.288.713s-.096.52-.288.712A.965.965 0 0 1 18 13h-5v5a.97.97 0 0 1-.287.712A.968.968 0 0 1 12 19Z'></path>
-													</svg>
-												</button>
-											</div>
-										</div>
+									<div class='flex justify-center mt-4 gap-x-4'>
 										<SfButton
 											type='button'
 											size='sm'
@@ -327,8 +223,6 @@ export default component$(() => {
 												<SfIconShoppingCart size='sm' class='w-5 h-5' />
 											</div>
 										</SfButton>
-									</div>
-									<div class='flex justify-center mt-4 gap-x-4'>
 										<button
 											type='button'
 											class='inline-flex items-center justify-center font-medium text-base focus-visible:outline focus-visible:outline-offset rounded-md disabled:text-disabled-500 disabled:bg-disabled-300 disabled:shadow-none disabled:ring-0 disabled:cursor-not-allowed leading-5 text-sm py-1.5 px-3 gap-1.5 text-primary-700 hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900 disabled:bg-transparent'
