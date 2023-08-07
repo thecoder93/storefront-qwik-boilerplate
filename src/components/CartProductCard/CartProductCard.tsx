@@ -1,4 +1,5 @@
 import { component$, useContext } from '@builder.io/qwik';
+import { Link } from '@builder.io/qwik-city';
 import { Image } from 'qwik-image';
 import { useTranslate } from 'qwik-speak';
 import { SfIconDelete } from 'qwik-storefront-ui';
@@ -21,7 +22,7 @@ export const CartProductCard = component$<CartProductCardProps>(
 				data-testid='cart-product-card'
 			>
 				<div class='relative overflow-hidden rounded-md w-[150px]'>
-					<a
+					<Link
 						class='focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm text-primary-700 underline hover:text-primary-800 active:text-primary-900'
 						data-testid='link'
 						href={`/product/${product.slug}`}
@@ -37,7 +38,7 @@ export const CartProductCard = component$<CartProductCardProps>(
 							src={product.image.url}
 							alt={product.image.alt}
 						/>
-					</a>
+					</Link>
 					{product.price.isDiscounted && (
 						<div class='absolute top-0 left-0 text-white bg-secondary-600 py-1 pl-1.5 pr-2 text-xs font-medium'>
 							<svg
@@ -53,13 +54,13 @@ export const CartProductCard = component$<CartProductCardProps>(
 					)}
 				</div>
 				<div class='flex flex-col pl-4 min-w-[180px] flex-1'>
-					<a
+					<Link
 						class='focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm underline hover:text-primary-800 active:text-primary-900 no-underline typography-text-sm sm:typography-text-lg'
 						data-testid='link'
 						href='/product/athletic-sneakers'
 					>
 						{product.name}
-					</a>
+					</Link>
 					<div class='mt-auto sm:mb-0 '>
 						<ul class='text-xs font-normal leading-5 sm:typography-text-sm text-neutral-700 flex justify-between'>
 							<div
@@ -138,8 +139,7 @@ export const CartProductCard = component$<CartProductCardProps>(
 							)}
 						</span>
 						<span class='font-medium mt-2 ml-1'>
-							{quantity} x{' '}
-							{formatPrice(
+							{quantity} x {formatPrice(
 								product.price.discounted.amount,
 								product.price.discounted.precisionAmount
 							)}

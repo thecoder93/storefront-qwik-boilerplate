@@ -1,4 +1,5 @@
 import { Slot, component$ } from '@builder.io/qwik';
+import { Link } from '@builder.io/qwik-city';
 import { Image } from 'qwik-image';
 
 type NavBarTopProps = {
@@ -17,7 +18,7 @@ export const NavbarTop = component$<NavBarTopProps>(({ isCheckoutPath }) => {
 			data-testid='navbar-top'
 		>
 			<div class='flex gap-[clamp(1rem,3vw,3rem)] items-center w-full md:h-[60px] max-w-screen-3xl py-6 px-4 md:px-6 lg:px-10 mx-auto sticky top-0'>
-				<a href='/' aria-label='SF Homepage' class='h-6 md:h-7 -mt-1.5'>
+				<Link href='/' aria-label='SF Homepage' class='h-6 md:h-7 -mt-1.5'>
 					<Image
 						loading='eager'
 						layout='constrained'
@@ -29,7 +30,7 @@ export const NavbarTop = component$<NavBarTopProps>(({ isCheckoutPath }) => {
 						}
 						alt='SFUI Logo'
 					/>
-				</a>
+				</Link>
 				<Slot />
 			</div>
 		</header>

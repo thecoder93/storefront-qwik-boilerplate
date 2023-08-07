@@ -1,4 +1,5 @@
 import { component$ } from '@builder.io/qwik';
+import { Link } from '@builder.io/qwik-city';
 import { Image } from 'qwik-image';
 
 type CategoryCardProps = {
@@ -22,7 +23,7 @@ export const CategoryCard = component$(
 			>
 				{items.map(({ name, image, slug }) => (
 					<div class='mr-2 md:mr-6 group' key={name}>
-						<a
+						<Link
 							class='w-full h-full z-1 focus-visible:outline focus-visible:outline-offset focus-visible:rounded-md'
 							href={slug}
 							aria-label={name}
@@ -43,7 +44,7 @@ export const CategoryCard = component$(
 									{name}
 								</p>
 							</div>
-						</a>
+						</Link>
 					</div>
 				))}
 			</div>
