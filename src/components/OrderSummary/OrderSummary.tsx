@@ -45,7 +45,6 @@ export const OrderSummary = component$(() => {
 						<p class='ml-auto typography-text-xs text-secondary-700'>
 							{$localize`savings`}
 						</p>
-						<p class='my-2'>{$localize`delivery`}</p>
 					</div>
 					<div class='flex flex-col text-right'>
 						<p data-testid='special-price'>
@@ -57,7 +56,6 @@ export const OrderSummary = component$(() => {
 						<p class='typography-text-xs text-secondary-700'>
 							{getCartSavingTotal(store.cart)}
 						</p>
-						<p class='my-2'>$0</p>
 					</div>
 				</div>
 				<div class='flex items-center py-4 border-t border-neutral-200'>
