@@ -218,7 +218,7 @@ export default component$(() => {
 												actions.updateCartProduct(product.value.id, 1)
 											}
 										>
-											{t('addToCart@@Add to cart')}
+											{t('addToCart')}
 											<div q:slot='prefix'>
 												<SfIconShoppingCart size='sm' class='w-5 h-5' />
 											</div>

@@ -446,7 +446,7 @@ export default component$(() => {
 															actions.updateCartProduct(product.id, 1)
 														}
 													>
-														{t('addToCartShort@@Add')}
+														{t('addToCartShort')}
 														<div q:slot='prefix'>
 															<SfIconShoppingCart size='sm' class='w-5 h-5' />
 														</div>
