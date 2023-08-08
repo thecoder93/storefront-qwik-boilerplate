@@ -13,3 +13,4 @@ export const IMAGE_PLACHEHOLDER =
 export const STORE_CONTEXT = createContextId<ReadonlyStore>('STORE_CONTEXT');
 export const ACTIONS_CONTEXT = createContextId<Actions>('ACTIONS_CONTEXT');
 export const LOCAL_STORAGE_CART_KEY = 'cart';
+export const DEFAULT_LOCALE = 'en';
