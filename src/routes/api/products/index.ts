@@ -2,7 +2,7 @@ import type { RequestHandler } from '@builder.io/qwik-city';
 import { products } from '~/mocks';
 
 export const onGet: RequestHandler = async ({ query, json }) => {
-	const PAGE_SIZE = 8;
+	const PAGE_SIZE = 9;
 	const page = parseInt(query.get('page') || '1');
 	const price = parseInt(query.get('price') || '-1');
 	const search = query.get('search') || '';
