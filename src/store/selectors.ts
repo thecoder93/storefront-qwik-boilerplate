@@ -3,7 +3,7 @@ import { formatPrice } from '~/shared/utils';
 import type { Store } from '~/types/store';
 
 export const getCartQuantity = (cart: Store['cart']) =>
-	cart.products.reduce((total, item) => total + item.quantity, 0);
+	(cart.products || []).reduce((total, item) => total + item.quantity, 0);
 
 export const isCartEmpty = (cart: Store['cart']) => cart.products.length === 0;
 
@@ -66,7 +66,7 @@ export const getCartSavingTotalWithPromo = (cart: Store['cart']) => {
 };
 
 const getPromoTotal = (cart: Store['cart']) =>
-	cart.promoCodes.reduce((total, promo) => total + promo.value, 0);
+	(cart.promoCodes || []).reduce((total, promo) => total + promo.value, 0);
 
 export const getCartTotal = (cart: Store['cart']) => {
 	const total = cartProductsWithQuantity(cart).reduce(
@@ -93,7 +93,7 @@ export const getCartTotalWithDelivery = (cart: Store['cart']) => {
 };
 
 const cartProductsWithQuantity = (cart: Store['cart']) =>
-	cart.products.map((cartProduct) => ({
+	(cart.products || []).map((cartProduct) => ({
 		product: products.find((p) => p.id === cartProduct.id),
 		quantity: cartProduct.quantity,
 	}));
