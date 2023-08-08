@@ -6,6 +6,8 @@ export type Actions = {
 	removeProductFromCart: PropFunction<(id: number) => void>;
 	placeOrder: PropFunction<() => void>;
 	changeShippingCosts: PropFunction<(id: number) => void>;
+	addPromo: PropFunction<(name: string) => void>;
+	removePromo: PropFunction<(id: number) => void>;
 };
 
 export const actions = (store: Store) =>
@@ -27,5 +29,18 @@ export const actions = (store: Store) =>
 		}),
 		changeShippingCosts: $((id: number) => {
 			store.cart.shippingOption = id;
+		}),
+		addPromo: $((name: string) => {
+			store.cart.promoCodes = [
+				...store.cart.promoCodes,
+				{
+					id: store.cart.promoCodes.length,
+					name,
+					value: Math.random() > 0.5 ? 10 : 20,
+				},
+			];
+		}),
+		removePromo: $((id: number) => {
+			store.cart.promoCodes = store.cart.promoCodes.filter((p) => p.id !== id);
 		}),
 	} satisfies Actions);

@@ -1,12 +1,20 @@
-import { Slot, component$, useComputed$, useContext } from '@builder.io/qwik';
+import {
+	Slot,
+	component$,
+	useComputed$,
+	useContext,
+	useSignal,
+} from '@builder.io/qwik';
 import { useLocation } from '@builder.io/qwik-city';
 import { SfIconDelete } from 'qwik-storefront-ui';
-import { STORE_CONTEXT } from '~/shared/constants';
+import { ACTIONS_CONTEXT, STORE_CONTEXT } from '~/shared/constants';
+import { formatPrice } from '~/shared/utils';
 import {
 	getCartDiscountendTotal,
 	getCartQuantity,
 	getCartRegularTotal,
 	getCartSavingTotal,
+	getCartSavingTotalWithPromo,
 	getCartTotal,
 	getCartTotalWithDelivery,
 	getShippingCosts,
@@ -15,10 +23,12 @@ import { Divider } from '../UI/Divider/Divider';
 
 export const OrderSummary = component$(() => {
 	const location = useLocation();
+	const promoCodeSig = useSignal('');
 	const isCheckoutPathSig = useComputed$(() =>
 		location.url.pathname.includes('checkout')
 	);
 	const store = useContext(STORE_CONTEXT);
+	const actions = useContext(ACTIONS_CONTEXT);
 	const cartQuantitySig = useComputed$(() => getCartQuantity(store.cart));
 	return (
 		<div
@@ -67,17 +77,24 @@ export const OrderSummary = component$(() => {
 						)}
 					</div>
 				</div>
-				<div class='flex items-center py-4 border-t border-neutral-200'>
-					<p>{$localize`promoCode`}</p>
-					<button
-						type='button'
-						class='inline-flex items-center justify-center font-medium text-base focus-visible:outline focus-visible:outline-offset rounded-md disabled:text-disabled-500 disabled:bg-disabled-300 disabled:shadow-none disabled:ring-0 disabled:cursor-not-allowed leading-5 text-sm py-1.5 px-3 gap-1.5 text-primary-700 hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900 disabled:bg-transparent mr-auto ml-2 border border-neutral-300 rounded-md'
-						data-testid='button'
-					>
-						<SfIconDelete />
-					</button>
-					<p>$20</p>
-				</div>
+				{store.cart.promoCodes.length > 0 && (
+					<div class='flex flex-col py-4 border-t border-neutral-200'>
+						{store.cart.promoCodes.map(({ id, name, value }) => (
+							<div key={id} class='flex justify-between items-center mb-2'>
+								<div class='w-[100px]'>{name}</div>
+								<button
+									type='button'
+									class='inline-flex items-center justify-center font-medium text-base focus-visible:outline focus-visible:outline-offset rounded-md disabled:text-disabled-500 disabled:bg-disabled-300 disabled:shadow-none disabled:ring-0 disabled:cursor-not-allowed leading-5 text-sm py-1.5 px-3 gap-1.5 text-primary-700 hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900 disabled:bg-transparent mr-auto ml-2 border border-neutral-300 rounded-md'
+									data-testid='button'
+									onClick$={() => actions.removePromo(id)}
+								>
+									<SfIconDelete />
+								</button>
+								<div>{formatPrice(value, 2)}</div>
+							</div>
+						))}
+					</div>
+				)}
 				<div class='flex gap-x-2 py-4 border-y border-neutral-200 mb-4'>
 					<div
 						class='flex items-center bg-white rounded-md ring-inset text-neutral-500 hover:ring-primary-700 focus-within:caret-primary-700 active:caret-primary-700 active:ring-primary-700 active:ring-2 focus-within:ring-primary-700 focus-within:ring-2 ring-1 ring-neutral-200 py-2 px-4 grow'
@@ -88,19 +105,31 @@ export const OrderSummary = component$(() => {
 							type='text'
 							data-testid='input-field'
 							placeholder='Enter promo code'
+							bind:value={promoCodeSig}
+							maxLength={5}
+							onKeyUp$={(event) => {
+								if (event.key === 'Enter') {
+									actions.addPromo(promoCodeSig.value);
+									promoCodeSig.value = '';
+								}
+							}}
 						/>
 					</div>
 					<button
 						type='button'
 						class='inline-flex items-center justify-center font-medium text-base focus-visible:outline focus-visible:outline-offset rounded-md disabled:text-disabled-500 disabled:bg-disabled-300 disabled:shadow-none disabled:ring-0 disabled:cursor-not-allowed py-2 leading-6 px-4 gap-2 text-primary-700 hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900 ring-1 ring-primary-700 hover:shadow-md active:shadow shadow hover:ring-primary-800 active:ring-primary-900 disabled:ring-1 disabled:ring-disabled-300 disabled:bg-white/50'
 						data-testid='button'
+						onClick$={() => {
+							actions.addPromo(promoCodeSig.value);
+							promoCodeSig.value = '';
+						}}
 					>
 						{$localize`apply`}
 					</button>
 				</div>
 				<div class='px-3 py-1.5 bg-secondary-100 text-secondary-700 typography-text-sm rounded-md text-center mb-4'>
 					<div class='inline-flex items-center justify-center rounded-md font-normal text-secondary-800 bg-secondary-100 text-sm p-1.5 gap-1.5 w-full'>
-						{$localize`savingsTag ${getCartSavingTotal(store.cart)}`}
+						{$localize`savingsTag ${getCartSavingTotalWithPromo(store.cart)}`}
 					</div>
 				</div>
 				{isCheckoutPathSig.value && (
@@ -113,8 +142,8 @@ export const OrderSummary = component$(() => {
 					<p>{$localize`total`}</p>
 					<p data-testid='total'>
 						{isCheckoutPathSig.value
-							? getCartTotalWithDelivery(store.cart, 20)
-							: getCartTotal(store.cart, 20)}
+							? getCartTotalWithDelivery(store.cart)
+							: getCartTotal(store.cart)}
 					</p>
 				</div>
 				<Divider class='my-4 max-md:-mx-4 max-md:w-auto' />
