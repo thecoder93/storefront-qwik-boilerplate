@@ -34,7 +34,7 @@ export const actions = (store: Store) =>
 			store.cart.promoCodes = [
 				...(store.cart.promoCodes || []),
 				{
-					id: store.cart.promoCodes.length,
+					id: (store.cart.promoCodes || []).length,
 					name,
 					value: Math.random() > 0.5 ? 10 : 20,
 				},
