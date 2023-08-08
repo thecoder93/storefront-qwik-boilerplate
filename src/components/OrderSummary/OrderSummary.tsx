@@ -8,6 +8,7 @@ import {
 	getCartRegularTotal,
 	getCartSavingTotal,
 	getCartTotal,
+	getCartTotalWithDelivery,
 	getShippingCosts,
 } from '~/store/selectors';
 import { Divider } from '../UI/Divider/Divider';
@@ -99,7 +100,7 @@ export const OrderSummary = component$(() => {
 				</div>
 				<div class='px-3 py-1.5 bg-secondary-100 text-secondary-700 typography-text-sm rounded-md text-center mb-4'>
 					<div class='inline-flex items-center justify-center rounded-md font-normal text-secondary-800 bg-secondary-100 text-sm p-1.5 gap-1.5 w-full'>
-						{$localize`savingsTag $20`}
+						{$localize`savingsTag ${getCartSavingTotal(store.cart)}`}
 					</div>
 				</div>
 				{isCheckoutPathSig.value && (
@@ -110,7 +111,11 @@ export const OrderSummary = component$(() => {
 				)}
 				<div class='flex justify-between typography-headline-4 md:typography-headline-3 font-bold pb-4 mb-4'>
 					<p>{$localize`total`}</p>
-					<p data-testid='total'>{getCartTotal(store.cart, 20)}</p>
+					<p data-testid='total'>
+						{isCheckoutPathSig.value
+							? getCartTotalWithDelivery(store.cart, 20)
+							: getCartTotal(store.cart, 20)}
+					</p>
 				</div>
 				<Divider class='my-4 max-md:-mx-4 max-md:w-auto' />
 				<Slot />

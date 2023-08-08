@@ -49,7 +49,22 @@ export const getCartTotal = (cart: Store['cart'], promo: number) => {
 				productWithQty.quantity,
 		0
 	);
-	return formatPrice(total - promo + (cart.shippingOption === 1 ? 5 : 15), 2);
+	return formatPrice(Math.max(total - promo, 0), 2);
+};
+
+export const getCartTotalWithDelivery = (
+	cart: Store['cart'],
+	promo: number
+) => {
+	const total = cartProductsWithQuantity(cart).reduce(
+		(total, productWithQty) =>
+			total +
+			(productWithQty.product?.price.discounted.amount || 0) *
+				productWithQty.quantity,
+		0
+	);
+	const price = total - promo + (cart.shippingOption === 1 ? 5 : 15);
+	return formatPrice(Math.max(price, 0), 2);
 };
 
 const cartProductsWithQuantity = (cart: Store['cart']) =>
