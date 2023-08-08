@@ -32,7 +32,7 @@ export const actions = (store: Store) =>
 		}),
 		addPromo: $((name: string) => {
 			store.cart.promoCodes = [
-				...store.cart.promoCodes,
+				...(store.cart.promoCodes || []),
 				{
 					id: store.cart.promoCodes.length,
 					name,
