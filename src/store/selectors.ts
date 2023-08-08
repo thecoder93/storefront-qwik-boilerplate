@@ -38,12 +38,6 @@ export const getCartSavingTotal = (cart: Store['cart']) => {
 				productWithQty.quantity,
 		0
 	);
-	console.log(
-		'getPromoTotal(cart)',
-		total,
-		getPromoTotal(cart),
-		formatPrice(total + getPromoTotal(cart), 2)
-	);
 	return formatPrice(total, 2);
 };
 
@@ -55,12 +49,6 @@ export const getCartSavingTotalWithPromo = (cart: Store['cart']) => {
 				(productWithQty.product?.price.discounted.amount || 0)) *
 				productWithQty.quantity,
 		0
-	);
-	console.log(
-		'getPromoTotal(cart)',
-		total,
-		getPromoTotal(cart),
-		formatPrice(total + getPromoTotal(cart), 2)
 	);
 	return formatPrice(total + getPromoTotal(cart), 2);
 };
