@@ -1,7 +1,6 @@
 # Qwik Storefront UI e-commerce
 
-![preview](./public/images/social-image.png)
-
+![preview](./public/images/social_image.png)
 
 - [Qwik Docs](https://qwik.builder.io/)
 - [Discord](https://qwik.builder.io/chat)
