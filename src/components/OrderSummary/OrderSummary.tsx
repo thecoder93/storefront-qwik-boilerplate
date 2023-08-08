@@ -77,7 +77,7 @@ export const OrderSummary = component$(() => {
 						)}
 					</div>
 				</div>
-				{store.cart.promoCodes.length > 0 && (
+				{(store.cart.promoCodes || []).length > 0 && (
 					<div class='flex flex-col py-4 border-t border-neutral-200'>
 						{store.cart.promoCodes.map(({ id, name, value }) => (
 							<div key={id} class='flex justify-between items-center mb-2'>
