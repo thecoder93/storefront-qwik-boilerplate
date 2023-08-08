@@ -127,11 +127,13 @@ export const OrderSummary = component$(() => {
 						{$localize`apply`}
 					</button>
 				</div>
-				<div class='px-3 py-1.5 bg-secondary-100 text-secondary-700 typography-text-sm rounded-md text-center mb-4'>
-					<div class='inline-flex items-center justify-center rounded-md font-normal text-secondary-800 bg-secondary-100 text-sm p-1.5 gap-1.5 w-full'>
-						{$localize`savingsTag ${getCartSavingTotalWithPromo(store.cart)}`}
+				{getCartSavingTotalWithPromo(store.cart) !== '$0.00' && (
+					<div class='px-3 py-1.5 bg-secondary-100 text-secondary-700 typography-text-sm rounded-md text-center mb-4'>
+						<div class='inline-flex items-center justify-center rounded-md font-normal text-secondary-800 bg-secondary-100 text-sm p-1.5 gap-1.5 w-full'>
+							{$localize`savingsTag ${getCartSavingTotalWithPromo(store.cart)}`}
+						</div>
 					</div>
-				</div>
+				)}
 				{isCheckoutPathSig.value && (
 					<div class='flex justify-between typography-text-base pb-4 mb-4'>
 						<p>{$localize`shippingDelivery`}</p>
