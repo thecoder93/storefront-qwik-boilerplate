@@ -371,7 +371,7 @@ export default component$(() => {
 									</button>
 								</div>
 								<section
-									class='flex flex-row flex-wrap justify-between gap-4'
+									class='flex flex-col items-center sm:flex-row flex-wrap justify-between gap-4'
 									data-testid='category-grid'
 								>
 									{products.value.products.map((product) => (
