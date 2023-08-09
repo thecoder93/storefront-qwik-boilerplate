@@ -4,6 +4,8 @@ export type Product = {
 	sku: string;
 	name: string;
 	description: string;
+	uploadDate?: string;
+	relevance?: number;
 	rating: { average: number; count: number };
 	price: {
 		isDiscounted: boolean;
