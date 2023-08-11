@@ -1,4 +1,4 @@
-const { tailwindConfig } = require('@storefront-ui/react/tailwind-config');
+const { tailwindConfig } = require('@storefront-ui/tailwind-config');
 const sfTypography = require('@storefront-ui/typography');
 
 /** @type {import('tailwindcss').Config} */

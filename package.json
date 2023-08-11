@@ -30,7 +30,7 @@
 		"@builder.io/qwik": "^1.2.6",
 		"@builder.io/qwik-city": "^1.2.6",
 		"@savvywombat/tailwindcss-grid-areas": "^3.1.0",
-		"@storefront-ui/react": "^2.5.0",
+		"@storefront-ui/tailwind-config": "^2.3.1",
 		"@storefront-ui/typography": "^2.3.1",
 		"@types/eslint": "8.40.2",
 		"@types/node": "^20.4.0",
