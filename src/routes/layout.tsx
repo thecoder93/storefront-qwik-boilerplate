@@ -1,6 +1,5 @@
 import { $, Slot, component$, useComputed$ } from '@builder.io/qwik';
 import {
-	routeAction$,
 	routeLoader$,
 	useLocation,
 	type RequestHandler,
@@ -13,7 +12,6 @@ import { Footer } from '~/components/Footer/Footer';
 import { NavbarTop } from '~/components/NavbarTop/NavbarTop';
 import { ScrollToTopButton } from '~/components/ScrollToTopButton/ScrollToTopButton';
 import { Search } from '~/components/Search/Search';
-import { sleep } from '~/shared/utils';
 import { useAppStore } from '~/store';
 import type { Product } from '~/types/product';
 import { extractLang } from '~/utils/i18n';
@@ -28,11 +26,6 @@ export const onGet: RequestHandler = async ({ cacheControl }) => {
 export const onRequest: RequestHandler = ({ request, locale }) => {
 	locale(extractLang(request.headers.get('accept-language'), request.url));
 };
-
-export const useAddressForm = routeAction$(async () => {
-	await sleep(5_000);
-	return { success: true };
-});
 
 export const useRandomProductsLoader = routeLoader$(
 	async ({ env }): Promise<Product[]> => {

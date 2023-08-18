@@ -1,6 +1,7 @@
 import { component$ } from '@builder.io/qwik';
 import { Link } from '@builder.io/qwik-city';
 import { Image } from 'qwik-image';
+import { AddressForm } from '~/components/AddressForm/AddressForm';
 import { OrderSummary } from '~/components/OrderSummary/OrderSummary';
 import { ShippingMethodSelector } from '~/components/ShippingMethodSelector/ShippingMethodSelector';
 import { Divider } from '~/components/UI/Divider/Divider';
@@ -83,13 +84,21 @@ export default component$(() => {
 										Add a billing address. You will receive the invoice to the
 										email address provided above.
 									</p>
-									<button
-										type='button'
-										class='inline-flex items-center justify-center font-medium text-base focus-visible:outline focus-visible:outline-offset rounded-md disabled:text-disabled-500 disabled:bg-disabled-300 disabled:shadow-none disabled:ring-0 disabled:cursor-not-allowed py-2 leading-6 px-4 gap-2 text-primary-700 hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900 ring-1 ring-primary-700 hover:shadow-md active:shadow shadow hover:ring-primary-800 active:ring-primary-900 disabled:ring-1 disabled:ring-disabled-300 disabled:bg-white/50 mt-4 w-full md:w-auto'
-										data-testid='button'
-									>
-										Add billing address
-									</button>
+									<AddressForm
+										class='mt-4'
+										type='billingAddress'
+										savedAddress={{
+											firstName: 'John',
+											lastName: 'Doe',
+											phone: '00000000000',
+											country: 'US',
+											streetName: '49 Corbry Street',
+											streetNumber: '2B',
+											city: 'Santa Rosa',
+											state: 'California',
+											postalCode: '95401',
+										}}
+									/>
 								</div>
 							</div>
 							<Divider class='w-screen md:w-auto -mx-4 md:mx-0' />
@@ -101,13 +110,21 @@ export default component$(() => {
 								</div>
 								<div class='w-full md:max-w-[520px]'>
 									<p>Add a shipping address to view shipping details.</p>
-									<button
-										type='button'
-										class='inline-flex items-center justify-center font-medium text-base focus-visible:outline focus-visible:outline-offset rounded-md disabled:text-disabled-500 disabled:bg-disabled-300 disabled:shadow-none disabled:ring-0 disabled:cursor-not-allowed py-2 leading-6 px-4 gap-2 text-primary-700 hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900 ring-1 ring-primary-700 hover:shadow-md active:shadow shadow hover:ring-primary-800 active:ring-primary-900 disabled:ring-1 disabled:ring-disabled-300 disabled:bg-white/50 mt-4 w-full md:w-auto'
-										data-testid='button'
-									>
-										Add shipping address
-									</button>
+									<AddressForm
+										class='mt-4'
+										type='billingAddress'
+										savedAddress={{
+											firstName: 'John',
+											lastName: 'Doe',
+											phone: '00000000000',
+											country: 'US',
+											streetName: '49 Corbry Street',
+											streetNumber: '2B',
+											city: 'Santa Rosa',
+											state: 'California',
+											postalCode: '95401',
+										}}
+									/>
 								</div>
 							</div>
 							<Divider class='w-screen md:w-auto -mx-4 md:mx-0' />
@@ -148,7 +165,7 @@ export default component$(() => {
 												src='/images/paypal.svg'
 												alt='Paypal Icon'
 											/>
-											<span class=''>Coming soon</span>
+											<span>Coming soon</span>
 										</div>
 									</button>
 									<button
@@ -166,7 +183,7 @@ export default component$(() => {
 												src='/images/apple-pay.svg'
 												alt='Apple Pay Icon'
 											/>
-											<span class='text-xs text-neutral-500'>Coming soon</span>
+											<span>Coming soon</span>
 										</div>
 									</button>
 									<button
@@ -184,7 +201,7 @@ export default component$(() => {
 												src='/images/google-pay.svg'
 												alt='Google Pay icon'
 											/>
-											<span class='text-xs text-neutral-500'>Coming soon</span>
+											<span>Coming soon</span>
 										</div>
 									</button>
 								</div>

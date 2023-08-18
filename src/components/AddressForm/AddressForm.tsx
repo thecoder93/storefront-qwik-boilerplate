@@ -1,13 +1,5 @@
-import { component$, useSignal, useStore, useTask$ } from '@builder.io/qwik';
-import { Form } from '@builder.io/qwik-city';
-import {
-	SfButton,
-	SfCheckbox,
-	SfInput,
-	SfLoaderCircular,
-	SfSelect,
-} from 'qwik-storefront-ui';
-import { useAddressForm } from '~/routes/layout';
+import { component$ } from '@builder.io/qwik';
+import { SfInput, SfSelect } from 'qwik-storefront-ui';
 import { FormHelperText } from '../Form/FormHelperText';
 import { FormLabel } from '../Form/FormLabel';
 
@@ -26,50 +18,24 @@ export type AddressFormFields = Record<AddressFields, string>;
 
 export type AddressFormProps = {
 	type: 'billingAddress' | 'shippingAddress';
-	savedAddress?: AddressFormFields | undefined;
+	savedAddress: AddressFormFields;
+	class?: string;
 };
 
 export const AddressForm = component$<AddressFormProps>(
-	({ type, savedAddress }) => {
-		const addressFormAction = useAddressForm();
-		const formRefSig = useSignal<HTMLFormElement>();
-		useStore<{ value: AddressFormFields }>({
-			value: {
-				firstName: savedAddress?.firstName || '',
-				lastName: savedAddress?.lastName || '',
-				phone: savedAddress?.phone || '',
-				country: savedAddress?.country || '',
-				streetName: savedAddress?.streetName || '',
-				streetNumber: savedAddress?.streetNumber || '',
-				city: savedAddress?.city || '',
-				state: savedAddress?.state || '',
-				postalCode: savedAddress?.postalCode || '',
-			},
-		});
-		const countries = ['US'];
-		const states = ['California'];
-
-		useTask$(({ track }) => {
-			const success = track(() => addressFormAction.value?.success);
-			if (success) {
-				if (formRefSig.value) {
-					formRefSig.value.reset();
-				}
-			}
-		});
-
+	({ savedAddress, class: _class }) => {
 		return (
-			<Form
-				class='grid grid-cols-1 md:grid-cols-[50%_1fr_120px] gap-4'
+			<div
+				class={['grid grid-cols-1 md:grid-cols-[50%_1fr_120px] gap-4', _class]}
 				data-testid='address-form'
-				action={addressFormAction}
-				ref={formRefSig}
 			>
 				<label>
 					<FormLabel>{$localize`form.firstNameLabel`}</FormLabel>
 					<SfInput
 						name='firstName'
 						autoComplete='given-name'
+						value={savedAddress.firstName}
+						readOnly={true}
 						// defaultValue={addressStore.firstName} <-- fix lib <-- fix lib
 						required
 					/>
@@ -79,7 +45,8 @@ export const AddressForm = component$<AddressFormProps>(
 					<SfInput
 						name='lastName'
 						autoComplete='family-name'
-						// defaultValue={addressStore.lastName} <-- fix lib
+						value={savedAddress.lastName}
+						readOnly={true}
 						required
 					/>
 				</label>
@@ -89,7 +56,8 @@ export const AddressForm = component$<AddressFormProps>(
 						name='phone'
 						type='tel'
 						autoComplete='tel'
-						// defaultValue={addressStore.phone} <-- fix lib
+						value={savedAddress.phone}
+						readOnly={true}
 						required
 					/>
 				</label>
@@ -99,10 +67,10 @@ export const AddressForm = component$<AddressFormProps>(
 						name='country'
 						placeholder={$localize`form.selectPlaceholder`}
 						autoComplete='country-name'
-						// defaultValue={addressStore.country} <-- fix lib
+						disabled={true}
 						required
 					>
-						{countries.map((country) => (
+						{['US'].map((country) => (
 							<option key={country}>{country}</option>
 						))}
 					</SfSelect>
@@ -112,7 +80,8 @@ export const AddressForm = component$<AddressFormProps>(
 					<SfInput
 						name='streetName'
 						autoComplete='address-line1'
-						// defaultValue={// addressStore.streetName} <-- fix lib
+						value={savedAddress.streetName}
+						readOnly={true}
 						required
 					/>
 					<FormHelperText>{$localize`form.streetNameHelp`}</FormHelperText>
@@ -121,7 +90,8 @@ export const AddressForm = component$<AddressFormProps>(
 					<FormLabel>{$localize`form.streetNumberLabel`}</FormLabel>
 					<SfInput
 						name='streetNumber'
-						// defaultValue={// addressStore.streetNumber} <-- fix lib
+						value={savedAddress.streetNumber}
+						readOnly={true}
 					/>
 					<FormHelperText>{$localize`form.streetNumberHelp`}</FormHelperText>
 				</label>
@@ -130,7 +100,8 @@ export const AddressForm = component$<AddressFormProps>(
 					<SfInput
 						name='city'
 						autoComplete='address-level2'
-						// defaultValue={// addressStore.city} <-- fix lib
+						value={savedAddress.city}
+						readOnly={true}
 						required
 					/>
 				</label>
@@ -139,11 +110,12 @@ export const AddressForm = component$<AddressFormProps>(
 					<SfSelect
 						name='state'
 						autoComplete='address-level1'
-						// defaultValue={// addressStore.state} <-- fix lib
+						value={savedAddress.state}
+						disabled={true}
 						placeholder={$localize`form.selectPlaceholder`}
 						required
 					>
-						{states.map((state) => (
+						{['California'].map((state) => (
 							<option key={state}>{state}</option>
 						))}
 					</SfSelect>
@@ -153,47 +125,12 @@ export const AddressForm = component$<AddressFormProps>(
 					<SfInput
 						name='postalCode'
 						autoComplete='postal-code'
-						// defaultValue={// addressStore.postalCode} <-- fix lib
+						value={savedAddress.postalCode}
+						readOnly={true}
 						required
 					/>
 				</label>
-
-				{type === 'billingAddress' && (
-					<label class='md:col-span-3 flex items-center gap-2'>
-						<SfCheckbox name='useAsShipping' />
-						{$localize`form.useAsShippingLabel`}
-					</label>
-				)}
-
-				<div class='md:col-span-3 flex justify-end gap-4'>
-					<SfButton
-						type='reset'
-						onClick$={() => {
-							if (formRefSig.value) {
-								formRefSig.value.reset();
-							}
-						}}
-						class='max-md:w-1/2'
-						variant='secondary'
-					>
-						{$localize`checkout:contactInfo.clearAll`}
-					</SfButton>
-					<SfButton
-						type='submit'
-						class='w-1/2 md:w-1/6'
-						disabled={addressFormAction.isRunning}
-					>
-						{addressFormAction.isRunning ? (
-							<SfLoaderCircular
-								class='flex justify-center items-center'
-								size='sm'
-							/>
-						) : (
-							$localize`checkout:contactInfo.save`
-						)}
-					</SfButton>
-				</div>
-			</Form>
+			</div>
 		);
 	}
 );
