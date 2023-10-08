@@ -1,7 +1,7 @@
 import { Slot, component$ } from '@builder.io/qwik';
 import { Link } from '@builder.io/qwik-city';
 import { Image } from 'qwik-image';
-import { GitHubLink } from '../GitHubLink/githublink';
+import { GitHubLink } from '../GitHubLink/GitHubLink';
 
 type NavBarTopProps = {
 	isCheckoutPath: boolean;
