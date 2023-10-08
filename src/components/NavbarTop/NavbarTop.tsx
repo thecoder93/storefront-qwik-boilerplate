@@ -1,6 +1,7 @@
 import { Slot, component$ } from '@builder.io/qwik';
 import { Link } from '@builder.io/qwik-city';
 import { Image } from 'qwik-image';
+import { GitHubLink } from '../GitHubLink/githublink';
 
 type NavBarTopProps = {
 	isCheckoutPath: boolean;
@@ -33,6 +34,7 @@ export const NavbarTop = component$<NavBarTopProps>(({ isCheckoutPath }) => {
 				</Link>
 				<Slot />
 			</div>
+			<GitHubLink />
 		</header>
 	);
 });
