@@ -1,4 +1,4 @@
-lockfileVersion: '6.0'
+lockfileVersion: '6.1'
 
 settings:
   autoInstallPeers: true
@@ -12,8 +12,8 @@ dependencies:
     specifier: ^0.0.7
     version: 0.0.7
   qwik-storefront-ui:
-    specifier: ^0.0.3
-    version: 0.0.3
+    specifier: 0.0.5
+    version: 0.0.5
 
 devDependencies:
   '@angular/compiler':
@@ -3896,8 +3896,8 @@ packages:
     resolution: {integrity: sha512-JodIaKlasCuaGe7hM30LVdD4GMVJ4Lp8W9cakU1PAkPe9teC3APOLta3qmVMbAtV0gXmeLq4y/EDwl/44rRX2g==}
     dev: false
 
-  /qwik-storefront-ui@0.0.3:
-    resolution: {integrity: sha512-suskjhexv4eSKo1RT79jMnp3C/OQbEwsWuelEAJ/9hgOSpbnyTyqIjwakutMd3dsXoGTck8qZnW4a5KyUQaRzw==}
+  /qwik-storefront-ui@0.0.5:
+    resolution: {integrity: sha512-C0ER18gE1zxH2RqsmZ4Rwmj+9BL8GSTP3k4xINwVIxtI47RGMzWAVH3BCfAFOau4Ld4zfzfo2g37U3/vDA/aBg==}
     dev: false
 
   /rc@1.2.8:
