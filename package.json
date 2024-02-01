@@ -37,6 +37,8 @@
 		"@typescript-eslint/eslint-plugin": "6.4.0",
 		"@typescript-eslint/parser": "6.4.0",
 		"autoprefixer": "^10.4.15",
+		"cypress": "^13.6.4",
+		"cypress-ct-qwik": "^0.3.0",
 		"eslint": "8.47.0",
 		"eslint-plugin-qwik": "^1.2.13",
 		"postcss": "^8.4.28",
