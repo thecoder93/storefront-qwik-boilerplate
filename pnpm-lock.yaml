@@ -12,8 +12,8 @@ dependencies:
     specifier: ^0.0.7
     version: 0.0.7
   qwik-storefront-ui:
-    specifier: 0.0.8
-    version: 0.0.8
+    specifier: 0.0.7
+    version: 0.0.7
 
 devDependencies:
   '@angular/compiler':
@@ -3896,8 +3896,8 @@ packages:
     resolution: {integrity: sha512-JodIaKlasCuaGe7hM30LVdD4GMVJ4Lp8W9cakU1PAkPe9teC3APOLta3qmVMbAtV0gXmeLq4y/EDwl/44rRX2g==}
     dev: false
 
-  /qwik-storefront-ui@0.0.8:
-    resolution: {integrity: sha512-CZ+NJUezyCCvdcC1BBR+uPdaA61iTbdiQvdZRWMpLoAyKZ+5MnZ55wUsQLw1TtGi1K5RxakCLU3lkHN8ZrwVNA==}
+  /qwik-storefront-ui@0.0.7:
+    resolution: {integrity: sha512-gFLJz3UaLFcIIag8pRL1s2wfK2fB2J516M6/mrvmqPKM8eXO4uvPAuoMj+scnBik71Rj2EqqwztQ53Z9xv8/nA==}
     dev: false
 
   /rc@1.2.8:
