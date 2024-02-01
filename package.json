@@ -51,6 +51,6 @@
 	"dependencies": {
 		"@angular/localize": "^16.2.1",
 		"qwik-image": "^0.0.7",
-		"qwik-storefront-ui": "0.0.5"
+		"qwik-storefront-ui": "0.0.8"
 	}
 }
