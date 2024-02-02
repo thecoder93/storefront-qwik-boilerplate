@@ -62,6 +62,7 @@ export default component$(() => {
 							as={'a'}
 							href='/category'
 							variant='tertiary'
+							data-testid="browse-category"
 						>
 							<div q:slot='suffix'>
 								<SfIconExpandMore />

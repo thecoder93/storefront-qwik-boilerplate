@@ -17,6 +17,7 @@ export const CartIcon = component$(() => {
 			<SfButton class="relative flex flex-row flex-nowrap ml-auto mr-[80px] md:mr-[60px] 2xl:mr-[20px]" square variant="tertiary">
 				<SfIconShoppingCart />
 				<SfBadge
+					data-testid='button-cart'
 					content={cartQuantitySig.value}
 					max={99}
 				/>

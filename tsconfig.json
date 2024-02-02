@@ -22,5 +22,11 @@
     }
   },
   "files": ["./.eslintrc.cjs"],
-  "include": ["src", "./*.d.ts", "./*.config.ts", "@storefront-ui/typography"]
+  "include": [
+    "src",
+    "cypress",
+    "./*.d.ts",
+    "./*.config.ts",
+    "@storefront-ui/typography"
+  ]
 }
